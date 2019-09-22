@@ -15,31 +15,33 @@ var bot = linebot({
 });
 
 
-//----------------------------------------
+//--------------------------------
 // 機器人接受訊息的處理
-//----------------------------------------
-bot.on('message', function(event) {
+//--------------------------------
+bot.on('message', function(event) {    
     event.source.profile().then(
         function (profile) {
-            const name = profile.displayName;
+            //取得使用者資料
+            const userName = profile.displayName;
             const userId = profile.userId;
-            const msg = event.message.text;
-            
-            //最多支援5個訊息
-            return event.reply([
-                {
-                    "type": "text",
-                    "text": '這是你的名字:'+name
-                },
-                {
-                    "type": "text",
-                    "text": '這是你的userId:'+userId
-                },
-                {
-                    "type": "text",
-                    "text": '你剛剛打的訊息'+msg
-                }
-            ]);	            
+	    
+            //使用者傳來的學號
+            const no = event.message.text;
+          
+            //呼叫API取得學生資料
+            student.fetchStudent(no).then(data => {  
+                if (data == -1){
+                    event.reply('找不到資料');
+                }else if(data == -9){                    
+                    event.reply('執行錯誤');
+                }else{
+                    event.reply([
+                        {'type':'text', 'text':data.user_id},
+                        {'type':'text', 'text':data.member_name},
+                        {'type':'text', 'text':data.email}]
+                    );  
+                }  
+            })  
         }
     );
 });
