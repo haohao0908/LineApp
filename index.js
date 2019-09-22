@@ -20,8 +20,26 @@ var bot = linebot({
 //----------------------------------------
 bot.on('message', function(event) {
     event.source.profile().then(
-        function (profile) {		
-            return event.reply('你好, ' + profile.displayName + '. 你的編號是:' + profile.userId + ', 你的回應是:' +  event.message.text);
+        function (profile) {
+            const name = profile.displayName;
+            const userId = profile.userId;
+            const msg = event.message.text;
+            
+            //最多支援5個訊息
+            return event.reply([
+                {
+                    "type": "text",
+                    "text": '這是你的名字:'+name
+                },
+                {
+                    "type": "text",
+                    "text": '這是你的userId:'+userId
+                },
+                {
+                    "type": "text",
+                    "text": '你剛剛打的訊息'+msg
+                }
+            ]);	            
         }
     );
 });
