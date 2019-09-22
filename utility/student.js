@@ -6,12 +6,12 @@ const query = require('./asyncDB');
 //------------------------------------------
 // 由學號查詢學生資料
 //------------------------------------------
-var fetchStudent = async function(stuNo){
+var fetchMember = async function(id){
     //存放結果
     let result;  
 
     //讀取資料庫
-    await query('select * from member where user_id = $1', [stuNo])
+    await query('select * from member where user_id = $1', [id])
         .then((data) => {
             if(data.rows.length > 0){
                 result = data.rows[0];  //學生資料(物件)
@@ -28,4 +28,4 @@ var fetchStudent = async function(stuNo){
 //------------------------------------------
 
 //匯出
-module.exports = {fetchStudent};
+module.exports = {fetchMember};

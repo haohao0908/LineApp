@@ -21,15 +21,11 @@ var bot = linebot({
 bot.on('message', function(event) {    
     event.source.profile().then(
         function (profile) {
-            //取得使用者資料
-            const userName = profile.displayName;
-            const userId = profile.userId;
-	    
             //使用者傳來的學號
-            const no = event.message.text;
+            const userId = event.message.text;
           
             //呼叫API取得學生資料
-            student.fetchStudent(no).then(data => {  
+            student.fetchMember(userId).then(data => {  
                 if (data == -1){
                     event.reply('找不到資料');
                 }else if(data == -9){                    
