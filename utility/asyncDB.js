@@ -27,6 +27,7 @@ function query(sql, value=null) {
             if (err){
                 reject(err);
             }else{
+                console.log('有連接資料庫')
                 resolve(results);
             }
 
