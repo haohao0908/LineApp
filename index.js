@@ -19,7 +19,11 @@ var bot = linebot({
 // 機器人接受訊息的處理
 //----------------------------------------
 bot.on('message', function(event) {
-    event.reply('Hello, 你好');  
+    event.source.profile().then(
+        function (profile) {		
+            return event.reply('你好, ' + profile.displayName + '. 你的編號是:' + profile.userId + ', 你的回應是:' +  event.message.text);
+        }
+    );
 });
 
 
