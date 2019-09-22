@@ -26,9 +26,9 @@ function query(sql, value=null) {
         //回覆查詢結果  
         client.query(sql, value, (err, results) => {                   
             if (err){
+                console.log('觸發這邊的err')
                 reject(err);
             }else{
-                console.log('有連接資料庫')
                 resolve(results);
             }
 
