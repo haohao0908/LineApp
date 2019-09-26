@@ -5,7 +5,7 @@ var linebot = require('linebot');
 var express = require('express');
 
 //增加引用函式
-const student = require('./utility/student');
+const Admin = require('./utility/Admin');
 //----------------------------------------
 // 填入自己在Line Developers的channel值
 //----------------------------------------
@@ -19,23 +19,25 @@ var bot = linebot({
 //--------------------------------
 // 機器人接受訊息的處理
 //--------------------------------
+
 bot.on('message', function(event) {    
     event.source.profile().then(
         function (profile) {
             //使用者傳來的學號
-            const userId = event.message.text;
+            const userName = profile.displayName;
+            // const userId =  profile.userId;
+            const userId = event.message.join;
           
             //呼叫API取得學生資料
-            student.fetchMember(userId).then(data => {  
+            Admin.fetchMember().then(data => {  
                 if (data == -1){
                     event.reply('找不到資料');
                 }else if(data == -9){                    
                     event.reply('執行錯誤');
                 }else{
                     event.reply([
-                        {'type':'text', 'text':data.user_id},
-                        {'type':'text', 'text':data.member_name},
-                        {'type':'text', 'text':data.email}]
+                        {'type':'text', 'text':data.adminpush_content},
+                        {'type':'text', 'text':data.user_id},                        ]
                     );  
                 }  
             })  
