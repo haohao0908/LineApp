@@ -11,7 +11,7 @@ var fetchAdmin = async function(id){
     let result;  
 
     //讀取資料庫
-    await query('SELECT admin.adminpush_content FROM adminpush as admin INNER JOIN teammember as mem ON (admin.project_id=mem.project_id)')
+    await query('SELECT mem.user_id,admin.adminpush_content FROM adminpush as admin INNER JOIN teammember as mem ON (admin.project_id=mem.project_id)')
         .then((data) => {
             if(data.rows.length > 0){
                 result = data.rows[0];  //學生資料(物件)

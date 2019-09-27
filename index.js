@@ -21,7 +21,7 @@ bot.on('follow', function (event) {
     event.source.profile().then(
         function (profile) {
             let userIdArray=[];
-            userIdArray.add(profile.userId);
+            userIdArray.push(profile.userId);
             console.log(userIdArray);
             console.log('有人加入了' + profile.userId);
             // return event.reply('你好, ' + profile.displayName + '. 你的編號是:' + profile.userId + ', 你的回應是:' + event.message.text);
@@ -47,7 +47,7 @@ bot.on('message', function (event) {
                     event.reply('執行錯誤');
                 } else {
                     event.reply([
-                        // {'type':'text', 'text':data.user_id},
+                        {'type':'text', 'text':data.user_id},
                         {'type':'text', 'text':data.adminpush_content},
                         // {'type':'text', 'text':userName}
                     ]
