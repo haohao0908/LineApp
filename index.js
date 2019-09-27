@@ -15,16 +15,22 @@ var bot = linebot({
     channelAccessToken: 'Ve75F0ujyEhnbXiiXeFPbUODz1HtYSd5gokKP4npeWt3C2LMV8a6tbUTZAqzDUB84/oFOBAxJkoUfazGlWuiFdjk8CcfQFUTrvbin37xwAuGMedo8sTwip+1KwAe/nNIuhEGvsPs+S0ykkuwynuGTAdB04t89/1O/w1cDnyilFU='
 });
 //--------------------------------
-// 機器人被加入好友
+// 使用者加入群組
 //--------------------------------
-bot.on('follow', function (event) {
+bot.on('follow', function (event){
     event.source.profile().then(
         function (profile) {
-            let userIdArray=[];
-            userIdArray.push(profile.userId);
-            console.log(userIdArray);
-            console.log('有人加入了' + profile.userId);
-            // return event.reply('你好, ' + profile.displayName + '. 你的編號是:' + profile.userId + ', 你的回應是:' + event.message.text);
+            //取得使用者資料
+            const userName = profile.displayName;
+            const userId = profile.userId;    
+            //呼叫API, 將使用者資料寫入資料庫
+            Admin.SaveUser(userId, userName).then(data => {  
+                if (data == -9){
+                    event.reply('執行錯誤');
+                }else{                   
+                    event.reply('歡迎加入PlanYourself');
+                }
+            })  
         }
     );
 });
@@ -35,9 +41,6 @@ bot.on('follow', function (event) {
 bot.on('message', function (event) {
     event.source.profile().then(
         function (profile) {
-            const name = profile.displayName;
-            const userId = profile.userId;
-            const msg = event.message.text; 
             Admin.fetchAdmin().then(data => {
                 console.log('回傳data資料')
                 console.log(data);
@@ -49,7 +52,6 @@ bot.on('message', function (event) {
                     event.reply([
                         {'type':'text', 'text':data.user_id},
                         {'type':'text', 'text':data.adminpush_content},
-                        // {'type':'text', 'text':userName}
                     ]
                     );
                 }
