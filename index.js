@@ -15,12 +15,16 @@ var bot = linebot({
     channelAccessToken: 'Ve75F0ujyEhnbXiiXeFPbUODz1HtYSd5gokKP4npeWt3C2LMV8a6tbUTZAqzDUB84/oFOBAxJkoUfazGlWuiFdjk8CcfQFUTrvbin37xwAuGMedo8sTwip+1KwAe/nNIuhEGvsPs+S0ykkuwynuGTAdB04t89/1O/w1cDnyilFU='
 });
 //--------------------------------
-// 機器人接受訊息的處理
+// 機器人被加入好友
 //--------------------------------
-bot.on('follow',function (event) {
-    const userId=event.source;
-    console.log('有人加入了'+userId);
- });
+bot.on('follow', function (event) {
+    event.source.profile().then(
+        function (profile) {
+            console.log('有人加入了' + profile.userId);
+            return event.reply('你好, ' + profile.displayName + '. 你的編號是:' + profile.userId + ', 你的回應是:' + event.message.text);
+        }
+    );
+});
 //--------------------------------
 // 機器人接受訊息的處理
 //--------------------------------
@@ -32,6 +36,7 @@ bot.on('message', function (event) {
             const userName = profile.displayName;
             //呼叫API取得學生資料
             Admin.fetchMember().then(data => {
+                console.log('回傳data資料')
                 console.log(data);
                 if (data == -1) {
                     event.reply('找不到資料');
