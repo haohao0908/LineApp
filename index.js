@@ -68,7 +68,7 @@ setTimeout(function () {
     bot.push(userId, [sendMsg]);
     console.log('userId: ' + userId);
     console.log('send: ' + sendMsg);
-}, 3000);
+}, 10000);
 //----------------------------------------
 // 建立一個網站應用程式app
 // 如果連接根目錄, 交給機器人處理
