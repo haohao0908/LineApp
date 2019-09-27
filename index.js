@@ -21,7 +21,7 @@ bot.on('follow', function (event) {
     event.source.profile().then(
         function (profile) {
             console.log('有人加入了' + profile.userId);
-            return event.reply('你好, ' + profile.displayName + '. 你的編號是:' + profile.userId + ', 你的回應是:' + event.message.text);
+            // return event.reply('你好, ' + profile.displayName + '. 你的編號是:' + profile.userId + ', 你的回應是:' + event.message.text);
         }
     );
 });
