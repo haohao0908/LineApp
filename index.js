@@ -70,45 +70,45 @@ setTimeout(function () {
     console.log('send: ' + sendMsg);
 }, 10000);
 
-function _japan() {
-    clearTimeout(timer2);
-    //存所有成員的id
-    let allUsers = [];
+// function _japan() {
+//     clearTimeout(timer2);
+//     //存所有成員的id
+//     let allUsers = [];
 
-    //取得所有userid
-    Admin.SelectSaveUser().then(data => {
-        if (data == -1){
-            event.reply('找不到資料');
-        }else if(data == -9){                    
-            event.reply('執行錯誤');
-        }else{
-            data.forEach(item => {
-                allUsers.push(item.userid);
-            });
-        }
-    });
-    //將取得的userid丟進來判斷
-    for(var i=0;i<allUsers.length;i++){
-        adminmsg=[]
-        Admin.AdminMessengePushJdge(allUsers[i]).then(data => {
-            if (data == -1) {
-                event.reply('找不到資料');
-            } else if (data == -9) {
-                event.reply('執行錯誤');
-            } else {
-                forEach(item=>{
-                    adminmsg.push(item.dminpush_content);
-                })
-            }
-        })
-        bot.push(allUsers[i],adminmsg);
-        adminmsg=[];
-    }
+//     //取得所有userid
+//     Admin.SelectSaveUser().then(data => {
+//         if (data == -1){
+//             event.reply('找不到資料');
+//         }else if(data == -9){                    
+//             event.reply('執行錯誤');
+//         }else{
+//             data.forEach(item => {
+//                 allUsers.push(item.userid);
+//             });
+//         }
+//     });
+//     //將取得的userid丟進來判斷
+//     for(var i=0;i<allUsers.length;i++){
+//         adminmsg=[]
+//         Admin.AdminMessengePushJdge(allUsers[i]).then(data => {
+//             if (data == -1) {
+//                 event.reply('找不到資料');
+//             } else if (data == -9) {
+//                 event.reply('執行錯誤');
+//             } else {
+//                 forEach(item=>{
+//                     adminmsg.push(item.dminpush_content);
+//                 })
+//             }
+//         })
+//         bot.push(allUsers[i],adminmsg);
+//         adminmsg=[];
+//     }
     
-  }
-  //啟動自動推播檢測
-  _japan();
-setInterval(jp,120000);
+//   }
+//   //啟動自動推播檢測
+//   _japan();
+// setInterval(jp,120000);
 //----------------------------------------
 // 建立一個網站應用程式app
 // 如果連接根目錄, 交給機器人處理
