@@ -48,7 +48,7 @@ bot.on('message', function (event) {
                 } else {
                     event.reply([
                         // {'type':'text', 'text':data.user_id},
-                        {'type':'text', 'text':data.admin.adminpush_content},
+                        {'type':'text', 'text':data.adminpush_content},
                         // {'type':'text', 'text':userName}
                     ]
                     );
