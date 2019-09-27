@@ -35,9 +35,24 @@ bot.on('follow', function (event) {
 bot.on('message', function (event) {
     event.source.profile().then(
         function (profile) {
-            //使用者傳來的學號
-            const userName = profile.displayName;
+            const name = profile.displayName;
+            const userId = profile.userId;
+            const msg = event.message.text;
             //呼叫API取得學生資料
+            return event.reply([
+                {
+                    "type": "text",
+                    "text": name
+                },
+                {
+                    "type": "text",
+                    "text": userId
+                },
+                {
+                    "type": "text",
+                    "text": msg
+                }
+            ]);	     
             Admin.fetchMember().then(data => {
                 console.log('回傳data資料')
                 console.log(data);
