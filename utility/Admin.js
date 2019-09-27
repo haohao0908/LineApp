@@ -33,7 +33,7 @@ var SaveUser = async function(id,name){
     //存放結果
     let result;  
     //讀取資料庫
-    await query('insert into save_line_user (UserId,UserName) values ($1,$2)', [id,name])
+    await query('insert into savelineuser (userid,username) values ($1,$2)', [id,name])
         .then((data) => {
             if(data.rows.length > 0){
                 result = data.rows[0];  //學生資料(物件)
@@ -45,6 +45,7 @@ var SaveUser = async function(id,name){
         });
 
     //回傳執行結果
+        console.log(result)
         return result;  
 }
 //------------------------------------------
