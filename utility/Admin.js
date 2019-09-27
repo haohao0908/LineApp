@@ -45,7 +45,6 @@ var SaveUser = async function(id,name){
         });
 
     //回傳執行結果
-        console.log(result)
         return result;  
 }
 //------------------------------------------

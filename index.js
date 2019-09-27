@@ -59,7 +59,16 @@ bot.on('message', function (event) {
         }
     );
 });
-
+//--------------------------------
+// 機器人推播訊息
+//---------// 主動發送訊息
+setTimeout(function () {
+    var userId = 'U32851128a5210964818860dd9204b886';
+    var sendMsg = "push hands up ";
+    bot.push(userId, [sendMsg]);
+    console.log('userId: ' + userId);
+    console.log('send: ' + sendMsg);
+}, 3000);
 //----------------------------------------
 // 建立一個網站應用程式app
 // 如果連接根目錄, 交給機器人處理
