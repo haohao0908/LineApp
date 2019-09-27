@@ -14,8 +14,12 @@ var bot = linebot({
     channelSecret: 'd391ffcbe15aa40a60143a360688215d',
     channelAccessToken: 'Ve75F0ujyEhnbXiiXeFPbUODz1HtYSd5gokKP4npeWt3C2LMV8a6tbUTZAqzDUB84/oFOBAxJkoUfazGlWuiFdjk8CcfQFUTrvbin37xwAuGMedo8sTwip+1KwAe/nNIuhEGvsPs+S0ykkuwynuGTAdB04t89/1O/w1cDnyilFU='
 });
-
-
+//--------------------------------
+// 機器人接受訊息的處理
+//--------------------------------
+bot.on('join',function (event) {
+    console.log('有人加入了');
+ });
 //--------------------------------
 // 機器人接受訊息的處理
 //--------------------------------
@@ -25,9 +29,6 @@ bot.on('message', function (event) {
         function (profile) {
             //使用者傳來的學號
             const userName = profile.displayName;
-            // const userId =  profile.userId;
-            const userId = event.message.join;
-            const Follow = event.Follow;
             //呼叫API取得學生資料
             Admin.fetchMember().then(data => {
                 console.log(data);
@@ -37,8 +38,7 @@ bot.on('message', function (event) {
                     event.reply('執行錯誤');
                 } else {
                     event.reply([
-                        { 'type': 'text', 'text': data.adminpush_content },
-                        { 'type': 'text', 'text': data.user_id },
+                        { 'type': 'text', 'text': data.user_id }
                     ]
                     );
                 }
