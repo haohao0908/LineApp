@@ -20,30 +20,29 @@ var bot = linebot({
 // 機器人接受訊息的處理
 //--------------------------------
 
-bot.on('message', function(event) {    
+bot.on('message', function (event) {
     event.source.profile().then(
         function (profile) {
             //使用者傳來的學號
             const userName = profile.displayName;
             // const userId =  profile.userId;
             const userId = event.message.join;
-            const Follow=event.Follow;
+            const Follow = event.Follow;
             //呼叫API取得學生資料
-            Admin.fetchMember().then(data => {  
+            Admin.fetchMember().then(data => {
                 console.log(data);
-                if (data == -1){
+                if (data == -1) {
                     event.reply('找不到資料');
-                }else if(data == -9){                    
+                } else if (data == -9) {
                     event.reply('執行錯誤');
-                }else{
+                } else {
                     event.reply([
-                        {'type':'text', 'text':data.adminpush_content},
-                        {'type':'text', 'text':data.user_id},    
-                        {'type':'text','text':Follow}
-                        ]
-                    );  
-                }  
-            })  
+                        { 'type': 'text', 'text': data.adminpush_content },
+                        { 'type': 'text', 'text': data.user_id },
+                    ]
+                    );
+                }
+            })
         }
     );
 });
@@ -65,7 +64,7 @@ app.use(express.static('public'));
 // 監聽3000埠號, 
 // 或是監聽Heroku設定的埠號
 //----------------------------------------
-var server = app.listen(process.env.PORT || 3000, function() {
+var server = app.listen(process.env.PORT || 3000, function () {
     const port = server.address().port;
     console.log("正在監聽埠號:", port);
 });
