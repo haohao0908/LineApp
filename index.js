@@ -18,7 +18,8 @@ var bot = linebot({
 // 機器人接受訊息的處理
 //--------------------------------
 bot.on('follow',function (event) {
-    console.log('有人加入了');
+    const userId=event.source;
+    console.log('有人加入了'+userId);
  });
 //--------------------------------
 // 機器人接受訊息的處理
