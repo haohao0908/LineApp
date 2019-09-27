@@ -37,35 +37,20 @@ bot.on('message', function (event) {
         function (profile) {
             const name = profile.displayName;
             const userId = profile.userId;
-            const msg = event.message.text;
-            //呼叫API取得學生資料
-            return event.reply([
-                {
-                    "type": "text",
-                    "text": name
-                },
-                {
-                    "type": "text",
-                    "text": userId
-                },
-                {
-                    "type": "text",
-                    "text": msg
-                }
-            ]);	     
-            Admin.fetchMember().then(data => {
+            const msg = event.message.text; 
+            Admin.fetchAdmin().then(data => {
                 console.log('回傳data資料')
                 console.log(data);
-
                 if (data == -1) {
                     event.reply('找不到資料');
                 } else if (data == -9) {
                     event.reply('執行錯誤');
                 } else {
                     event.reply([
-                        {'type':'text', 'text':data.user_id},
+                        // {'type':'text', 'text':data.user_id},
                         {'type':'text', 'text':data.adminpush_content},
-                        {'type':'text', 'text':userName}]
+                        // {'type':'text', 'text':userName}
+                    ]
                     );
                 }
             })
