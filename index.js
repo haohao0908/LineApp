@@ -27,9 +27,10 @@ bot.on('message', function(event) {
             const userName = profile.displayName;
             // const userId =  profile.userId;
             const userId = event.message.join;
-          
+            const Follow=event.Follow;
             //呼叫API取得學生資料
             Admin.fetchMember().then(data => {  
+                console.log(data);
                 if (data == -1){
                     event.reply('找不到資料');
                 }else if(data == -9){                    
@@ -37,7 +38,9 @@ bot.on('message', function(event) {
                 }else{
                     event.reply([
                         {'type':'text', 'text':data.adminpush_content},
-                        {'type':'text', 'text':data.user_id},                        ]
+                        {'type':'text', 'text':data.user_id},    
+                        {'type':'text','text':Follow}
+                        ]
                     );  
                 }  
             })  
