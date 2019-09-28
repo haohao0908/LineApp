@@ -62,13 +62,13 @@ bot.on('follow', function (event){
 //--------------------------------
 // 機器人推播訊息
 //---------//
-setTimeout(function () {
-    var userId = 'U32851128a5210964818860dd9204b886';
-    var sendMsg = "push hands up ";
-    bot.push(userId, [sendMsg]);
-    console.log('userId: ' + userId);
-    console.log('send: ' + sendMsg);
-}, 10000);
+// setTimeout(function () {
+//     var userId = 'U32851128a5210964818860dd9204b886';
+//     var sendMsg = "push hands up ";
+//     bot.push(userId, [sendMsg]);
+//     console.log('userId: ' + userId);
+//     console.log('send: ' + sendMsg);
+// }, 10000);
 //測試----------------------------
 function PushMsg() {
     // clearTimeout(timer2);
@@ -106,8 +106,9 @@ function PushMsg() {
                 console.log('admin')
                 console.log(adminmsg);
             })
-            bot.push(allUsers[i],[adminmsg[i]]);
-            adminmsg=[];
+            console.log('好像這邊出問題')
+            console.log(adminmsg);
+            bot.push(allUsers[i],adminmsg[i]);
         }
     }
   }
