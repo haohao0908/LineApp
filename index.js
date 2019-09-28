@@ -54,14 +54,14 @@ function PushMsg() {
         }else if(data == -9){                    
             event.reply('執行錯誤');
         }else{
-            data.forEach(item => {
-                allUsers.push(item.userid);
-            });
+            allUsers.push(data);
+            // data.forEach(item => {
+            //     allUsers.push(item.userid);
+            // });
         }
-        return allUsers;
+        console.log(allUsers);
     });
-    console.log('function裡面')
-    console.log(allUsers);
+    return allUsers;
   }
   x=PushMsg();
 console.log(x);
