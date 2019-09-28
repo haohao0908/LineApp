@@ -38,27 +38,27 @@ bot.on('follow', function (event){
 // 機器人接受訊息的處理
 //--------------------------------
 
-bot.on('message', function (event) {
-    event.source.profile().then(
-        function (profile) {
-            Admin.fetchAdmin().then(data => {
-                console.log('回傳data資料')
-                console.log(data);
-                if (data == -1) {
-                    event.reply('找不到資料');
-                } else if (data == -9) {
-                    event.reply('執行錯誤');
-                } else {
-                    event.reply([
-                        {'type':'text', 'text':data.user_id},
-                        {'type':'text', 'text':data.adminpush_content},
-                    ]
-                    );
-                }
-            })
-        }
-    );
-});
+// bot.on('message', function (event) {
+//     event.source.profile().then(
+//         function (profile) {
+//             Admin.fetchAdmin().then(data => {
+//                 console.log('回傳data資料')
+//                 console.log(data);
+//                 if (data == -1) {
+//                     event.reply('找不到資料');
+//                 } else if (data == -9) {
+//                     event.reply('執行錯誤');
+//                 } else {
+//                     event.reply([
+//                         {'type':'text', 'text':data.user_id},
+//                         {'type':'text', 'text':data.adminpush_content},
+//                     ]
+//                     );
+//                 }
+//             })
+//         }
+//     );
+// });
 //--------------------------------
 // 機器人推播訊息
 //---------//
@@ -106,7 +106,7 @@ function PushMsg() {
                 console.log('admin')
                 console.log(adminmsg);
             })
-            bot.push(allUsers[i],adminmsg[i]);
+            bot.push(allUsers[i],[adminmsg[i]]);
             adminmsg=[];
         }
     }
