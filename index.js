@@ -92,6 +92,7 @@ function PushMsg() {
     function JudgeUserId(allUsers){
         for(var i=0;i<allUsers.length;i++){
             adminmsg=[]
+            console.log(allUsers[i]);
             Admin.AdminMessengePushJdge(allUsers[i]).then(data => {
                 if (data == -1) {
                     event.reply('找不到資料');
