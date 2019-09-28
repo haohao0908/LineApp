@@ -70,6 +70,7 @@ bot.on('follow', function (event){
 //     console.log('send: ' + sendMsg);
 // }, 10000);
 //測試----------------------------
+AllUsers=PushMsg();
 function PushMsg() {
     // clearTimeout(timer2);
     //存所有成員的id
@@ -86,34 +87,35 @@ function PushMsg() {
                 allUsers.push(item.userid);
             });
         }
-        JudgeUserId(allUsers);
+        return allUsers;
     });
     //將取得的userid丟進來判斷
-    function JudgeUserId(allUsers){
-        for(var i=0;i<allUsers.length;i++){
-            adminmsg=[]
-            console.log(allUsers[i]);
-            Admin.AdminMessengePushJdge(allUsers[i]).then(data => {
-                if (data == -1) {
-                    event.reply('找不到資料');
-                } else if (data == -9) {
-                    event.reply('執行錯誤');
-                } else {
-                    data.forEach(item=>{
-                        adminmsg.push(item.adminpush_content);
-                    })
-                }
-                console.log('admin')
-                console.log(adminmsg);
-            })
-            console.log('好像這邊出問題')
-            console.log(adminmsg);
-            bot.push(allUsers[i],adminmsg[i]);
-        }
-    }
+    // function JudgeUserId(allUsers){
+    //     for(var i=0;i<allUsers.length;i++){
+    //         adminmsg=[]
+    //         console.log(allUsers[i]);
+    //         Admin.AdminMessengePushJdge(allUsers[i]).then(data => {
+    //             if (data == -1) {
+    //                 event.reply('找不到資料');
+    //             } else if (data == -9) {
+    //                 event.reply('執行錯誤');
+    //             } else {
+    //                 data.forEach(item=>{
+    //                     adminmsg.push(item.adminpush_content);
+    //                 })
+    //             }
+    //             console.log('admin')
+    //             console.log(adminmsg);
+    //         })
+    //         console.log('好像這邊出問題')
+    //         console.log(adminmsg);
+    //         bot.push(allUsers[i],adminmsg[i]);
+    //     }
+    // }
   }
+console.log(AllUsers);
   //啟動自動推播檢測
-  PushMsg();
+
 // setInterval(jp,120000);
 //----------------------------------------
 // 建立一個網站應用程式app
