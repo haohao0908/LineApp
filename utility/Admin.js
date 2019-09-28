@@ -68,4 +68,4 @@ var SelectSaveUser = async function(id,name){
 // }
 //------------------------------------------
 //匯出
-module.exports = {SaveUser,AdminMessengePushJdge,SelectSaveUser};
+module.exports = {SaveUser,SelectSaveUser};
