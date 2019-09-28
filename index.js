@@ -99,7 +99,7 @@ function PushMsg() {
                 } else if (data == -9) {
                     event.reply('執行錯誤');
                 } else {
-                    forEach(item=>{
+                    data.forEach(item=>{
                         adminmsg.push(item.dminpush_content);
                     })
                 }
