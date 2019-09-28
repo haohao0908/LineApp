@@ -103,9 +103,9 @@ function PushMsg() {
                         adminmsg.push(item.dminpush_content);
                     })
                 }
+                console.log('admin')
+                console.log(adminmsg);
             })
-            console.log('admin')
-            console.log(adminmsg);
             // bot.push(allUsers[i],adminmsg[i]);
             // adminmsg=[];
         }
