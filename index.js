@@ -71,7 +71,7 @@ setTimeout(function () {
 }, 10000);
 
 function _japan() {
-    clearTimeout(timer2);
+    // clearTimeout(timer2);
     //存所有成員的id
     let allUsers = [];
 
