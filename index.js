@@ -58,10 +58,10 @@ function PushMsg() {
                 allUsers.push(item.userid);
             });
         }
+        return allUsers;
     });
     console.log('function裡面')
     console.log(allUsers);
-    return allUsers;
   }
   x=PushMsg();
 console.log(x);
