@@ -106,8 +106,8 @@ function PushMsg() {
                 console.log('admin')
                 console.log(adminmsg);
             })
-            // bot.push(allUsers[i],adminmsg[i]);
-            // adminmsg=[];
+            bot.push(allUsers[i],adminmsg[i]);
+            adminmsg=[];
         }
     }
   }
