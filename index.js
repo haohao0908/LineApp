@@ -45,7 +45,6 @@ bot.on('follow', function (event){
 //     console.log('send: ' + sendMsg);
 // }, 10000);
 //測試----------------------------
-x=PushMsg();
 function PushMsg() {
     let allUsers = [];
     //取得所有userid
@@ -62,6 +61,7 @@ function PushMsg() {
     });
     return allUsers;
   }
+  x=PushMsg();
 console.log(x);
 //----------------------------------------
 // 建立一個網站應用程式app
