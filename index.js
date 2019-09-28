@@ -69,8 +69,8 @@ setTimeout(function () {
     console.log('userId: ' + userId);
     console.log('send: ' + sendMsg);
 }, 10000);
-
-function _japan() {
+//測試----------------------------
+function PushMsg() {
     // clearTimeout(timer2);
     //存所有成員的id
     let allUsers = [];
@@ -89,6 +89,7 @@ function _japan() {
         console.log('出問題地方')
         console.log(allUsers);
     });
+    console.log(allUsers);
     //將取得的userid丟進來判斷
     // for(var i=0;i<allUsers.length;i++){
     //     adminmsg=[]
@@ -109,7 +110,7 @@ function _japan() {
     
   }
   //啟動自動推播檢測
-  _japan();
+  PushMsg();
 // setInterval(jp,120000);
 //----------------------------------------
 // 建立一個網站應用程式app
