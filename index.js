@@ -46,7 +46,7 @@ bot.on('follow', function (event){
 // }, 10000);
 //測試----------------------------
 function PushMsg() {
-    let allUsers = [];
+    let allUsers;
     //取得所有userid
     Admin.SelectSaveUser().then(data => {
         if (data == -1){
@@ -59,7 +59,7 @@ function PushMsg() {
             //     allUsers.push(item.userid);
             // });
         }
-        console.log(allUsers);
+        // console.log(allUsers);
     });
     return allUsers;
   }
