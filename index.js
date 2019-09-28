@@ -86,28 +86,27 @@ function PushMsg() {
                 allUsers.push(item.userid);
             });
         }
-        console.log('出問題地方')
-        console.log(allUsers);
+        JudgeUserId(allUsers);
     });
-    console.log(allUsers);
     //將取得的userid丟進來判斷
-    // for(var i=0;i<allUsers.length;i++){
-    //     adminmsg=[]
-    //     Admin.AdminMessengePushJdge(allUsers[i]).then(data => {
-    //         if (data == -1) {
-    //             event.reply('找不到資料');
-    //         } else if (data == -9) {
-    //             event.reply('執行錯誤');
-    //         } else {
-    //             forEach(item=>{
-    //                 adminmsg.push(item.dminpush_content);
-    //             })
-    //         }
-    //     })
-    //     bot.push(allUsers[i],adminmsg);
-    //     adminmsg=[];
-    // }
-    
+    function JudgeUserId(allUsers){
+        for(var i=0;i<allUsers.length;i++){
+            adminmsg=[]
+            Admin.AdminMessengePushJdge(allUsers[i]).then(data => {
+                if (data == -1) {
+                    event.reply('找不到資料');
+                } else if (data == -9) {
+                    event.reply('執行錯誤');
+                } else {
+                    forEach(item=>{
+                        adminmsg.push(item.dminpush_content);
+                    })
+                }
+            })
+            bot.push(allUsers[i],adminmsg);
+            adminmsg=[];
+        }
+    }
   }
   //啟動自動推播檢測
   PushMsg();
