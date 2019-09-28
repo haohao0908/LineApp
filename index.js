@@ -59,6 +59,8 @@ function PushMsg() {
             });
         }
     });
+    console.log('function裡面')
+    console.log(allUsers);
     return allUsers;
   }
   x=PushMsg();
