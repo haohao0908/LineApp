@@ -54,6 +54,7 @@ function PushMsg() {
         }else if(data == -9){                    
             event.reply('執行錯誤');
         }else{
+            console.log(data);
             allUsers.push(data);
             // data.forEach(item => {
             //     allUsers.push(item.userid);
