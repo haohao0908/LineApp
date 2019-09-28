@@ -35,31 +35,6 @@ bot.on('follow', function (event){
     );
 });
 //--------------------------------
-// 機器人接受訊息的處理
-//--------------------------------
-
-// bot.on('message', function (event) {
-//     event.source.profile().then(
-//         function (profile) {
-//             Admin.fetchAdmin().then(data => {
-//                 console.log('回傳data資料')
-//                 console.log(data);
-//                 if (data == -1) {
-//                     event.reply('找不到資料');
-//                 } else if (data == -9) {
-//                     event.reply('執行錯誤');
-//                 } else {
-//                     event.reply([
-//                         {'type':'text', 'text':data.user_id},
-//                         {'type':'text', 'text':data.adminpush_content},
-//                     ]
-//                     );
-//                 }
-//             })
-//         }
-//     );
-// });
-//--------------------------------
 // 機器人推播訊息
 //---------//
 // setTimeout(function () {
@@ -70,12 +45,9 @@ bot.on('follow', function (event){
 //     console.log('send: ' + sendMsg);
 // }, 10000);
 //測試----------------------------
-AllUsers=PushMsg();
+x=PushMsg();
 function PushMsg() {
-    // clearTimeout(timer2);
-    //存所有成員的id
     let allUsers = [];
-
     //取得所有userid
     Admin.SelectSaveUser().then(data => {
         if (data == -1){
@@ -88,37 +60,9 @@ function PushMsg() {
             });
         }
     });
-    console.log('觸發這邊');
-    console.log(allUsers);
     return allUsers;
-    //將取得的userid丟進來判斷
-    // function JudgeUserId(allUsers){
-    //     for(var i=0;i<allUsers.length;i++){
-    //         adminmsg=[]
-    //         console.log(allUsers[i]);
-    //         Admin.AdminMessengePushJdge(allUsers[i]).then(data => {
-    //             if (data == -1) {
-    //                 event.reply('找不到資料');
-    //             } else if (data == -9) {
-    //                 event.reply('執行錯誤');
-    //             } else {
-    //                 data.forEach(item=>{
-    //                     adminmsg.push(item.adminpush_content);
-    //                 })
-    //             }
-    //             console.log('admin')
-    //             console.log(adminmsg);
-    //         })
-    //         console.log('好像這邊出問題')
-    //         console.log(adminmsg);
-    //         bot.push(allUsers[i],adminmsg[i]);
-    //     }
-    // }
   }
-console.log(AllUsers);
-  //啟動自動推播檢測
-
-// setInterval(jp,120000);
+console.log(x);
 //----------------------------------------
 // 建立一個網站應用程式app
 // 如果連接根目錄, 交給機器人處理
