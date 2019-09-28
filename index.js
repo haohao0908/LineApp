@@ -86,9 +86,9 @@ function _japan() {
                 allUsers.push(item.userid);
             });
         }
+        console.log('出問題地方')
+        console.log(allUsers);
     });
-    console.log('出問題地方')
-    console.log(allUsers);
     //將取得的userid丟進來判斷
     // for(var i=0;i<allUsers.length;i++){
     //     adminmsg=[]
@@ -110,7 +110,7 @@ function _japan() {
   }
   //啟動自動推播檢測
   _japan();
-setInterval(jp,120000);
+// setInterval(jp,120000);
 //----------------------------------------
 // 建立一個網站應用程式app
 // 如果連接根目錄, 交給機器人處理
