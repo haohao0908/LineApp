@@ -100,7 +100,7 @@ function PushMsg() {
                     event.reply('執行錯誤');
                 } else {
                     data.forEach(item=>{
-                        adminmsg.push(item.dminpush_content);
+                        adminmsg.push(item.adminpush_content);
                     })
                 }
                 console.log('admin')
