@@ -88,6 +88,8 @@ function PushMsg() {
             });
         }
     });
+    console.log('觸發這邊');
+    console.log(allUsers);
     return allUsers;
     //將取得的userid丟進來判斷
     // function JudgeUserId(allUsers){
