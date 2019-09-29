@@ -17,26 +17,43 @@ var bot = linebot({
 //--------------------------------
 // 使用者加入群組
 //--------------------------------
-bot.on('follow', function (event){
+bot.on('follow', function (event) {
     event.source.profile().then(
         function (profile) {
             //取得使用者資料
             const userName = profile.displayName;
-            const userId = profile.userId;    
+            const userId = profile.userId;
             //呼叫API, 將使用者資料寫入資料庫
-            Admin.SaveUser(userId, userName).then(data => {  
-                if (data == -9){
+            Admin.SaveUser(userId, userName).then(data => {
+                if (data == -9) {
                     event.reply('執行錯誤');
-                }else{                   
+                } else {
                     event.reply('歡迎加入PlanYourself');
                 }
-            })  
+            })
         }
     );
 });
 //--------------------------------
+// 使用者封鎖群組
+//--------------------------------
+bot.on('unfollow', function (event) {
+    //取得使用者資料
+    const userId = event.source.userId;
+
+    //呼叫API, 將使用者資料刪除
+    Admin.DeleteUser(userId).then(data => {
+        if (data == -9) {
+            event.reply('執行錯誤');    //會員已封鎖群組, 本訊息無法送達
+        } else {
+            event.reply('已退出會員');  //會員已封鎖群組, 本訊息無法送達
+        }
+    });
+});
+
+//--------------------------------
 // 機器人推播訊息
-//---------//
+//--------------------------------
 // setTimeout(function () {
 //     var userId = 'U32851128a5210964818860dd9204b886';
 //     var sendMsg = "push hands up ";
@@ -44,27 +61,26 @@ bot.on('follow', function (event){
 //     console.log('userId: ' + userId);
 //     console.log('send: ' + sendMsg);
 // }, 10000);
-//測試----------------------------
+//--------------------------------
+// 查詢全部id
+//--------------------------------
 function PushMsg() {
-    let allUsers;
+    var allUsers = [];
     //取得所有userid
     Admin.SelectSaveUser().then(data => {
-        if (data == -1){
+        if (data == -1) {
             event.reply('找不到資料');
-        }else if(data == -9){                    
+        } else if (data == -9) {
             event.reply('執行錯誤');
-        }else{
-            console.log(data);
-            allUsers.push(data);
-            // data.forEach(item => {
-            //     allUsers.push(item.userid);
-            // });
+        } else {
+            data.forEach(item => {
+                allUsers.push(item.userid);
+            });
         }
-        // console.log(allUsers);
+        return allUsers;
     });
-    return allUsers;
-  }
-  x=PushMsg();
+}
+x = SelectSaveUser();
 console.log(x);
 //----------------------------------------
 // 建立一個網站應用程式app
