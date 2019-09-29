@@ -95,7 +95,7 @@ function PushMsg(id) {
                 else {
                     console.log('foreach');
                     data.forEach(item => {
-                        console.log(item);
+                        bot.push(item.userid,[item.adminpush_content]);
                     })
                     // bot.push(data[i].user_id, [data[i].adminpush_content]);
                     // console.log('userId: ' + data[i].user_id);
