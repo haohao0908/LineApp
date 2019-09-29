@@ -67,7 +67,7 @@ bot.on('unfollow', function (event) {
 SelectUser();
 // var timer;
 function SelectUser(){
-    clearTimeout(timer);
+    // clearTimeout(timer);
     Admin.SelectSaveUser().then(data => {
         var allUsers = [];
         if (data == -1) {
