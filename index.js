@@ -103,9 +103,26 @@ function PushMsg(id) {
                 else {
                     console.log('foreach');
                     data.forEach(item => {
-                        console.log(item.adminpush_enddate);
-                        console.log(item.user_id);
-                        console.log(item.adminpush_content);
+                        timeFn(item.adminpush_enddate);
+                        function timeFn(d1) {//傳入處理好的時間
+                            var dateBegin = new Date(d1);//傳入參數
+                            var dateEnd =new Date();
+                            console.log(dateBegin);
+                            console.log(dateEnd);
+                            var dateDiff = dateEnd.getTime() - dateBegin.getTime();//时间差的毫秒數
+                            var dayDiff = Math.floor(dateDiff / (24 * 3600 * 1000));//计算出相差天數
+                            var leave1=dateDiff%(24*3600*1000)    //计算天數後剩餘的毫秒數
+                            var hours=Math.floor(leave1/(3600*1000))//计算出小時數
+                            //计算相差分鐘數
+                            var leave2=leave1%(3600*1000)    //计算小时數後剩餘毫秒數
+                            var minutes=Math.floor(leave2/(60*1000))//计算相差分鐘數
+                            //计算相差秒數
+                            var leave3=leave2%(60*1000)      //计算分鐘數後剩餘毫秒數
+                            var seconds=Math.round(leave3/1000)
+                            console.log(" 相差 "+dayDiff+"天 "+hours+"小時"+minutes+"分鐘"+seconds+" 秒")
+                            console.log(dateDiff+"时间差的毫秒数",dayDiff+"计算出相差天数",leave1+"计算天数后剩余的毫秒数"
+                                ,hours+"计算出小时数",minutes+"计算相差分钟数",seconds+"计算相差秒数");
+                        }
                         bot.push(item.user_id,'組長說：'+item.adminpush_content+'\n'+'到期時間'+item.adminpush_enddate);
                     })
                 }
