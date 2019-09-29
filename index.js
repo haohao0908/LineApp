@@ -89,6 +89,8 @@ function SelectUser(){
 // 推送訊息
 //--------------------------------
 function PushMsg(id) {
+    let DateSplit=[];
+    let TimeSplit=[];
     let allUsers = id;
         for(var i=0; i<allUsers.length; i++){
             Admin.AdminMessengePushJdge(allUsers[i]).then(data => {
@@ -101,9 +103,10 @@ function PushMsg(id) {
                 else {
                     console.log('foreach');
                     data.forEach(item => {
+                        console.log(item.adminpush_enddate);
                         console.log(item.user_id);
                         console.log(item.adminpush_content);
-                        bot.push(item.user_id,'組長說：'+item.adminpush_content+'到期時間'+item.adminpush_enddate);
+                        bot.push(item.user_id,'組長說：'+item.adminpush_content+'\n'+'到期時間'+item.adminpush_enddate);
                     })
                 }
             })
