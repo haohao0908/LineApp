@@ -106,7 +106,7 @@ function PushMsg(id) {
                         //將當下時間丟進function去做轉換
                         CurrentTime=CurrentTime(DateTime);
                         //執行判斷是否在3小時內
-                        timeFn(time,CurrentTime)
+                        timeFn(item.adminpush_enddate,CurrentTime)
                         //處理newDate()時間格式
                         function  CurrentTime(strDate) {  
                             var  date =  new  Date(strDate);  
