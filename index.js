@@ -80,7 +80,9 @@ function PushMsg() {
         return allUsers;
     });
 }
+PushMsg();
 x = SelectSaveUser();
+
 console.log(x);
 //----------------------------------------
 // 建立一個網站應用程式app
