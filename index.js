@@ -75,17 +75,34 @@ Admin.SelectSaveUser().then(data => {
             allUsers.push(item.userid);
         });
     }
-    if(allUsers != []){
+    if (allUsers != []) {
         PushMsg(allUsers);
     }
 });
 //--------------------------------
 // 推送訊息
 //--------------------------------
-function PushMsg(id){
-    let allUsers=id;
-    console.log('觸發這邊的PushMsg');
-    console.log(allUsers);
+function PushMsg(id) {
+    let allUsers = id;
+    for (var i = 0; i < allUsers.length; i++) {
+        Admin.AdminMessengePushJdge(allUsers[i]).then(data => {
+            if (data == -1) {
+                event.reply('找不到資料');
+            }
+            else if (data == -9) {
+                event.reply('執行錯誤');
+            }
+            else {
+                setTimeout(function () {
+                    var userId = data.userid;
+                    var sendMsg = data.adminpush_content;
+                    bot.push(userId, [sendMsg]);
+                    console.log('userId: ' + userId);
+                    console.log('send: ' + sendMsg);
+                },1000);
+            }
+        })
+    }
 }
 //----------------------------------------
 // 建立一個網站應用程式app
