@@ -93,7 +93,7 @@ function PushMsg(id) {
                 event.reply('執行錯誤');
             }
             else {
-                setTimeout(function () {
+                setTimeout(function (data) {
                     var userId = data.userid;
                     var sendMsg = data.adminpush_content;
                     bot.push(userId, [sendMsg]);
