@@ -131,15 +131,20 @@ function PushMsg(id) {
                         console.log(dateBegin);
                         console.log(dateEnd);
                         var dateDiff = dateBegin.getTime() - dateEnd.getTime();//时间差的毫秒數
+                        console.log('dateDiff'+dateDiff);
                         var dayDiff = Math.floor(dateDiff / (24 * 3600 * 1000));//计算出相差天數
+                        console.log('dayDiff'+dayDiff);
                         var leave1 = dateDiff % (24 * 3600 * 1000)    //计算天數後剩餘的毫秒數
+                        console.log('leave1'+leave1);
                         var hours = Math.floor(leave1 / (3600 * 1000))//计算出小時數
+                        console.log('hours'+hours);
                         //计算相差分鐘數
                         var leave2 = leave1 % (3600 * 1000)    //计算小时數後剩餘毫秒數
                         var minutes = Math.floor(leave2 / (60 * 1000))//计算相差分鐘數
                         //计算相差秒數
                         var leave3 = leave2 % (60 * 1000)      //计算分鐘數後剩餘毫秒數
                         var seconds = Math.round(leave3 / 1000)
+                        console.log(" 相差 " + dayDiff + "天 " + hours + "小時" + minutes + "分鐘" + seconds + " 秒")
                         if (hours < 3 && hours >= 0) {
                             console.log('進行推播')
                             BotPushMsg()
