@@ -84,8 +84,7 @@ Admin.SelectSaveUser().then(data => {
 //--------------------------------
 function PushMsg(id) {
     let allUsers = id;
-    for (var i = 0; i < allUsers.length; i++) {
-        Admin.AdminMessengePushJdge(allUsers[i]).then(data => {
+        Admin.AdminMessengePushJdge(allUsers[0]).then(data => {
             if (data == -1) {
                 event.reply('找不到資料');
             }
@@ -103,7 +102,6 @@ function PushMsg(id) {
                 // console.log('send: ' + sendMsg);
             }
         })
-    }
 }
 //----------------------------------------
 // 建立一個網站應用程式app
