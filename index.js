@@ -149,16 +149,16 @@ function PushMsg(id) {
                         var leave3 = leave2 % (60 * 1000)      //计算分鐘數後剩餘毫秒數
                         var seconds = Math.round(leave3 / 1000)
                         console.log(" 相差 " + dayDiff + "天 " + hours + "小時" + minutes + "分鐘" + seconds + " 秒")
-                        if (hours < 3 && hours >= 0) {
-                            console.log('進行推播')
-                            BotPushMsg()
-                            var timer2;
-                            function BotPushMsg(){
-                                clearTimeout(timer2);
-                                bot.push(item.user_id,'組長說：'+item.adminpush_content+'\n'+'到期時間'+item.adminpush_enddate);
-                            }
-                            timer2 = setInterval(BotPushMsg, 1000*60*60);
-                        }
+                        // if (hours < 3 && hours >= 0) {
+                        //     console.log('進行推播')
+                        //     BotPushMsg()
+                        //     var timer2;
+                        //     function BotPushMsg(){
+                        //         clearTimeout(timer2);
+                        //         bot.push(item.user_id,'組長說：'+item.adminpush_content+'\n'+'到期時間'+item.adminpush_enddate);
+                        //     }
+                        //     timer2 = setInterval(BotPushMsg, 1000*60*60);
+                        // }
                         console.log(" 相差 " + dayDiff + "天 " + hours + "小時" + minutes + "分鐘" + seconds + " 秒")
                     }
                     // bot.push(item.user_id,'組長說：'+item.adminpush_content+'\n'+'到期時間'+item.adminpush_enddate);
