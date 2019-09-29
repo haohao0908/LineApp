@@ -127,6 +127,8 @@ function PushMsg(id) {
                         function timeFn(d1,CurrentTime) {//傳入處理好的時間
                             var dateBegin = new Date(d1);//傳入參數
                             var dateEnd =new Date(CurrentTime);
+                            console.log(dateBegin);
+                            console.log(dateEnd);
                             var dateDiff = dateBegin.getTime() - dateEnd.getTime();//时间差的毫秒數
                             var dayDiff = Math.floor(dateDiff / (24 * 3600 * 1000));//计算出相差天數
                             var leave1=dateDiff%(24*3600*1000)    //计算天數後剩餘的毫秒數
