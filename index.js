@@ -93,13 +93,11 @@ function PushMsg(id) {
                 event.reply('執行錯誤');
             }
             else {
-                setTimeout(function (data) {
-                    var userId = data.userid;
-                    var sendMsg = data.adminpush_content;
-                    bot.push(userId, [sendMsg]);
-                    console.log('userId: ' + userId);
-                    console.log('send: ' + sendMsg);
-                },1000);
+                var userId = data.userid;
+                var sendMsg = data.adminpush_content;
+                bot.push(userId, [sendMsg]);
+                console.log('userId: ' + userId);
+                console.log('send: ' + sendMsg);
             }
         })
     }
