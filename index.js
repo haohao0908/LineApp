@@ -120,6 +120,7 @@ function PushMsg(id) {
                             var s=date.getSeconds();
                             s= s < 10 ? ( '0'  + s) : s;  
                             var  str = y+ "-" +m+ "-" +d+ "T" +h+ ":" +minute+":"+s+'.000Z';
+                            console.log(str)
                             timeFn(item.adminpush_enddate,str)   
                         };  
                         //判斷是否在到期3小時內，每1小時推播一次
