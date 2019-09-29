@@ -93,8 +93,8 @@ function PushMsg(id) {
             }
             else {
                 console.log('推送訊息')
-                console.log(data.user_id);
-                console.log(data.adminpush_content);
+                console.log(data[0].user_id);
+                console.log(data[0].adminpush_content);
                 // var userId = data.userid;
                 // var sendMsg = data.adminpush_content;
                 // bot.push(userId, [sendMsg]);
