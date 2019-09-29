@@ -64,26 +64,29 @@ bot.on('unfollow', function (event) {
 //--------------------------------
 // 查詢全部id
 //--------------------------------
-function PushMsg() {
+Admin.SelectSaveUser().then(data => {
     var allUsers = [];
-    //取得所有userid
-    Admin.SelectSaveUser().then(data => {
-        if (data == -1) {
-            event.reply('找不到資料');
-        } else if (data == -9) {
-            event.reply('執行錯誤');
-        } else {
-            data.forEach(item => {
-                allUsers.push(item.userid);
-            });
-        }
-        return allUsers;
-    });
+    if (data == -1) {
+        event.reply('找不到資料');
+    } else if (data == -9) {
+        event.reply('執行錯誤');
+    } else {
+        data.forEach(item => {
+            allUsers.push(item.userid);
+        });
+    }
+    if(allUsers != []){
+        PushMsg(allUsers);
+    }
+});
+//--------------------------------
+// 推送訊息
+//--------------------------------
+function PushMsg(id){
+    let allUsers=id;
+    console.log('觸發這邊的PushMsg');
+    console.log(allUsers);
 }
-PushMsg();
-x = SelectSaveUser();
-
-console.log(x);
 //----------------------------------------
 // 建立一個網站應用程式app
 // 如果連接根目錄, 交給機器人處理
