@@ -87,16 +87,19 @@ function PushMsg(id) {
         for(var i=0; i<allUsers.length; i++){
             Admin.AdminMessengePushJdge(allUsers[i]).then(data => {
                 if (data == -1) {
-                    event.reply('找不到資料');
+                    console.log('觸發-1');
                 }
                 else if (data == -9) {
-                    event.reply('執行錯誤');
+                    console.log('處發-9');
                 }
                 else {
-                    console.log('這邊是我錯誤地方');
-                    bot.push(data[i].user_id, [data[i].adminpush_content]);
-                    console.log('userId: ' + data[i].user_id);
-                    console.log('send: ' + data[i].adminpush_content);
+                    console.log('foreach');
+                    data.forEach(item => {
+                        console.log(item);
+                    })
+                    // bot.push(data[i].user_id, [data[i].adminpush_content]);
+                    // console.log('userId: ' + data[i].user_id);
+                    // console.log('send: ' + data[i].adminpush_content);
                 }
             })
         }
