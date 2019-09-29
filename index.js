@@ -105,7 +105,7 @@ function PushMsg(id) {
                     var DateTime = new Date();
                     console.log('here have error');
                     console.log(DateTime);
-                    CurrentTime = CurrentTime(DateTime);
+                    x = CurrentTime(DateTime);
                     timeFn(item.adminpush_enddate, CurrentTime)
                     //處理newDate()時間格式
                     function CurrentTime(strDate) {
@@ -125,9 +125,9 @@ function PushMsg(id) {
                         return str;
                     };
                     //判斷是否在到期3小時內，每1小時推播一次
-                    function timeFn(d1, CurrentTime) {//傳入處理好的時間
+                    function timeFn(d1, d2) {//傳入處理好的時間
                         var dateBegin = new Date(d1);//傳入參數
-                        var dateEnd = new Date(CurrentTime);
+                        var dateEnd = new Date(d2);
                         console.log(dateBegin);
                         console.log(dateEnd);
                         var dateDiff = dateBegin.getTime() - dateEnd.getTime();//时间差的毫秒數
