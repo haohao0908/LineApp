@@ -84,8 +84,8 @@ Admin.SelectSaveUser().then(data => {
 //--------------------------------
 function PushMsg(id) {
     let allUsers = id;
-        // for(var i=0; i<allUsers.length; i++){
-            Admin.AdminMessengePushJdge(allUsers[0]).then(data => {
+        for(var i=0; i<allUsers.length; i++){
+            Admin.AdminMessengePushJdge(allUsers[i]).then(data => {
                 if (data == -1) {
                     event.reply('找不到資料');
                 }
@@ -93,15 +93,13 @@ function PushMsg(id) {
                     event.reply('執行錯誤');
                 }
                 else {
-                    var userId = data[0].user_id;
-                    var sendMsg = data[0].adminpush_content;
                     console.log('這邊是我錯誤地方');
-                    bot.push(userId, [sendMsg]);
-                    console.log('userId: ' + userId);
-                    console.log('send: ' + sendMsg);
+                    bot.push(data[i].user_id, [data[i].adminpush_content]);
+                    console.log('userId: ' + data[i].user_id);
+                    console.log('send: ' + data[i].adminpush_content);
                 }
             })
-        // }
+        }
 }
 //----------------------------------------
 // 建立一個網站應用程式app
