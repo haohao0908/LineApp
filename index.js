@@ -101,7 +101,7 @@ function PushMsg(id) {
             else {
                 console.log('foreach');
                 data.forEach(item => {
-                    //當下時間
+                    //當下時間＃＃
                     var DateTime = new Date();
                     console.log('here have');
                     console.log(DateTime);
@@ -115,6 +115,8 @@ function PushMsg(id) {
                         var d = date.getDate();
                         d = d < 10 ? ('0' + d) : d;
                         var h = date.getHours();
+                        console.log('h');
+                        console.log(h);
                         var minute = date.getMinutes();
                         minute = minute < 10 ? ('0' + minute) : minute;
                         var s = date.getSeconds();
