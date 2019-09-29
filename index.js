@@ -65,9 +65,9 @@ bot.on('unfollow', function (event) {
 // 查詢全部id
 //--------------------------------
 SelectUser();
-var timer;
+// var timer;
 function SelectUser(){
-    clearTimeout(timer);
+    // clearTimeout(timer);
     Admin.SelectSaveUser().then(data => {
         var allUsers = [];
         if (data == -1) {
@@ -83,7 +83,7 @@ function SelectUser(){
             PushMsg(allUsers);
         }
     });
-    timer = setInterval(SelectUser, 60000);
+    // timer = setInterval(SelectUser, 60000);
 }
 //--------------------------------
 // 推送訊息
@@ -104,9 +104,8 @@ function PushMsg(id) {
                         //當下時間
                         var DateTime=new Date();
                         //將當下時間丟進function去做轉換
-                        CurrentTime=CurrentTime(DateTime);
+                        CurrentTime(DateTime);
                         //執行判斷是否在3小時內
-                        timeFn(item.adminpush_enddate,CurrentTime)
                         //處理newDate()時間格式
                         function  CurrentTime(strDate) {  
                             var  date =  new  Date(strDate);  
@@ -120,8 +119,8 @@ function PushMsg(id) {
                             minute = minute < 10 ? ( '0'  + minute) : minute;  
                             var s=date.getSeconds();
                             s= s < 10 ? ( '0'  + s) : s;  
-                            var  str = y+ "-" +m+ "-" +d+ "T" +h+ ":" +minute+":"+s+'.000Z';   
-                            return  str;  
+                            var  str = y+ "-" +m+ "-" +d+ "T" +h+ ":" +minute+":"+s+'.000Z';
+                            timeFn(item.adminpush_enddate,str)   
                         };  
                         //判斷是否在到期3小時內，每1小時推播一次
                         function timeFn(d1,CurrentTime) {//傳入處理好的時間
