@@ -93,9 +93,9 @@ function PushMsg(id) {
                     event.reply('執行錯誤');
                 }
                 else {
-                    var userId = data.userid;
-                    var sendMsg = data.adminpush_content;
-                    bot.push(userId, [sendMsg]);
+                    var userId = data[i].userid;
+                    var sendMsg = data[i].adminpush_content;
+                    bot.push(userId, [sendMsg]);ß
                     console.log('userId: ' + userId);
                     console.log('send: ' + sendMsg);
                 }
