@@ -120,6 +120,7 @@ function PushMsg(id) {
                         var s = date.getSeconds();
                         s = s < 10 ? ('0' + s) : s;
                         var str = y + "-" + m + "-" + d + "T" + h + ":" + minute + ":" + s + '.000Z';
+                        console.log('str'+str)
                         return str;
                     };
                     timeFn(item.adminpush_enddate, CurrentTime)
