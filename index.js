@@ -103,6 +103,7 @@ function PushMsg(id) {
                 data.forEach(item => {
                     //當下時間
                     var DateTime = new Date();
+                    console.log(DateTime);
                     CurrentTime = CurrentTime(DateTime);
                     timeFn(item.adminpush_enddate, CurrentTime)
                     //處理newDate()時間格式
