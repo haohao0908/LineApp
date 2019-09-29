@@ -47,7 +47,7 @@ var DeleteUser = async function(id){
 //------------------------------------------
 // 查詢全部id
 //------------------------------------------
-var SelectSaveUser = async function(id,name){
+var SelectSaveUser = async function(){
     //存放結果
     let result;  
     //讀取資料庫
@@ -72,7 +72,7 @@ var AdminMessengePushJdge = async function(id){
     //存放結果
     let result;  
     //讀取資料庫
-    await query('SELECT mem.user_id,admin.adminpush_content,admin.adminpush_enddate FROM teammember as mem INNER JOIN adminpush as admin ON (admin.project_id=mem.project_id)INNER JOIN savelineuser as line ON (mem.user_id=$1)', [id])
+    await query('SELECT mem.user_id,admin.adminpush_content,admin.adminpush_enddate FROM teammember as mem INNER JOIN adminpush as admin ON (admin.project_id=mem.project_id)WHERE mem.user_id=$1', [id])
         .then((data) => {
             if(data.rows.length > 0){
                 result = data.rows;  //學生資料(物件)
