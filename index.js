@@ -103,10 +103,9 @@ function PushMsg(id) {
                 data.forEach(item => {
                     //當下時間
                     var DateTime = new Date();
-                    console.log('here have error');
+                    console.log('here have');
                     console.log(DateTime);
-                    x = CurrentTime(DateTime);
-                    timeFn(item.adminpush_enddate, CurrentTime)
+                    CurrentTime = CurrentTime(DateTime);
                     //處理newDate()時間格式
                     function CurrentTime(strDate) {
                         var date = new Date(strDate);
@@ -124,27 +123,28 @@ function PushMsg(id) {
                         console.log(str)
                         return str;
                     };
+                    // timeFn(item.adminpush_enddate, CurrentTime)
                     //判斷是否在到期3小時內，每1小時推播一次
-                    function timeFn(d1, d2) {//傳入處理好的時間
-                        var dateBegin = new Date(d1);//傳入參數
-                        var dateEnd = new Date(d2);
-                        console.log(dateBegin);
-                        console.log(dateEnd);
-                        var dateDiff = dateBegin.getTime() - dateEnd.getTime();//时间差的毫秒數
-                        var dayDiff = Math.floor(dateDiff / (24 * 3600 * 1000));//计算出相差天數
-                        var leave1 = dateDiff % (24 * 3600 * 1000)    //计算天數後剩餘的毫秒數
-                        var hours = Math.floor(leave1 / (3600 * 1000))//计算出小時數
-                        //计算相差分鐘數
-                        var leave2 = leave1 % (3600 * 1000)    //计算小时數後剩餘毫秒數
-                        var minutes = Math.floor(leave2 / (60 * 1000))//计算相差分鐘數
-                        //计算相差秒數
-                        var leave3 = leave2 % (60 * 1000)      //计算分鐘數後剩餘毫秒數
-                        var seconds = Math.round(leave3 / 1000)
-                        if (hours < 3 && hours >= 0) {
-                            console.log('進行推播')
-                        }
-                        console.log(" 相差 " + dayDiff + "天 " + hours + "小時" + minutes + "分鐘" + seconds + " 秒")
-                    }
+                    // function timeFn(d1, CurrentTime) {//傳入處理好的時間
+                    //     var dateBegin = new Date(d1);//傳入參數
+                    //     var dateEnd = new Date(CurrentTime);
+                    //     console.log(dateBegin);
+                    //     console.log(dateEnd);
+                    //     var dateDiff = dateBegin.getTime() - dateEnd.getTime();//时间差的毫秒數
+                    //     var dayDiff = Math.floor(dateDiff / (24 * 3600 * 1000));//计算出相差天數
+                    //     var leave1 = dateDiff % (24 * 3600 * 1000)    //计算天數後剩餘的毫秒數
+                    //     var hours = Math.floor(leave1 / (3600 * 1000))//计算出小時數
+                    //     //计算相差分鐘數
+                    //     var leave2 = leave1 % (3600 * 1000)    //计算小时數後剩餘毫秒數
+                    //     var minutes = Math.floor(leave2 / (60 * 1000))//计算相差分鐘數
+                    //     //计算相差秒數
+                    //     var leave3 = leave2 % (60 * 1000)      //计算分鐘數後剩餘毫秒數
+                    //     var seconds = Math.round(leave3 / 1000)
+                    //     if (hours < 3 && hours >= 0) {
+                    //         console.log('進行推播')
+                    //     }
+                    //     console.log(" 相差 " + dayDiff + "天 " + hours + "小時" + minutes + "分鐘" + seconds + " 秒")
+                    // }
                     // bot.push(item.user_id,'組長說：'+item.adminpush_content+'\n'+'到期時間'+item.adminpush_enddate);
                 })
             }
