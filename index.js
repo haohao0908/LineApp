@@ -93,11 +93,8 @@ function PushMsg(id) {
                 event.reply('執行錯誤');
             }
             else {
-                event.reply([
-                    {'type':'text', 'text':data.user_id},
-                    {'type':'text', 'text':data.adminpush_content},
-                    {'type':'text', 'text':data.adminpush_enddate}]
-                ); 
+                console.log(data.user_id);
+                console.log(data.adminpush_content)
                 // var userId = data.userid;
                 // var sendMsg = data.adminpush_content;
                 // bot.push(userId, [sendMsg]);
