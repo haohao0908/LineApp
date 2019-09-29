@@ -93,14 +93,11 @@ function PushMsg(id) {
                     event.reply('執行錯誤');
                 }
                 else {
-                    console.log('推送訊息')
-                    console.log(data[i].user_id);
-                    console.log(data[i].adminpush_content);
-                    // var userId = data.userid;
-                    // var sendMsg = data.adminpush_content;
-                    // bot.push(userId, [sendMsg]);
-                    // console.log('userId: ' + userId);
-                    // console.log('send: ' + sendMsg);
+                    var userId = data.userid;
+                    var sendMsg = data.adminpush_content;
+                    bot.push(userId, [sendMsg]);
+                    console.log('userId: ' + userId);
+                    console.log('send: ' + sendMsg);
                 }
             })
         }
