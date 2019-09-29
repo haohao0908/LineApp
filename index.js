@@ -84,24 +84,26 @@ Admin.SelectSaveUser().then(data => {
 //--------------------------------
 function PushMsg(id) {
     let allUsers = id;
-        Admin.AdminMessengePushJdge(allUsers[0]).then(data => {
-            if (data == -1) {
-                event.reply('找不到資料');
-            }
-            else if (data == -9) {
-                event.reply('執行錯誤');
-            }
-            else {
-                console.log('推送訊息')
-                console.log(data[0].user_id);
-                console.log(data[0].adminpush_content);
-                // var userId = data.userid;
-                // var sendMsg = data.adminpush_content;
-                // bot.push(userId, [sendMsg]);
-                // console.log('userId: ' + userId);
-                // console.log('send: ' + sendMsg);
-            }
-        })
+        for(var i=0; i<allUsers.length; i++){
+            Admin.AdminMessengePushJdge(allUsers[i]).then(data => {
+                if (data == -1) {
+                    event.reply('找不到資料');
+                }
+                else if (data == -9) {
+                    event.reply('執行錯誤');
+                }
+                else {
+                    console.log('推送訊息')
+                    console.log(data[i].user_id);
+                    console.log(data[i].adminpush_content);
+                    // var userId = data.userid;
+                    // var sendMsg = data.adminpush_content;
+                    // bot.push(userId, [sendMsg]);
+                    // console.log('userId: ' + userId);
+                    // console.log('send: ' + sendMsg);
+                }
+            })
+        }
 }
 //----------------------------------------
 // 建立一個網站應用程式app
