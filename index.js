@@ -64,6 +64,8 @@ bot.on('unfollow', function (event) {
 //--------------------------------
 // 查詢全部id
 //--------------------------------
+SelectUser();
+var timer;
 function SelectUser(){
     clearTimeout(timer);
     Admin.SelectSaveUser().then(data => {
@@ -81,8 +83,8 @@ function SelectUser(){
             PushMsg(allUsers);
         }
     });
+    timer = setInterval(SelectUser, 10000);
 }
-timer = setInterval(SelectUser, 10000);
 //--------------------------------
 // 推送訊息
 //--------------------------------
