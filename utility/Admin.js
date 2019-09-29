@@ -83,6 +83,8 @@ var AdminMessengePushJdge = async function(id){
             result = -9;  //執行錯誤
         });
     //回傳執行結果
+        console.log('api回傳')
+        console.log(result);
         return result;  
 }
 //------------------------------------------
