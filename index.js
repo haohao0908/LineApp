@@ -83,14 +83,12 @@ function SelectUser(){
             PushMsg(allUsers);
         }
     });
-    timer = setInterval(SelectUser, 3600000);
+    timer = setInterval(SelectUser, 60000);
 }
 //--------------------------------
 // 推送訊息
 //--------------------------------
 function PushMsg(id) {
-    let DateSplit=[];
-    let TimeSplit=[];
     let allUsers = id;
         for(var i=0; i<allUsers.length; i++){
             Admin.AdminMessengePushJdge(allUsers[i]).then(data => {
@@ -144,7 +142,7 @@ function PushMsg(id) {
                                 function BotPush(){
                                     clearTimeout(timer2);
                                     bot.push(item.user_id,'組長說：'+item.adminpush_content+'\n'+'到期時間'+item.adminpush_enddate);
-                                    timer2 = setInterval(BotPush, 3600000);
+                                    timer2 = setInterval(BotPush, 60000);
                                 }
                             }
                             console.log(" 相差 "+dayDiff+"天 "+hours+"小時"+minutes+"分鐘"+seconds+" 秒")
