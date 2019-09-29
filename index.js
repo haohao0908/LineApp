@@ -119,6 +119,7 @@ function PushMsg(id) {
                         console.log('d');
                         console.log(d);
                         var h = (date.getHours()+8) % 24;
+                        h = h < 10 ? ('0' + h) : h;
                         var minute = date.getMinutes();
                         minute = minute < 10 ? ('0' + minute) : minute;
                         var s = date.getSeconds();
