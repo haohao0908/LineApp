@@ -103,6 +103,7 @@ function PushMsg(id) {
                     data.forEach(item => {
                         //當下時間
                         var DateTime=new Date();
+                        console.log(DateTime);
                         //將當下時間丟進function去做轉換
                         CurrentTime(DateTime);
                         //執行判斷是否在3小時內
@@ -120,7 +121,7 @@ function PushMsg(id) {
                             var s=date.getSeconds();
                             s= s < 10 ? ( '0'  + s) : s;  
                             var  str = y+ "-" +m+ "-" +d+ "T" +h+ ":" +minute+":"+s+'.000Z';
-                            console.log(str)
+                            console.log(str);
                             timeFn(item.adminpush_enddate,str)   
                         };  
                         //判斷是否在到期3小時內，每1小時推播一次
