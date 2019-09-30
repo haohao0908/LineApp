@@ -103,7 +103,7 @@ function SelectUser() {
             PushMsg(allUsers);
         }
     });
-    timer = setInterval(SelectUser, 120000);
+    timer = setInterval(SelectUser, 360000);
 }
 //--------------------------------
 //推送訊息
