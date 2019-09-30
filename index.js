@@ -172,7 +172,7 @@ bot.on('unfollow', function (event) {
 process.env.TZ = "Asia/Shanghai";
 Date.prototype.TimeZone = new Map([
     ['Europe/London',0],
-    ['Asia/Shanghai',-8],
+    ['Asia/Shanghai',+8],
     ['America/New_York',5]
 ])
 Date.prototype.zoneDate = function(){
