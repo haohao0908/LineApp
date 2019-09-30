@@ -118,7 +118,7 @@ function PushMsg(id) {
                         d = d < 10 ? ('0' + d) : d;
                         console.log('d');
                         console.log(d);
-                        var h = (date.getHours()+8) % 24;
+                        var h = date.getHours();
                         h = h < 10 ? ('0' + h) : h;
                         var minute = date.getMinutes();
                         minute = minute < 10 ? ('0' + minute) : minute;
@@ -132,6 +132,7 @@ function PushMsg(id) {
                     function timeFn(d1, CurrentTime) {//傳入處理好的時間
                         var dateBegin = new Date(d1);//傳入參數
                         var dateEnd = new Date(CurrentTime);
+                        console.log('判斷相差時間');
                         console.log(dateBegin);
                         console.log(dateEnd);
                         var dateDiff = dateBegin.getTime() - dateEnd.getTime();//时间差的毫秒數
