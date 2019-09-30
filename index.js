@@ -29,10 +29,10 @@ Date.prototype.zoneDate = function () {
     return d;
 }
 // //*調用方法*
-var date = new Date().zoneDate();
+// var date = new Date().zoneDate();
 // var time = new Date(time);
-console.log('test is here');
-console.log(date);
+// console.log('test is here');
+// console.log(date);
 // console.log(time);
 //--------------------------------
 // 使用者加入群組
@@ -103,7 +103,7 @@ function SelectUser() {
             PushMsg(allUsers);
         }
     });
-    timer = setInterval(SelectUser, 360000);
+    timer = setInterval(SelectUser, 3600000);
 }
 //--------------------------------
 //推送訊息
