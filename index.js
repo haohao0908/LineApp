@@ -89,27 +89,27 @@ bot.on('unfollow', function (event) {
 //--------------------------------
 // 查詢全部id
 //--------------------------------
-SelectUser();
-var timer;
-function SelectUser() {
-    clearTimeout(timer);
-    Admin.SelectSaveUser().then(data => {
-        var allUsers = [];
-        if (data == -1) {
-            event.reply('找不到資料');
-        } else if (data == -9) {
-            event.reply('執行錯誤');
-        } else {
-            data.forEach(item => {
-                allUsers.push(item.userid);
-            });
-        }
-        if (allUsers != []) {
-            PushMsg(allUsers);
-        }
-    });
-    timer = setInterval(SelectUser, 60000);
-}
+// SelectUser();
+// var timer;
+// function SelectUser() {
+//     clearTimeout(timer);
+//     Admin.SelectSaveUser().then(data => {
+//         var allUsers = [];
+//         if (data == -1) {
+//             event.reply('找不到資料');
+//         } else if (data == -9) {
+//             event.reply('執行錯誤');
+//         } else {
+//             data.forEach(item => {
+//                 allUsers.push(item.userid);
+//             });
+//         }
+//         if (allUsers != []) {
+//             PushMsg(allUsers);
+//         }
+//     });
+//     timer = setInterval(SelectUser, 60000);
+// }
 //--------------------------------
 // 推送訊息
 //--------------------------------
