@@ -115,9 +115,7 @@ function SelectUser() {
 // 推送訊息
 //--------------------------------
 function PushMsg(id) {
-    console.log('testtesttest')
     var date = new Date().zoneDate();
-    console.log(date);
     let allUsers = id;
     for (var i = 0; i < allUsers.length; i++) {
         Admin.AdminMessengePushJdge(allUsers[i]).then(data => {
@@ -130,37 +128,38 @@ function PushMsg(id) {
             else {
                 console.log('foreach');
                 data.forEach(item => {
-                    //當下時間＃＃
-                    var DateTime = new Date();
-                    CurrentTime(DateTime);
-                    //處理newDate()時間格式
-                    function CurrentTime(strDate) {
-                        var date = new Date(strDate);
-                        var y = date.getFullYear();
-                        console.log('y');
-                        console.log(y);
-                        var m = date.getMonth() + 1;
-                        m = m < 10 ? ('0' + m) : m;
-                        console.log('m');
-                        console.log(m);
-                        var d = date.getDate();
-                        d = d < 10 ? ('0' + d) : d;
-                        console.log('d');
-                        console.log(d);
-                        var h = date.getHours();
-                        h = h < 10 ? ('0' + h) : h;
-                        var minute = date.getMinutes();
-                        minute = minute < 10 ? ('0' + minute) : minute;
-                        var s = date.getSeconds();
-                        s = s < 10 ? ('0' + s) : s;
-                        var str = y + "-" + m + "-" + d + "T" + h + ":" + minute + ":" + s + '.000Z';
-                        console.log('str' + str)
-                        timeFn(item.adminpush_enddate, str)
-                    };
+                    timeFn(item.adminpush_enddate);
+                    // //當下時間＃＃
+                    // var DateTime = new Date();
+                    // CurrentTime(DateTime);
+                    // //處理newDate()時間格式
+                    // function CurrentTime(strDate) {
+                    //     var date = new Date(strDate);
+                    //     var y = date.getFullYear();
+                    //     console.log('y');
+                    //     console.log(y);
+                    //     var m = date.getMonth() + 1;
+                    //     m = m < 10 ? ('0' + m) : m;
+                    //     console.log('m');
+                    //     console.log(m);
+                    //     var d = date.getDate();
+                    //     d = d < 10 ? ('0' + d) : d;
+                    //     console.log('d');
+                    //     console.log(d);
+                    //     var h = date.getHours();
+                    //     h = h < 10 ? ('0' + h) : h;
+                    //     var minute = date.getMinutes();
+                    //     minute = minute < 10 ? ('0' + minute) : minute;
+                    //     var s = date.getSeconds();
+                    //     s = s < 10 ? ('0' + s) : s;
+                    //     var str = y + "-" + m + "-" + d + "T" + h + ":" + minute + ":" + s + '.000Z';
+                    //     console.log('str' + str)
+                        
+                    // };
                     //判斷是否在到期3小時內，每1小時推播一次
-                    function timeFn(d1, CurrentTime) {//傳入處理好的時間
+                    function timeFn(d1) {//傳入處理好的時間
                         var dateBegin = new Date(d1);//傳入參數
-                        var dateEnd = new Date(CurrentTime);
+                        var dateEnd = new Date().zoneDate();
                         console.log('判斷相差時間');
                         console.log(dateBegin);
                         console.log(dateEnd);
