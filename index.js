@@ -43,7 +43,7 @@ var date = new Date().zoneDate();
 var time = new Date(time).zoneDate();
 console.log('test is here');
 console.log(date);
-console.log(time;
+console.log(time);
 //--------------------------------
 // 使用者加入群組
 //--------------------------------
