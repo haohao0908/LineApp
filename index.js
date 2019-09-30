@@ -101,72 +101,74 @@ function PushMsg(id) {
             else {
                 console.log('foreach');
                 data.forEach(item => {
-                    //當下時間＃＃
-                    var DateTime = new Date();
-                    CurrentTime(DateTime);
-                    //處理newDate()時間格式
-                    function CurrentTime(strDate) {
-                        var date = new Date(strDate);
-                        var y = date.getFullYear();
-                        console.log('y');
-                        console.log(y);
-                        var m = date.getMonth() + 1;
-                        m = m < 10 ? ('0' + m) : m;
-                        console.log('m');
-                        console.log(m);
-                        var d = date.getDate();
-                        d = d < 10 ? ('0' + d) : d;
-                        console.log('d');
-                        console.log(d);
-                        var h = date.getHours();
-                        h = h < 10 ? ('0' + h) : h;
-                        var minute = date.getMinutes();
-                        minute = minute < 10 ? ('0' + minute) : minute;
-                        var s = date.getSeconds();
-                        s = s < 10 ? ('0' + s) : s;
-                        var str = y + "-" + m + "-" + d + "T" + h + ":" + minute + ":" + s + '.000Z';
-                        console.log('str'+str)
-                        timeFn(item.adminpush_enddate, str)
-                    };
-                    //判斷是否在到期3小時內，每1小時推播一次
-                    function timeFn(d1, CurrentTime) {//傳入處理好的時間
-                        var dateBegin = new Date(d1);//傳入參數
-                        var dateEnd = new Date(CurrentTime);
-                        console.log('判斷相差時間');
-                        console.log(dateBegin);
-                        console.log(dateEnd);
-                        var dateDiff = dateBegin.getTime() - dateEnd.getTime();//时间差的毫秒數
-                        console.log('dateDiff'+dateDiff);
-                        var dayDiff = Math.floor(dateDiff / (24 * 3600 * 1000));//计算出相差天數
-                        console.log('dayDiff'+dayDiff);
-                        var leave1 = dateDiff % (24 * 3600 * 1000)    //计算天數後剩餘的毫秒數
-                        console.log('leave1'+leave1);
-                        var hours = Math.floor(leave1 / (3600 * 1000))//计算出小時數
-                        console.log('hours'+hours);
-                        //计算相差分鐘數
-                        var leave2 = leave1 % (3600 * 1000)    //计算小时數後剩餘毫秒數
-                        var minutes = Math.floor(leave2 / (60 * 1000))//计算相差分鐘數
-                        //计算相差秒數
-                        var leave3 = leave2 % (60 * 1000)      //计算分鐘數後剩餘毫秒數
-                        var seconds = Math.round(leave3 / 1000)
-                        console.log(" 相差 " + dayDiff + "天 " + hours + "小時" + minutes + "分鐘" + seconds + " 秒")
-                        // if (hours < 3 && hours >= 0) {
-                        //     console.log('進行推播')
-                        //     BotPushMsg()
-                        //     var timer2;
-                        //     function BotPushMsg(){
-                        //         clearTimeout(timer2);
-                        //         bot.push(item.user_id,'組長說：'+item.adminpush_content+'\n'+'到期時間'+item.adminpush_enddate);
-                        //     }
-                        //     timer2 = setInterval(BotPushMsg, 1000*60*60);
-                        // }
-                        console.log(" 相差 " + dayDiff + "天 " + hours + "小時" + minutes + "分鐘" + seconds + " 秒")
-                    }
+                    
                     // bot.push(item.user_id,'組長說：'+item.adminpush_content+'\n'+'到期時間'+item.adminpush_enddate);
                 })
             }
         })
     }
+}
+//當下時間＃＃
+var DateTime = new Date();
+CurrentTime(DateTime);
+//處理newDate()時間格式
+function CurrentTime(strDate) {
+    var time = '2019-09-29T23:10:43.000Z'
+    var date = new Date(strDate);
+    var y = date.getFullYear();
+    console.log('y');
+    console.log(y);
+    var m = date.getMonth() + 1;
+    m = m < 10 ? ('0' + m) : m;
+    console.log('m');
+    console.log(m);
+    var d = date.getDate();
+    d = d < 10 ? ('0' + d) : d;
+    console.log('d');
+    console.log(d);
+    var h = date.getHours();
+    h = h < 10 ? ('0' + h) : h;
+    var minute = date.getMinutes();
+    minute = minute < 10 ? ('0' + minute) : minute;
+    var s = date.getSeconds();
+    s = s < 10 ? ('0' + s) : s;
+    var str = y + "-" + m + "-" + d + "T" + h + ":" + minute + ":" + s + '.000Z';
+    console.log('str'+str)
+    timeFn(time, str)
+};
+//判斷是否在到期3小時內，每1小時推播一次
+function timeFn(d1, CurrentTime) {//傳入處理好的時間
+    var dateBegin = new Date(d1);//傳入參數
+    var dateEnd = new Date(CurrentTime);
+    console.log('判斷相差時間');
+    console.log(dateBegin);
+    console.log(dateEnd);
+    var dateDiff = dateBegin.getTime() - dateEnd.getTime();//时间差的毫秒數
+    console.log('dateDiff'+dateDiff);
+    var dayDiff = Math.floor(dateDiff / (24 * 3600 * 1000));//计算出相差天數
+    console.log('dayDiff'+dayDiff);
+    var leave1 = dateDiff % (24 * 3600 * 1000)    //计算天數後剩餘的毫秒數
+    console.log('leave1'+leave1);
+    var hours = Math.floor(leave1 / (3600 * 1000))//计算出小時數
+    console.log('hours'+hours);
+    //计算相差分鐘數
+    var leave2 = leave1 % (3600 * 1000)    //计算小时數後剩餘毫秒數
+    var minutes = Math.floor(leave2 / (60 * 1000))//计算相差分鐘數
+    //计算相差秒數
+    var leave3 = leave2 % (60 * 1000)      //计算分鐘數後剩餘毫秒數
+    var seconds = Math.round(leave3 / 1000)
+    console.log(" 相差 " + dayDiff + "天 " + hours + "小時" + minutes + "分鐘" + seconds + " 秒")
+    // if (hours < 3 && hours >= 0) {
+    //     console.log('進行推播')
+    //     BotPushMsg()
+    //     var timer2;
+    //     function BotPushMsg(){
+    //         clearTimeout(timer2);
+    //         bot.push(item.user_id,'組長說：'+item.adminpush_content+'\n'+'到期時間'+item.adminpush_enddate);
+    //     }
+    //     timer2 = setInterval(BotPushMsg, 1000*60*60);
+    // }
+    console.log(" 相差 " + dayDiff + "天 " + hours + "小時" + minutes + "分鐘" + seconds + " 秒")
 }
 //----------------------------------------
 // 建立一個網站應用程式app
