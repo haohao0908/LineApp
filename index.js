@@ -17,33 +17,32 @@ var bot = linebot({
 //----------------------------------------
 // 轉換時區
 //----------------------------------------
-var time = '2019-09-29T23:10:43.000Z'
-process.env.TZ = "Asia/Taipei";
-Date.prototype.TimeZone = new Map([
-    ['Europe/London', 0],
-    ['Asia/Taipei', +8],
-    ['America/New_York', 5]
-])
-Date.prototype.zoneDate = function () {
-    if (process.env.TZ == undefined) {
-        return new Date();
-    } else {
-        for (let item of this.TimeZone.entries()) {
-            if (item[0] == process.env.TZ) {
-                let d = new Date();
-                d.setHours(d.getHours() + item[1]);
-                return d;
-            }
-        }
-        return new Date();
-    }
-}
-//*調用方法*
-var date = new Date().zoneDate();
-var time = new Date(time);
-console.log('test is here');
-console.log(date);
-console.log(time);
+// process.env.TZ = "Asia/Taipei";
+// Date.prototype.TimeZone = new Map([
+//     ['Europe/London', 0],
+//     ['Asia/Taipei', +8],
+//     ['America/New_York', 5]
+// ])
+// Date.prototype.zoneDate = function () {
+//     if (process.env.TZ == undefined) {
+//         return new Date();
+//     } else {
+//         for (let item of this.TimeZone.entries()) {
+//             if (item[0] == process.env.TZ) {
+//                 let d = new Date();
+//                 d.setHours(d.getHours() + item[1]);
+//                 return d;
+//             }
+//         }
+//         return new Date();
+//     }
+// }
+// //*調用方法*
+// var date = new Date().zoneDate();
+// var time = new Date(time);
+// console.log('test is here');
+// console.log(date);
+// console.log(time);
 //--------------------------------
 // 使用者加入群組
 //--------------------------------
@@ -139,7 +138,7 @@ function PushMsg(id) {
                         console.log(typeof(d1));
                         para=d1.toString();
                         var dateBegin = new Date(para);//傳入參數
-                        var dateEnd = new Date().zoneDate();
+                        var dateEnd = new Date();
                         console.log('判斷相差時間');
                         console.log(dateBegin);
                         console.log(dateEnd);
