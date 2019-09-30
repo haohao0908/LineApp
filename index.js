@@ -129,7 +129,7 @@ function PushMsg(id) {
                         console.log(typeof (d1));
                         para = d1.toString();
                         var dateBegin = new Date(para);//傳入參數
-                        var dateEnd = new Date();
+                        var dateEnd = new Date().zoneDate();
                         console.log('判斷相差時間');
                         console.log(dateBegin);
                         console.log(dateEnd);
