@@ -40,7 +40,7 @@ Date.prototype.zoneDate = function () {
 }
 //*調用方法*
 var date = new Date().zoneDate();
-var time = new Date(time).zoneDate();
+var time = new Date(time);
 console.log('test is here');
 console.log(date);
 console.log(time);
