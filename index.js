@@ -37,9 +37,8 @@ Date.prototype.zoneDate = function () {
         return new Date();
     }
 }
-// console.log('testtesttest')
+//*調用方法*
 // var date = new Date().zoneDate();
-// console.log(date);
 //--------------------------------
 // 使用者加入群組
 //--------------------------------
@@ -129,33 +128,6 @@ function PushMsg(id) {
                 console.log('foreach');
                 data.forEach(item => {
                     timeFn(item.adminpush_enddate);
-                    // //當下時間＃＃
-                    // var DateTime = new Date();
-                    // CurrentTime(DateTime);
-                    // //處理newDate()時間格式
-                    // function CurrentTime(strDate) {
-                    //     var date = new Date(strDate);
-                    //     var y = date.getFullYear();
-                    //     console.log('y');
-                    //     console.log(y);
-                    //     var m = date.getMonth() + 1;
-                    //     m = m < 10 ? ('0' + m) : m;
-                    //     console.log('m');
-                    //     console.log(m);
-                    //     var d = date.getDate();
-                    //     d = d < 10 ? ('0' + d) : d;
-                    //     console.log('d');
-                    //     console.log(d);
-                    //     var h = date.getHours();
-                    //     h = h < 10 ? ('0' + h) : h;
-                    //     var minute = date.getMinutes();
-                    //     minute = minute < 10 ? ('0' + minute) : minute;
-                    //     var s = date.getSeconds();
-                    //     s = s < 10 ? ('0' + s) : s;
-                    //     var str = y + "-" + m + "-" + d + "T" + h + ":" + minute + ":" + s + '.000Z';
-                    //     console.log('str' + str)
-                        
-                    // };
                     //判斷是否在到期3小時內，每1小時推播一次
                     function timeFn(d1) {//傳入處理好的時間
                         var dateBegin = new Date(d1);//傳入參數
@@ -178,16 +150,17 @@ function PushMsg(id) {
                         var leave3 = leave2 % (60 * 1000)      //计算分鐘數後剩餘毫秒數
                         var seconds = Math.round(leave3 / 1000)
                         console.log(" 相差 " + dayDiff + "天 " + hours + "小時" + minutes + "分鐘" + seconds + " 秒")
-                        // if (hours < 3 && hours >= 0) {
-                        //     console.log('進行推播')
-                        //     BotPushMsg()
-                        //     var timer2;
-                        //     function BotPushMsg(){
-                        //         clearTimeout(timer2);
-                        //         bot.push(item.user_id,'組長說：'+item.adminpush_content+'\n'+'到期時間'+item.adminpush_enddate);
-                        //     }
-                        //     timer2 = setInterval(BotPushMsg, 1000*60*60);
-                        // }
+                        if (hours < 3 && hours >= 0) {
+                            console.log('進行推播')
+                            BotPushMsg()
+                            var timer2;
+                            function BotPushMsg(){
+                                clearTimeout(timer2);
+                                bot.push(item.user_id,'組長說：'+item.adminpush_content+'\n'+'到期時間'+dateBegin);
+                                timer2 = setInterval(BotPushMsg, 1000*60*60);
+                            }
+                            
+                        }
                         console.log(" 相差 " + dayDiff + "天 " + hours + "小時" + minutes + "分鐘" + seconds + " 秒")
                     }
                     // bot.push(item.user_id,'組長說：'+item.adminpush_content+'\n'+'到期時間'+item.adminpush_enddate);
