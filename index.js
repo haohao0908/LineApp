@@ -84,89 +84,89 @@ bot.on('unfollow', function (event) {
 //--------------------------------
 // 查詢全部id
 //--------------------------------
-// SelectUser();
-// var timer;
-// function SelectUser() {
-//     clearTimeout(timer);
-//     Admin.SelectSaveUser().then(data => {
-//         var allUsers = [];
-//         if (data == -1) {
-//             event.reply('找不到資料');
-//         } else if (data == -9) {
-//             event.reply('執行錯誤');
-//         } else {
-//             data.forEach(item => {
-//                 allUsers.push(item.userid);
-//             });
-//         }
-//         if (allUsers != []) {
-//             PushMsg(allUsers);
-//         }
-//     });
-//     timer = setInterval(SelectUser, 120000);
-// }
-// //--------------------------------
-// //推送訊息
-// //--------------------------------
-// function PushMsg(id) {
-//     let allUsers = id;
-//     for (var i = 0; i < allUsers.length; i++) {
-//         Admin.AdminMessengePushJdge(allUsers[i]).then(data => {
-//             if (data == -1) {
-//                 console.log('觸發-1');
-//             }
-//             else if (data == -9) {
-//                 console.log('處發-9');
-//             }
-//             else {
-//                 console.log('foreach');
-//                 data.forEach(item => {
-//                     timeFn(item.adminpush_enddate);
-//                     //判斷是否在到期3小時內，每1小時推播一次
-//                     function timeFn(d1) {//傳入處理好的時間
-//                         console.log('d1顯示');
-//                         console.log(d1);
-//                         console.log(typeof (d1));
-//                         para = d1.toString();
-//                         var dateBegin = new Date(para);//傳入參數
-//                         var dateEnd = new Date();
-//                         console.log('判斷相差時間');
-//                         console.log(dateBegin);
-//                         console.log(dateEnd);
-//                         var dateDiff = dateBegin.getTime() - dateEnd.getTime();//时间差的毫秒數
-//                         console.log('dateDiff' + dateDiff);
-//                         var dayDiff = Math.floor(dateDiff / (24 * 3600 * 1000));//计算出相差天數
-//                         console.log('dayDiff' + dayDiff);
-//                         var leave1 = dateDiff % (24 * 3600 * 1000)    //计算天數後剩餘的毫秒數
-//                         console.log('leave1' + leave1);
-//                         var hours = Math.floor(leave1 / (3600 * 1000))//计算出小時數
-//                         console.log('hours' + hours);
-//                         //计算相差分鐘數
-//                         var leave2 = leave1 % (3600 * 1000)    //计算小时數後剩餘毫秒數
-//                         var minutes = Math.floor(leave2 / (60 * 1000))//计算相差分鐘數
-//                         //计算相差秒數
-//                         var leave3 = leave2 % (60 * 1000)      //计算分鐘數後剩餘毫秒數
-//                         var seconds = Math.round(leave3 / 1000)
-//                         console.log(" 相差 " + dayDiff + "天 " + hours + "小時" + minutes + "分鐘" + seconds + " 秒")
-//                         if (hours < 3 && hours >= 0) {
-//                             console.log('進行推播')
-//                             BotPushMsg()
-//                             var timer2;
-//                             function BotPushMsg() {
-//                                 clearTimeout(timer2);
-//                                 bot.push(item.user_id, '組長說：' + item.adminpush_content + '\n' + '到期時間' + item.adminpush_enddate);
-//                                 timer2 = setInterval(BotPushMsg, 1000 * 60 * 60);
-//                             }
+SelectUser();
+var timer;
+function SelectUser() {
+    clearTimeout(timer);
+    Admin.SelectSaveUser().then(data => {
+        var allUsers = [];
+        if (data == -1) {
+            event.reply('找不到資料');
+        } else if (data == -9) {
+            event.reply('執行錯誤');
+        } else {
+            data.forEach(item => {
+                allUsers.push(item.userid);
+            });
+        }
+        if (allUsers != []) {
+            PushMsg(allUsers);
+        }
+    });
+    timer = setInterval(SelectUser, 120000);
+}
+//--------------------------------
+//推送訊息
+//--------------------------------
+function PushMsg(id) {
+    let allUsers = id;
+    for (var i = 0; i < allUsers.length; i++) {
+        Admin.AdminMessengePushJdge(allUsers[i]).then(data => {
+            if (data == -1) {
+                console.log('觸發-1');
+            }
+            else if (data == -9) {
+                console.log('處發-9');
+            }
+            else {
+                console.log('foreach');
+                data.forEach(item => {
+                    timeFn(item.adminpush_enddate);
+                    //判斷是否在到期3小時內，每1小時推播一次
+                    function timeFn(d1) {//傳入處理好的時間
+                        console.log('d1顯示');
+                        console.log(d1);
+                        console.log(typeof (d1));
+                        para = d1.toString();
+                        var dateBegin = new Date(para);//傳入參數
+                        var dateEnd = new Date();
+                        console.log('判斷相差時間');
+                        console.log(dateBegin);
+                        console.log(dateEnd);
+                        var dateDiff = dateBegin.getTime() - dateEnd.getTime();//时间差的毫秒數
+                        console.log('dateDiff' + dateDiff);
+                        var dayDiff = Math.floor(dateDiff / (24 * 3600 * 1000));//计算出相差天數
+                        console.log('dayDiff' + dayDiff);
+                        var leave1 = dateDiff % (24 * 3600 * 1000)    //计算天數後剩餘的毫秒數
+                        console.log('leave1' + leave1);
+                        var hours = Math.floor(leave1 / (3600 * 1000))//计算出小時數
+                        console.log('hours' + hours);
+                        //计算相差分鐘數
+                        var leave2 = leave1 % (3600 * 1000)    //计算小时數後剩餘毫秒數
+                        var minutes = Math.floor(leave2 / (60 * 1000))//计算相差分鐘數
+                        //计算相差秒數
+                        var leave3 = leave2 % (60 * 1000)      //计算分鐘數後剩餘毫秒數
+                        var seconds = Math.round(leave3 / 1000)
+                        console.log(" 相差 " + dayDiff + "天 " + hours + "小時" + minutes + "分鐘" + seconds + " 秒")
+                        if (hours < 3 && hours >= 0) {
+                            console.log('進行推播')
+                            BotPushMsg()
+                            var timer2;
+                            function BotPushMsg() {
+                                clearTimeout(timer2);
+                                bot.push(item.user_id, '組長說：' + item.adminpush_content + '\n' + '到期時間' + item.adminpush_enddate);
+                                timer2 = setInterval(BotPushMsg, 1000 * 60 * 60);
+                            }
 
-//                         }
-//                         console.log(" 相差 " + dayDiff + "天 " + hours + "小時" + minutes + "分鐘" + seconds + " 秒")
-//                     }
-//                     // bot.push(item.user_id,'組長說：'+item.adminpush_content+'\n'+'到期時間'+item.adminpush_enddate);
-//                 })
-//             }
-//         })
-//     }
-// }
+                        }
+                        console.log(" 相差 " + dayDiff + "天 " + hours + "小時" + minutes + "分鐘" + seconds + " 秒")
+                    }
+                    // bot.push(item.user_id,'組長說：'+item.adminpush_content+'\n'+'到期時間'+item.adminpush_enddate);
+                })
+            }
+        })
+    }
+}
 
 //----------------------------------------
 // 建立一個網站應用程式app
