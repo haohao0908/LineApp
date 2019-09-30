@@ -134,6 +134,9 @@ function PushMsg(id) {
                     timeFn(item.adminpush_enddate);
                     //判斷是否在到期3小時內，每1小時推播一次
                     function timeFn(d1) {//傳入處理好的時間
+                        console.log('d1顯示');
+                        console.log(d1);
+                        console.log(typeof(d1));
                         para=d1.toString();
                         var dateBegin = new Date(para);//傳入參數
                         var dateEnd = new Date().zoneDate();
