@@ -134,7 +134,8 @@ function PushMsg(id) {
                     timeFn(item.adminpush_enddate);
                     //判斷是否在到期3小時內，每1小時推播一次
                     function timeFn(d1) {//傳入處理好的時間
-                        var dateBegin = new Date(d1);//傳入參數
+                        para=d1.toString();
+                        var dateBegin = new Date(para);//傳入參數
                         var dateEnd = new Date().zoneDate();
                         console.log('判斷相差時間');
                         console.log(dateBegin);
