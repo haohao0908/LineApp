@@ -103,7 +103,7 @@ function SelectUser() {
             PushMsg(allUsers);
         }
     });
-    timer = setInterval(SelectUser, 3600000);
+    timer = setInterval(SelectUser, 60000);
 }
 //--------------------------------
 //推送訊息
@@ -120,9 +120,14 @@ function PushMsg(id) {
             }
             else {
                 console.log('foreach');
-                // data.forEach(item => {
-                //     bot.push(item.user_id, '組長說：' + item.adminpush_content + '\n' + '到期時間' + item.adminpush_enddate);
-                // })
+                test()
+                function test(){
+                    clearTimeout(timer2);
+                    data.forEach(item => {
+                        bot.push(item.user_id, '組長說：' + item.adminpush_content + '\n' + '到期時間' + item.adminpush_enddate);
+                    })
+                    timer2 = setInterval(test, 3600000);
+                }
             }
         })
     }
