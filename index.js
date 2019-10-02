@@ -108,6 +108,7 @@ function SelectUser() {
 //--------------------------------
 //推送訊息
 //--------------------------------
+var timer2;
 function PushMsg(id) {
     let allUsers = id;
     for (var i = 0; i < allUsers.length; i++) {
