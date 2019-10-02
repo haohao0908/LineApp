@@ -79,6 +79,7 @@ var AdminMessengePushJdge = async function(id){
                 result = data.rows;  //學生資料(物件)
                 result.forEach(item => {
                     console.log('item');
+                    console.log(typeof(item.adminpush_enddate));
                     console.log(item.adminpush_enddate);
                     // timeFn(item.adminpush_enddate);
                 });
