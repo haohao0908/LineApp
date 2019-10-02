@@ -96,9 +96,11 @@ var AdminMessengePushJdge = async function(id){
                     var leave3 = leave2 % (60 * 1000)      //计算分鐘數後剩餘毫秒數
                     var seconds = Math.round(leave3 / 1000)
                     console.log(" 相差 " + dayDiff + "天 " + hours + "小時" + minutes + "分鐘" + seconds + " 秒")
-                    // if(hours<3 && hours >=0){
-                    //     result2.push(item);
-                    // }
+                    if(hours<3 && hours >=0){
+                        result2.push(item);
+                        console.log('result2');
+                        console.log(result2);
+                    }
                     // if (hours < 3 && hours >= 0) {
                     //     console.log('進行推播')
                     //     BotPushMsg()
@@ -117,9 +119,9 @@ var AdminMessengePushJdge = async function(id){
         }, (error) => {
             result2 = -9;  //執行錯誤
         });
-        console.log('api回傳')
-        console.log(result2);
-        return result2;  
+        // console.log('api回傳')
+        // console.log(result2);
+        // return result2;  
 }
 //------------------------------------------
 //匯出
