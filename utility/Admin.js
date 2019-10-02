@@ -85,9 +85,8 @@ var AdminMessengePushJdge = async function(id){
                     // para = d1.toString();
                     var dateBegin = new Date(d1);//傳入參數
                     var dateEnd = new Date().zoneDate();
-                    console.log(dateBegin);
-                    console.log(dateEnd);
-                    // var dateDiff = dateBegin.getTime() - dateEnd.getTime();//时间差的毫秒數
+                    var dateDiff = dateBegin.getTime() - dateEnd.getTime();//时间差的毫秒數
+                    console.log(dateDiff);
                     // var leave1 = dateDiff % (24 * 3600 * 1000)    //计算天數後剩餘的毫秒數
                     // var hours = Math.floor(leave1 / (3600 * 1000))//计算出小時數
                     // //计算相差分鐘數
