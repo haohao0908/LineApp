@@ -71,7 +71,7 @@ var SelectSaveUser = async function(){
 var AdminMessengePushJdge = async function(id){
     //存放結果
     let result;
-    let result2;  
+    let result2=[];  
     //讀取資料庫
     await query('SELECT mem.user_id,admin.adminpush_content,admin.adminpush_enddate FROM teammember as mem INNER JOIN adminpush as admin ON (admin.project_id=mem.project_id)WHERE mem.user_id=$1', [id])
         .then((data) => {
