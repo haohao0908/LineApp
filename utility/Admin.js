@@ -98,8 +98,6 @@ var AdminMessengePushJdge = async function(id){
                     console.log(" 相差 " + dayDiff + "天 " + hours + "小時" + minutes + "分鐘" + seconds + " 秒")
                     if(hours<3 && hours >=0){
                         result2.push(item);
-                        console.log('result2');
-                        console.log(result2);
                     }
                     // if (hours < 3 && hours >= 0) {
                     //     console.log('進行推播')
@@ -119,9 +117,9 @@ var AdminMessengePushJdge = async function(id){
         }, (error) => {
             result2 = -9;  //執行錯誤
         });
-        // console.log('api回傳')
-        // console.log(result2);
-        // return result2;  
+        console.log('api回傳')
+        console.log(result2);
+        return result2;  
 }
 //------------------------------------------
 //匯出
