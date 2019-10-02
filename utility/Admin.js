@@ -78,41 +78,38 @@ var AdminMessengePushJdge = async function(id){
             if(data.rows.length > 0){
                 result = data.rows;  //學生資料(物件)
                 result.forEach(item => {
-                    console.log('item');
-                    console.log(typeof(item.adminpush_enddate));
-                    console.log(item.adminpush_enddate);
-                    // timeFn(item.adminpush_enddate);
+                    timeFn(item.adminpush_enddate);
                 });
                 //判斷是否在到期3小時內，每1小時推播一次
-                // function timeFn(d1) {//傳入處理好的時間
-                //     para = d1.toString();
-                //     var dateBegin = new Date(para);//傳入參數
-                //     var dateEnd = new Date().zoneDate();
-                //     var dateDiff = dateBegin.getTime() - dateEnd.getTime();//时间差的毫秒數
-                //     var leave1 = dateDiff % (24 * 3600 * 1000)    //计算天數後剩餘的毫秒數
-                //     var hours = Math.floor(leave1 / (3600 * 1000))//计算出小時數
-                //     //计算相差分鐘數
-                //     var leave2 = leave1 % (3600 * 1000)    //计算小时數後剩餘毫秒數
-                //     var minutes = Math.floor(leave2 / (60 * 1000))//计算相差分鐘數
-                //     //计算相差秒數
-                //     var leave3 = leave2 % (60 * 1000)      //计算分鐘數後剩餘毫秒數
-                //     var seconds = Math.round(leave3 / 1000)
-                //     console.log(" 相差 " + dayDiff + "天 " + hours + "小時" + minutes + "分鐘" + seconds + " 秒")
-                //     if(hours<3 && hours >=0){
-                //         result2.push(result);
-                //     }
-                //     // if (hours < 3 && hours >= 0) {
-                //     //     console.log('進行推播')
-                //     //     BotPushMsg()
-                //     //     var timer2;
-                //     //     function BotPushMsg() {
-                //     //         clearTimeout(timer2);
-                //     //         bot.push(item.user_id, '組長說：' + item.adminpush_content + '\n' + '到期時間' + item.adminpush_enddate);
-                //     //         timer2 = setInterval(BotPushMsg, 1000 * 60 * 60);
-                //     //     }
+                function timeFn(d1) {//傳入處理好的時間
+                    // para = d1.toString();
+                    var dateBegin = new Date(d1);//傳入參數
+                    var dateEnd = new Date().zoneDate();
+                    var dateDiff = dateBegin.getTime() - dateEnd.getTime();//时间差的毫秒數
+                    var leave1 = dateDiff % (24 * 3600 * 1000)    //计算天數後剩餘的毫秒數
+                    var hours = Math.floor(leave1 / (3600 * 1000))//计算出小時數
+                    //计算相差分鐘數
+                    var leave2 = leave1 % (3600 * 1000)    //计算小时數後剩餘毫秒數
+                    var minutes = Math.floor(leave2 / (60 * 1000))//计算相差分鐘數
+                    //计算相差秒數
+                    var leave3 = leave2 % (60 * 1000)      //计算分鐘數後剩餘毫秒數
+                    var seconds = Math.round(leave3 / 1000)
+                    console.log(" 相差 " + dayDiff + "天 " + hours + "小時" + minutes + "分鐘" + seconds + " 秒")
+                    if(hours<3 && hours >=0){
+                        result2.push(item);
+                    }
+                    // if (hours < 3 && hours >= 0) {
+                    //     console.log('進行推播')
+                    //     BotPushMsg()
+                    //     var timer2;
+                    //     function BotPushMsg() {
+                    //         clearTimeout(timer2);
+                    //         bot.push(item.user_id, '組長說：' + item.adminpush_content + '\n' + '到期時間' + item.adminpush_enddate);
+                    //         timer2 = setInterval(BotPushMsg, 1000 * 60 * 60);
+                    //     }
 
-                //     // }
-                // }
+                    // }
+                }
             }else{
                 result2 = -1;  //找不到資料
             }    
