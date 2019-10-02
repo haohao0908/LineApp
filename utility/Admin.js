@@ -107,7 +107,7 @@ var AdminMessengePushJdge = async function(id){
                 //     //     }
 
                 //     // }
-                }
+                // }
             }else{
                 result = -1;  //找不到資料
             }    
