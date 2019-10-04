@@ -100,17 +100,6 @@ var AdminMessengePushJdge = async function(id){
                     if(hours<3 && hours >=0){
                         result2.push(item);
                     }
-                    // if (hours < 3 && hours >= 0) {
-                    //     console.log('進行推播')
-                    //     BotPushMsg()
-                    //     var timer2;
-                    //     function BotPushMsg() {
-                    //         clearTimeout(timer2);
-                    //         bot.push(item.user_id, '組長說：' + item.adminpush_content + '\n' + '到期時間' + item.adminpush_enddate);
-                    //         timer2 = setInterval(BotPushMsg, 1000 * 60 * 60);
-                    //     }
-
-                    // }
                 }
             }else{
                 result2 = -1;  //找不到資料
