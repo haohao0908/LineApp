@@ -110,6 +110,7 @@ function SelectUser() {
 //--------------------------------
 var timer2;
 function PushMsg(id) {
+    clearTimeout(timer2);
     let allUsers = id;
     for (var i = 0; i < allUsers.length; i++) {
         Admin.AdminMessengePushJdge(allUsers[i]).then(data => {
@@ -121,17 +122,13 @@ function PushMsg(id) {
             }
             else {
                 console.log('foreach');
-                test()
-                function test(){
-                    clearTimeout(timer2);
-                    data.forEach(item => {
-                        bot.push(item.user_id, '組長說：' + item.adminpush_content + '\n' + '到期時間' + item.adminpush_enddate);
-                    })
-                    timer2 = setInterval(test, 3600000);
-                }
+                data.forEach(item => {
+                    bot.push(item.user_id, '組長說：' + item.adminpush_content + '\n' + '到期時間' + item.adminpush_enddate);
+                })
             }
         })
     }
+    timer2 = setInterval(PushMsg, 3600000);
 }
 
 //----------------------------------------
