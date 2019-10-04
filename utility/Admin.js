@@ -80,6 +80,7 @@ var AdminMessengePushJdge = async function(id){
                 result.forEach(item => {
                     timeFn(item,item.adminpush_enddate);
                 });
+                //console.logs
                 //判斷是否在到期3小時內，每1小時推播一次
                 function timeFn(item,d1) {//傳入處理好的時間
                     // para = d1.toString();
