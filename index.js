@@ -84,7 +84,8 @@ bot.on('unfollow', function (event) {
 //--------------------------------
 // 查詢全部id
 //--------------------------------
-SelectUser();
+
+X=SelectUser();
 var timer;
 function SelectUser() {
     clearTimeout(timer);
@@ -98,17 +99,21 @@ function SelectUser() {
             data.forEach(item => {
                 allUsers.push(item.userid);
             });
+            return allUsers;
         }
-        if (allUsers != []) {
-            SaveAllUsers(allUsers);
-        }
+        // if (allUsers != []) {
+        //     SaveAllUsers(allUsers);
+        // }
     });
     timer = setInterval(SelectUser, 60000);
 }
-function SaveAllUsers(value){
-    console.log(value);
-    return value;
-}
+Console.LOG('XXXXX')
+Console.log(X);
+// function SaveAllUsers(value){
+//     console.log(value);
+    
+//     return value;
+// }
 ForAdminPushValue=SaveAllUsers();
 console.log('Admin')
 console.log(ForAdminPushValue);
