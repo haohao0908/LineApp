@@ -100,9 +100,10 @@ function SelectUser() {
             });
         }
         if (allUsers != []) {
-            console.log('AdminAlluser')
-            console.log(allUsers);
-            return allUsers;
+            return new Promise((resolve,reject)=>{
+                resolve(allUsers);
+            })
+            // return allUsers;
         }
     });
     console.log('x在這邊有觸發到哦')
