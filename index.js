@@ -107,8 +107,8 @@ function SelectUser() {
     });
     timer = setInterval(SelectUser, 60000);
 }
-Console.log('XXXXX')
-Console.log(X);
+console.log('XXXXX')
+console.log(X);
 // function SaveAllUsers(value){
 //     console.log(value);
     
