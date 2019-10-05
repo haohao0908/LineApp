@@ -100,37 +100,40 @@ function SelectUser() {
             });
         }
         if (allUsers != []) {
-            PushMsg(allUsers);
+            return allUsers;
         }
     });
+    x=allUsers;
     timer = setInterval(SelectUser, 60000);
+    return x;
 }
+console.log(x);
 //--------------------------------
 //推送訊息
 //--------------------------------
-var timer2;
-function PushMsg(id) {
-    clearTimeout(timer2);
-    let allUsers = id;
-    for (var i = 0; i < allUsers.length; i++) {
-        Admin.AdminMessengePushJdge(allUsers[i]).then(data => {
-            if (data == -1) {
-                console.log('觸發-1');
-            }
-            else if (data == -9) {
-                console.log('處發-9');
-            }
-            else {
-                console.log('foreach');
-                data.forEach(item => {
-                    console.log(item.adminpush_enddate);
-                    bot.push(item.user_id, '組長說：' + item.adminpush_content + '\n' + '到期時間' + item.adminpush_enddate);
-                })
-            }
-        })
-    }
-    timer2 = setInterval(PushMsg, 3600000);
-}
+// var timer2;
+// function PushMsg(id) {
+//     clearTimeout(timer2);
+//     let allUsers = id;
+//     for (var i = 0; i < allUsers.length; i++) {
+//         Admin.AdminMessengePushJdge(allUsers[i]).then(data => {
+//             if (data == -1) {
+//                 console.log('觸發-1');
+//             }
+//             else if (data == -9) {
+//                 console.log('處發-9');
+//             }
+//             else {
+//                 console.log('foreach');
+//                 data.forEach(item => {
+//                     console.log(item.adminpush_enddate);
+//                     bot.push(item.user_id, '組長說：' + item.adminpush_content + '\n' + '到期時間' + item.adminpush_enddate);
+//                 })
+//             }
+//         })
+//     }
+//     timer2 = setInterval(PushMsg, 3600000);
+// }
 
 //----------------------------------------
 // 建立一個網站應用程式app
