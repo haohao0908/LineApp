@@ -100,6 +100,8 @@ function SelectUser() {
             });
         }
         if (allUsers != []) {
+            console.log('AdminAlluser')
+            console.log(allUsers);
             return allUsers;
         }
     });
