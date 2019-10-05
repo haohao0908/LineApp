@@ -103,11 +103,9 @@ function SelectUser() {
             return allUsers;
         }
     });
-    x=allUsers;
+    console.log(allUsers);
     timer = setInterval(SelectUser, 60000);
-    return x;
 }
-console.log(x);
 //--------------------------------
 //推送訊息
 //--------------------------------
