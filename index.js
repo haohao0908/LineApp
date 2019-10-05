@@ -89,7 +89,7 @@ var timer;
 function SelectUser() {
     clearTimeout(timer);
     var allUsers = [];
-    Admin.SelectSaveUser().then(data => {
+    x=Admin.SelectSaveUser().then(data => {
         if (data == -1) {
             event.reply('找不到資料');
         } else if (data == -9) {
@@ -105,7 +105,7 @@ function SelectUser() {
             return allUsers;
         }
     });
-    console.log(allUsers);
+    console.log(x);
     timer = setInterval(SelectUser, 60000);
 }
 
