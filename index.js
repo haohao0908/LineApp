@@ -103,8 +103,6 @@ function SelectUser() {
             SaveAllUsers(allUsers);
         }
     });
-    console.log('x在這邊有觸發到哦')
-    console.log(x);
     timer = setInterval(SelectUser, 60000);
 }
 function SaveAllUsers(value){
