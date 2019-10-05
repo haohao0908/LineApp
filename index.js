@@ -123,6 +123,7 @@ function PushMsg(id) {
             else {
                 console.log('foreach');
                 data.forEach(item => {
+                    console.log(item.adminpush_enddate);
                     bot.push(item.user_id, '組長說：' + item.adminpush_content + '\n' + '到期時間' + item.adminpush_enddate);
                 })
             }
