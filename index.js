@@ -89,7 +89,7 @@ var timer;
 function SelectUser() {
     clearTimeout(timer);
     var allUsers = [];
-    x=Admin.SelectSaveUser().then(data => {
+    Admin.SelectSaveUser().then(data => {
         if (data == -1) {
             event.reply('找不到資料');
         } else if (data == -9) {
@@ -100,17 +100,19 @@ function SelectUser() {
             });
         }
         if (allUsers != []) {
-            return new Promise((resolve,reject)=>{
-                resolve(allUsers);
-            })
-            // return allUsers;
+            SaveAllUsers(allUsers);
         }
     });
     console.log('x在這邊有觸發到哦')
     console.log(x);
     timer = setInterval(SelectUser, 60000);
 }
-
+function SaveAllUsers(value){
+    return value;
+}
+ForAdminPushValue=SaveAllUsers();
+console.log('Admin')
+console.log(ForAdminPushValue);
 //--------------------------------
 //推送訊息
 //--------------------------------
