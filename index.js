@@ -84,11 +84,7 @@ bot.on('unfollow', function (event) {
 //--------------------------------
 // 查詢全部id
 //--------------------------------
-
-X=SelectUser();
-var timer;
-function SelectUser() {
-    clearTimeout(timer);
+let letselectUser= setInterval(function(){
     var allUsers = [];
     Admin.SelectSaveUser().then(data => {
         if (data == -1) {
@@ -99,28 +95,35 @@ function SelectUser() {
             data.forEach(item => {
                 allUsers.push(item.userid);
             });
-            return allUsers;
         }
-        // if (allUsers != []) {
-        //     SaveAllUsers(allUsers);
-        // }
+        if (allUsers != []) {
+            SaveAllUsers(allUsers);
+        }
     });
-    timer = setInterval(SelectUser, 60000);
-}
-console.log('XXXXX')
-console.log(X);
-// function SaveAllUsers(value){
-//     console.log(value);
-    
-//     return value;
-// }
-ForAdminPushValue=SaveAllUsers();
-console.log('Admin')
-console.log(ForAdminPushValue);
+},60000)
 //--------------------------------
 //推送訊息
 //--------------------------------
-// var timer2;
+let push=setInterval(function PushMsg(id){
+    let allUsers = id;
+    for (var i = 0; i < allUsers.length; i++) {
+        Admin.AdminMessengePushJdge(allUsers[i]).then(data => {
+            if (data == -1) {
+                console.log('觸發-1');
+            }
+            else if (data == -9) {
+                console.log('處發-9');
+            }
+            else {
+                console.log('foreach');
+                data.forEach(item => {
+                    console.log(item.adminpush_enddate);
+                    bot.push(item.user_id, '組長說：' + item.adminpush_content + '\n' + '到期時間' + item.adminpush_enddate);
+                })
+            }
+        })
+    }
+},36000000)
 // function PushMsg(id) {
 //     clearTimeout(timer2);
 //     let allUsers = id;
