@@ -106,6 +106,7 @@ function SelectUser() {
     timer = setInterval(SelectUser, 60000);
 }
 function SaveAllUsers(value){
+    console.log(value);
     return value;
 }
 ForAdminPushValue=SaveAllUsers();
