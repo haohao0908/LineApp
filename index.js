@@ -97,7 +97,7 @@ let letselectUser= setInterval(function(){
             });
         }
         if (allUsers != []) {
-            SaveAllUsers(allUsers);
+            PushMsg(allUsers);
         }
     });
 },60000)
