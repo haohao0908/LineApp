@@ -88,8 +88,8 @@ SelectUser();
 var timer;
 function SelectUser() {
     clearTimeout(timer);
+    var allUsers = [];
     Admin.SelectSaveUser().then(data => {
-        var allUsers = [];
         if (data == -1) {
             event.reply('找不到資料');
         } else if (data == -9) {
@@ -106,6 +106,7 @@ function SelectUser() {
     console.log(allUsers);
     timer = setInterval(SelectUser, 60000);
 }
+
 //--------------------------------
 //推送訊息
 //--------------------------------
