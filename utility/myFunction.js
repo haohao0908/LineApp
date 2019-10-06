@@ -87,6 +87,8 @@ var BeforeDate = function (date, beforeDate) {
         theDate[1] += 12;
         theDate[0]--;
     }
+    console.log('theDate');
+    console.log(theDate);
     return theDate;
 }
 

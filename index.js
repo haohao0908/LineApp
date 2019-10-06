@@ -177,7 +177,6 @@ let push = setInterval(function () {
         let adminpush_enddate = allWorkData[allDataIndex].adminpush_enddate;
         // let pushProjectText = '';
         let pushWorkText = '';
-        console.log(adminpush_enddate);
         // =================================專案提醒判斷================================
         // 在12小時以前提醒專案到期
         // let projectPushTime_12h = myFunction.BeforeDate(adminpush_enddate, [0, 0, 0, 12, 0, 0]);
@@ -213,7 +212,6 @@ let push = setInterval(function () {
                 projectPushMessage_1m = false;
             }
         }
-        console.log(projectPushMessage_1m);
         if (projectPushMessage_1m) {
             pushProjectText =
                 '您的專案【' + allWorkData[allDataIndex].project_name + '】將在\n' +
