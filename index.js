@@ -153,7 +153,6 @@ function UpdateAllWorkData() {
 			// let deadline = data[a].deadline != null ? myFunction.SeparateDate(data[a].deadline + '') : null
 			let workData = {
 				user_id: data[a].user_id,
-				member_name: data[a].member_name,
 				adminpush_content: data[a].adminpush_content,
 				adminpush_enddate: adminpush_enddate,
             }
