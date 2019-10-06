@@ -71,43 +71,18 @@ var SelectSaveUser = async function(){
 var AdminMessengePushJdge = async function(id){
     //存放結果
     let result;
-    let result2=[];  
     //讀取資料庫
     await query('SELECT mem.user_id,admin.adminpush_content,admin.adminpush_enddate FROM teammember as mem INNER JOIN adminpush as admin ON (admin.project_id=mem.project_id)WHERE mem.user_id=$1', [id])
         .then((data) => {
             if(data.rows.length > 0){
                 result = data.rows;  //學生資料(物件)
-                result.forEach(item => {
-                    timeFn(item,item.adminpush_enddate);
-                });
-                //console.logs
-                //判斷是否在到期3小時內，每1小時推播一次
-                function timeFn(item,d1) {//傳入處理好的時間
-                    // para = d1.toString();
-                    var dateBegin = new Date(d1);//傳入參數
-                    var dateEnd = new Date().zoneDate();
-                    var dateDiff = dateBegin.getTime() - dateEnd.getTime();//时间差的毫秒數
-                    var dayDiff = Math.floor(dateDiff / (24 * 3600 * 1000));//计算出相差天數
-                    var leave1 = dateDiff % (24 * 3600 * 1000)    //计算天數後剩餘的毫秒數
-                    var hours = Math.floor(leave1 / (3600 * 1000))//计算出小時數
-                    //计算相差分鐘數
-                    var leave2 = leave1 % (3600 * 1000)    //计算小时數後剩餘毫秒數
-                    var minutes = Math.floor(leave2 / (60 * 1000))//计算相差分鐘數
-                    //计算相差秒數
-                    var leave3 = leave2 % (60 * 1000)      //计算分鐘數後剩餘毫秒數
-                    var seconds = Math.round(leave3 / 1000)
-                    console.log(" 相差 " + dayDiff + "天 " + hours + "小時" + minutes + "分鐘" + seconds + " 秒")
-                    if(hours<3 && hours >=0){
-                        result2.push(item);
-                    }
-                }
             }else{
-                result2 = -1;  //找不到資料
+                result = -1;  //找不到資料
             }    
         }, (error) => {
-            result2 = -9;  //執行錯誤
+            result = -9;  //執行錯誤
         });
-        return result2;  
+        return result;  
 }
 //------------------------------------------
 //匯出
