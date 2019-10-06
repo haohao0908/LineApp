@@ -213,7 +213,7 @@ let push = setInterval(function () {
                 projectPushMessage_1m = false;
             }
         }
-        if (projectPushMessage_12h || projectPushMessage_7d || projectPushMessage_1m) {
+        if (projectPushMessage_1m) {
             pushProjectText =
                 '您的專案【' + allWorkData[allDataIndex].project_name + '】將在\n' +
                 project_enddate[0] + '/' + project_enddate[1] + '/' + project_enddate[2] + ' ' +
