@@ -84,7 +84,7 @@ bot.on('unfollow', function (event) {
 //--------------------------------
 // 查詢全部id
 //--------------------------------
-let letselectUser= setInterval(function(){
+let letselectUser = setInterval(function () {
     var allUsers = [];
     Admin.SelectSaveUser().then(data => {
         if (data == -1) {
@@ -100,11 +100,11 @@ let letselectUser= setInterval(function(){
             PushMsg(allUsers);
         }
     });
-},60000)
+}, 60000)
 //--------------------------------
 //推送訊息
 //--------------------------------
-let push=setInterval(function PushMsg(id){
+let push = setInterval(function PushMsg(id) {
     let allUsers = id;
     for (var i = 0; i < allUsers.length; i++) {
         Admin.AdminMessengePushJdge(allUsers[i]).then(data => {
@@ -123,27 +123,30 @@ let push=setInterval(function PushMsg(id){
             }
         })
     }
-},36000000)
-// function PushMsg(id) {
-//     let allUsers = id;
-//     for (var i = 0; i < allUsers.length; i++) {
-//         Admin.AdminMessengePushJdge(allUsers[i]).then(data => {
-//             if (data == -1) {
-//                 console.log('觸發-1');
-//             }
-//             else if (data == -9) {
-//                 console.log('處發-9');
-//             }
-//             else {
-//                 console.log('foreach');
-//                 data.forEach(item => {
-//                     console.log(item.adminpush_enddate);
-//                     bot.push(item.user_id, '組長說：' + item.adminpush_content + '\n' + '到期時間' + item.adminpush_enddate);
-//                 })
-//             }
-//         })
-//     }
-// }
+}, 36000000)
+function PushMsg(id) {
+    myVar = setInterval(test(id), 3600000);
+}
+function test(id){
+    let allUsers = id;
+    for (var i = 0; i < allUsers.length; i++) {
+        Admin.AdminMessengePushJdge(allUsers[i]).then(data => {
+            if (data == -1) {
+                console.log('觸發-1');
+            }
+            else if (data == -9) {
+                console.log('處發-9');
+            }
+            else {
+                console.log('foreach');
+                data.forEach(item => {
+                    console.log(item.adminpush_enddate);
+                    bot.push(item.user_id, '組長說：' + item.adminpush_content + '\n' + '到期時間' + item.adminpush_enddate);
+                })
+            }
+        })
+    }
+}
 
 //----------------------------------------
 // 建立一個網站應用程式app
