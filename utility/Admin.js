@@ -82,7 +82,9 @@ var AdminMessengePushJdge = async function(id){
         }, (error) => {
             result = -9;  //執行錯誤
         });
-        return result;  
+    console.log('result');
+    console.log(result);
+    return result;  
 }
 //------------------------------------------
 //匯出
