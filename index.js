@@ -176,8 +176,9 @@ function UpdateAllWorkData() {
 				member_name: data[a].member_name,
 				adminpush_content: data[a].adminpush_content,
 				adminpush_enddate: adminpush_enddate,
-			}
-
+            }
+            console.log('workData');
+            console.log(workData);
 			if (!stringAllWorkData.includes(JSON.stringify(workData))) {
 				stringAllWorkData.push(JSON.stringify(workData))
 				allWorkData.push(workData)
