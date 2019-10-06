@@ -15,26 +15,6 @@ var bot = linebot({
     channelSecret: 'd391ffcbe15aa40a60143a360688215d',
     channelAccessToken: 'Ve75F0ujyEhnbXiiXeFPbUODz1HtYSd5gokKP4npeWt3C2LMV8a6tbUTZAqzDUB84/oFOBAxJkoUfazGlWuiFdjk8CcfQFUTrvbin37xwAuGMedo8sTwip+1KwAe/nNIuhEGvsPs+S0ykkuwynuGTAdB04t89/1O/w1cDnyilFU='
 });
-//----------------------------------------
-// 轉換時區
-//----------------------------------------
-// process.env.TZ = "Asia/Taipei";
-// Date.prototype.TimeZone = new Map([
-//     ['Europe/London', 0],
-//     ['Asia/Taipei', +8],
-//     ['America/New_York', 5]
-// ])
-Date.prototype.zoneDate = function () {
-    let d = new Date();
-    d.setHours(d.getHours() + 8);
-    return d;
-}
-// //*調用方法*
-// var date = new Date().zoneDate();
-// var time = new Date(time);
-// console.log('test is here');
-// console.log(date);
-// console.log(time);
 //--------------------------------
 // 使用者加入群組
 //--------------------------------
@@ -191,100 +171,99 @@ function UpdateAllWorkData() {
 
 UpdateAllWorkData();
 
-// let updataData = setInterval(UpdateAllWorkData, 600000);
+let updataData = setInterval(UpdateAllWorkData, 600000);
 
-// let push = setInterval(function () {
-// 	let nowDateArray = myFunction.SeparateDate(Date());
-// 	nowDateArray[3] += 8;
-// 	for (let allDataIndex = 0; allDataIndex < allWorkData.length; allDataIndex++) {
-// 		let project_enddate = allWorkData[allDataIndex].project_enddate;
-// 		let deadline = allWorkData[allDataIndex].deadline;
-// 		let pushProjectText = '';
-// 		let pushWorkText = '';
+let push = setInterval(function () {
+	let nowDateArray = myFunction.SeparateDate(Date());
+	nowDateArray[3] += 8;
+	for (let allDataIndex = 0; allDataIndex < allWorkData.length; allDataIndex++) {
+		let adminpush_enddate = allWorkData[allDataIndex].adminpush_enddate;
+		let pushProjectText = '';
+		let pushWorkText = '';
 
-// 		// =================================專案提醒判斷================================
-// 		// 在12小時以前提醒專案到期
-// 		let projectPushTime_12h = myFunction.BeforeDate(project_enddate, [0, 0, 0, 12, 0, 0]);
-// 		let projectPushMessage_12h = true;
-// 		for (let a = 0; a < 6; a++) {
-// 			if (nowDateArray[a] != projectPushTime_12h[a]) {
-// 				projectPushMessage_12h = false;
-// 			}
-// 		}
+		// =================================專案提醒判斷================================
+		// 在12小時以前提醒專案到期
+		let projectPushTime_12h = myFunction.BeforeDate(adminpush_enddate, [0, 0, 0, 12, 0, 0]);
+		let projectPushMessage_12h = true;
+		for (let a = 0; a < 6; a++) {
+			if (nowDateArray[a] != projectPushTime_12h[a]) {
+				projectPushMessage_12h = false;
+			}
+		}
 
-// 		// 在一個禮拜以前提醒專案到期
-// 		let projectPushTime_7d = myFunction.BeforeDate(project_enddate, [0, 0, 7, 0, 0, 0]);
-// 		let projectPushMessage_7d = true;
-// 		for (let a = 0; a < 6; a++) {
-// 			if (nowDateArray[a] != projectPushTime_7d[a]) {
-// 				projectPushMessage_7d = false;
-// 			}
-// 		}
+		// 在一個禮拜以前提醒專案到期
+		let projectPushTime_7d = myFunction.BeforeDate(adminpush_enddate, [0, 0, 7, 0, 0, 0]);
+		let projectPushMessage_7d = true;
+		for (let a = 0; a < 6; a++) {
+			if (nowDateArray[a] != projectPushTime_7d[a]) {
+				projectPushMessage_7d = false;
+			}
+		}
 
-// 		// 在一個月以前提醒專案到期
-// 		let projectPushTime_1m = myFunction.BeforeDate(project_enddate, [0, 1, 0, 0, 0, 0]);
-// 		let projectPushMessage_1m = true;
-// 		for (let a = 0; a < 6; a++) {
-// 			if (nowDateArray[a] != projectPushTime_1m[a]) {
-// 				projectPushMessage_1m = false;
-// 			}
-// 		}
+		// 在一個月以前提醒專案到期
+		let projectPushTime_1m = myFunction.BeforeDate(adminpush_enddate, [0, 1, 0, 0, 0, 0]);
+		let projectPushMessage_1m = true;
+		for (let a = 0; a < 6; a++) {
+			if (nowDateArray[a] != projectPushTime_1m[a]) {
+				projectPushMessage_1m = false;
+			}
+		}
 
-// 		if (projectPushMessage_12h || projectPushMessage_7d || projectPushMessage_1m) {
-// 			pushProjectText = 'Hi! ' + allWorkData[allDataIndex].member_name + '\n' +
-// 				'您的專案【' + allWorkData[allDataIndex].project_name + '】將在\n' +
-// 				project_enddate[0] + '/' + project_enddate[1] + '/' + project_enddate[2] + ' ' +
-// 				project_enddate[3] + ':' + project_enddate[4] + ':' + project_enddate[5] + '結束';
-// 			if (allWorkData[allDataIndex].linebotpush && allWorkData[allDataIndex].project_hint) {
-// 				userId = allWorkData[allDataIndex].user_id;
-// 				bot.push(userId, [pushWorkText]);
-// 			}
-// 		}
+		if (projectPushMessage_12h || projectPushMessage_7d || projectPushMessage_1m) {
+			pushProjectText = 
+				'您的專案【' + allWorkData[allDataIndex].project_name + '】將在\n' +
+				project_enddate[0] + '/' + project_enddate[1] + '/' + project_enddate[2] + ' ' +
+				project_enddate[3] + ':' + project_enddate[4] + ':' + project_enddate[5] + '結束';
+			if (allWorkData[allDataIndex].linebotpush && allWorkData[allDataIndex].project_hint) {
+				userId = allWorkData[allDataIndex].user_id;
+				bot.push(userId, [pushWorkText]);
+			}
+		}
 
-// 		// =================================工作提醒判斷================================
-// 		if (deadline != null) {
-// 			// 在1小時以前提醒工作到期
-// 			let workPushTime_12h = myFunction.BeforeDate(deadline, [0, 0, 0, 1, 0, 0]);
-// 			let workPushMessage_12h = true;
-// 			for (let a = 0; a < 6; a++) {
-// 				if (nowDateArray[a] != workPushTime_12h[a]) {
-// 					workPushMessage_12h = false;
-// 				}
-// 			}
+		// =================================工作提醒判斷================================
+		// if (deadline != null) {
+		// 	// 在1小時以前提醒工作到期
+		// 	let workPushTime_12h = myFunction.BeforeDate(deadline, [0, 0, 0, 1, 0, 0]);
+		// 	let workPushMessage_12h = true;
+		// 	for (let a = 0; a < 6; a++) {
+		// 		if (nowDateArray[a] != workPushTime_12h[a]) {
+		// 			workPushMessage_12h = false;
+		// 		}
+		// 	}
 
-// 			// 在一天以前提醒工作到期
-// 			let workPushTime_7d = myFunction.BeforeDate(deadline, [0, 0, 1, 0, 0, 0]);
-// 			let workPushMessage_7d = true;
-// 			for (let a = 0; a < 6; a++) {
-// 				if (nowDateArray[a] != workPushTime_7d[a]) {
-// 					workPushMessage_7d = false;
-// 				}
-// 			}
+		// 	// 在一天以前提醒工作到期
+		// 	let workPushTime_7d = myFunction.BeforeDate(deadline, [0, 0, 1, 0, 0, 0]);
+		// 	let workPushMessage_7d = true;
+		// 	for (let a = 0; a < 6; a++) {
+		// 		if (nowDateArray[a] != workPushTime_7d[a]) {
+		// 			workPushMessage_7d = false;
+		// 		}
+		// 	}
 
-// 			// 在三天以前提醒專案到期
-// 			let workPushTime_1m = myFunction.BeforeDate(deadline, [0, 0, 3, 0, 0, 0]);
-// 			let workPushMessage_1m = true;
-// 			for (let a = 0; a < 6; a++) {
-// 				if (nowDateArray[a] != workPushTime_1m[a]) {
-// 					workPushMessage_1m = false;
-// 				}
-// 			}
+		// 	// 在三天以前提醒專案到期
+		// 	let workPushTime_1m = myFunction.BeforeDate(deadline, [0, 0, 3, 0, 0, 0]);
+		// 	let workPushMessage_1m = true;
+		// 	for (let a = 0; a < 6; a++) {
+		// 		if (nowDateArray[a] != workPushTime_1m[a]) {
+		// 			workPushMessage_1m = false;
+		// 		}
+		// 	}
 
-// 			if (workPushMessage_12h || workPushMessage_7d || workPushMessage_1m) {
-// 				pushWorkText = 'Hi! ' + allWorkData[allDataIndex].member_name + '\n' +
-// 					'您在專案【' + allWorkData[allDataIndex].project_name + '】的工作\n' +
-// 					'「' + allWorkData[allDataIndex].work_title + '」將在\n' +
-// 					deadline[0] + '/' + deadline[1] + '/' + deadline[2] + ' ' +
-// 					deadline[3] + ':' + deadline[4] + ':' + deadline[5] + '結束';
-// 				if (allWorkData[allDataIndex].linebotpush && allWorkData[allDataIndex].work_hint) {
-// 					userId = allWorkData[allDataIndex].user_id;
-// 					bot.push(userId, [pushWorkText]);
-// 				}
-// 			}
-// 		}
+		// 	if (workPushMessage_12h || workPushMessage_7d || workPushMessage_1m) {
+		// 		pushWorkText = 'Hi! ' + allWorkData[allDataIndex].member_name + '\n' +
+		// 			'您在專案【' + allWorkData[allDataIndex].project_name + '】的工作\n' +
+		// 			'「' + allWorkData[allDataIndex].work_title + '」將在\n' +
+		// 			deadline[0] + '/' + deadline[1] + '/' + deadline[2] + ' ' +
+		// 			deadline[3] + ':' + deadline[4] + ':' + deadline[5] + '結束';
+		// 		if (allWorkData[allDataIndex].linebotpush && allWorkData[allDataIndex].work_hint) {
+		// 			userId = allWorkData[allDataIndex].user_id;
+		// 			bot.push(userId, [pushWorkText]);
+		// 		}
+		// 	}
+		// }
 
-// 	}
-// }, 1000);
+	}
+}, 1000);
 //----------------------------------------
 // 建立一個網站應用程式app
 // 如果連接根目錄, 交給機器人處理
