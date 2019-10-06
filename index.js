@@ -51,106 +51,15 @@ bot.on('unfollow', function (event) {
         }
     });
 });
-
 //--------------------------------
-// 機器人推播訊息
+// 更新資料
 //--------------------------------
-// setTimeout(function () {
-//     var userId = 'U32851128a5210964818860dd9204b886';
-//     var sendMsg = "push hands up ";
-//     bot.push(userId, [sendMsg]);
-//     console.log('userId: ' + userId);
-//     console.log('send: ' + sendMsg);
-// }, 10000);
-//--------------------------------
-// 查詢全部id
-//--------------------------------
-// let letselectUser = setInterval(function () {
-//     var allUsers = [];
-//     Admin.SelectSaveUser().then(data => {
-//         if (data == -1) {
-//             event.reply('找不到資料');
-//         } else if (data == -9) {
-//             event.reply('執行錯誤');
-//         } else {
-//             data.forEach(item => {
-//                 allUsers.push(item.userid);
-//             });
-//         }
-//         if (allUsers != []) {
-//             PushMsg(allUsers);
-//         }
-//     });
-// }, 60000)
-//--------------------------------
-//推送訊息
-//--------------------------------
-// let push = setInterval(function PushMsg(id) {
-//     let allUsers = id;
-//     for (var i = 0; i < allUsers.length; i++) {
-//         Admin.AdminMessengePushJdge(allUsers[i]).then(data => {
-//             if (data == -1) {
-//                 console.log('觸發-1');
-//             }
-//             else if (data == -9) {
-//                 console.log('處發-9');
-//             }
-//             else {
-//                 console.log('foreach');
-//                 data.forEach(item => {
-//                     console.log(item.adminpush_enddate);
-//                     bot.push(item.user_id, '組長說：' + item.adminpush_content + '\n' + '到期時間' + item.adminpush_enddate);
-//                 })
-//             }
-//         })
-//     }
-// }, 36000000)
-// PushMsg();
-// var timer;
-// function PushMsg() {
-//     clearTimeout(timer);
-//     var allUsers = [];
-//     Admin.SelectSaveUser().then(data => {
-//         if (data == -1) {
-//             event.reply('找不到資料');
-//         } else if (data == -9) {
-//             event.reply('執行錯誤');
-//         } else {
-//             data.forEach(item => {
-//                 allUsers.push(item.userid);
-//             });
-//         }
-//         if (allUsers != []) {
-//             for (var i = 0; i < allUsers.length; i++) {
-//                 Admin.AdminMessengePushJdge(allUsers[i]).then(data => {
-//                     if (data == -1) {
-//                         console.log('觸發-1');
-//                     }
-//                     else if (data == -9) {
-//                         console.log('處發-9');
-//                     }
-//                     else {
-//                         console.log('foreach');
-//                         data.forEach(item => {
-//                             console.log(item.adminpush_enddate);
-//                             bot.push(item.user_id, '管理員說：' + '\n' + item.adminpush_content + '\n' + '到期時間' + '\n' +item.adminpush_enddate);
-//                         })
-//                     }
-//                 })
-//             }
-//         }
-//     });
-//     timer=setInterval(PushMsg,1800000);
-// }
-//學yee部分改寫
-// 每十分鐘更新一次資料
 function UpdateAllWorkData() {
     Admin.AdminMessengePushJdge().then(data => {
         allWorkData = [];
         stringAllWorkData = [];
         for (let a = 0; a < data.length; a++) {
             let adminpush_enddate = myFunction.SeparateDate(data[a].adminpush_enddate + '')
-            // let deadline = data[a].deadline != null ? myFunction.SeparateDate(data[a].deadline + '') : null
             let workData = {
                 user_id: data[a].user_id,
                 adminpush_content: data[a].adminpush_content,
@@ -160,9 +69,7 @@ function UpdateAllWorkData() {
                 stringAllWorkData.push(JSON.stringify(workData))
                 allWorkData.push(workData)
             }
-
         }
-        // console.log(allWorkData)
     })
 }
 
@@ -175,45 +82,37 @@ let push = setInterval(function () {
     nowDateArray[3] += 8;
     for (let allDataIndex = 0; allDataIndex < allWorkData.length; allDataIndex++) {
         let adminpush_enddate = allWorkData[allDataIndex].adminpush_enddate;
-        // let pushProjectText = '';
         let pushWorkText = '';
         // =================================專案提醒判斷================================
-        // 在12小時以前提醒專案到期
-        // let projectPushTime_12h = myFunction.BeforeDate(adminpush_enddate, [0, 0, 0, 12, 0, 0]);
-        // let projectPushMessage_12h = true;
-        // for (let a = 0; a < 6; a++) {
-        //     if (nowDateArray[a] != projectPushTime_12h[a]) {
-        //         projectPushMessage_12h = false;
-        //     }
-        // }
-
-        // // 在一個禮拜以前提醒專案到期
-        // let projectPushTime_7d = myFunction.BeforeDate(adminpush_enddate, [0, 0, 7, 0, 0, 0]);
-        // let projectPushMessage_7d = true;
-        // for (let a = 0; a < 6; a++) {
-        //     if (nowDateArray[a] != projectPushTime_7d[a]) {
-        //         projectPushMessage_7d = false;
-        //     }
-        // }
-
-        // // 在一個月以前提醒專案到期
-        // let projectPushTime_1m = myFunction.BeforeDate(adminpush_enddate, [0, 1, 0, 0, 0, 0]);
-        // let projectPushMessage_1m = true;
-        // for (let a = 0; a < 6; a++) {
-        //     if (nowDateArray[a] != projectPushTime_1m[a]) {
-        //         projectPushMessage_1m = false;
-        //     }
-        // }
-        // 在1小時以前提醒工作到期
-        let workPushTime_12h = myFunction.BeforeDate(adminpush_enddate, [0, 0, 0, 0, 10, 0]);
-        let projectPushMessage_1m = true;
+        // 在5個小時前
+        let AdminPushTime_5h = myFunction.BeforeDate(adminpush_enddate, [0, 0, 0, 5, 0, 0]);
+        let AdminPushMessage_5h = true;
         for (let a = 0; a < 6; a++) {
-            if (nowDateArray[a] != workPushTime_12h[a]) {
-                projectPushMessage_1m = false;
+            if (nowDateArray[a] != AdminPushTime_5h[a]) {
+                AdminPushMessage_5h = false;
             }
         }
-        if (projectPushMessage_1m) {
-            pushProjectText =
+
+        // 在3個小時前
+        let AdminPushTime_3h = myFunction.BeforeDate(adminpush_enddate, [0, 0, 0, 3, 0, 0]);
+        let AdminPushMessage_3h = true;
+        for (let a = 0; a < 6; a++) {
+            if (nowDateArray[a] != AdminPushTime_3h[a]) {
+                AdminPushMessage_3h = false;
+            }
+        }
+
+        // 在1個小時前
+        let AdminPushTime_1h = myFunction.BeforeDate(adminpush_enddate, [0, 0, 0, 1, 0, 0]);
+        let AdminPushMessage_1h = true;
+        for (let a = 0; a < 6; a++) {
+            if (nowDateArray[a] != AdminPushTime_1h[a]) {
+                AdminPushMessage_1h = false;
+            }
+        }
+
+        if (AdminPushMessage_1h || AdminPushMessage_3h || AdminPushMessage_5h) {
+            pushWorkText =
                 '組長提醒【' + allWorkData[allDataIndex].project_name + '】將在\n' +
                 project_enddate[0] + '/' + project_enddate[1] + '/' + project_enddate[2] + ' ' +
                 project_enddate[3] + ':' + project_enddate[4] + ':' + project_enddate[5] + '結束';
@@ -222,49 +121,6 @@ let push = setInterval(function () {
                 bot.push(userId, [pushWorkText]);
             }
         }
-
-        // =================================工作提醒判斷================================
-        // if (deadline != null) {
-        // 	// 在1小時以前提醒工作到期
-        // 	let workPushTime_12h = myFunction.BeforeDate(deadline, [0, 0, 0, 1, 0, 0]);
-        // 	let workPushMessage_12h = true;
-        // 	for (let a = 0; a < 6; a++) {
-        // 		if (nowDateArray[a] != workPushTime_12h[a]) {
-        // 			workPushMessage_12h = false;
-        // 		}
-        // 	}
-
-        // 	// 在一天以前提醒工作到期
-        // 	let workPushTime_7d = myFunction.BeforeDate(deadline, [0, 0, 1, 0, 0, 0]);
-        // 	let workPushMessage_7d = true;
-        // 	for (let a = 0; a < 6; a++) {
-        // 		if (nowDateArray[a] != workPushTime_7d[a]) {
-        // 			workPushMessage_7d = false;
-        // 		}
-        // 	}
-
-        // 	// 在三天以前提醒專案到期
-        // 	let workPushTime_1m = myFunction.BeforeDate(deadline, [0, 0, 3, 0, 0, 0]);
-        // 	let workPushMessage_1m = true;
-        // 	for (let a = 0; a < 6; a++) {
-        // 		if (nowDateArray[a] != workPushTime_1m[a]) {
-        // 			workPushMessage_1m = false;
-        // 		}
-        // 	}
-
-        // 	if (workPushMessage_12h || workPushMessage_7d || workPushMessage_1m) {
-        // 		pushWorkText = 'Hi! ' + allWorkData[allDataIndex].member_name + '\n' +
-        // 			'您在專案【' + allWorkData[allDataIndex].project_name + '】的工作\n' +
-        // 			'「' + allWorkData[allDataIndex].work_title + '」將在\n' +
-        // 			deadline[0] + '/' + deadline[1] + '/' + deadline[2] + ' ' +
-        // 			deadline[3] + ':' + deadline[4] + ':' + deadline[5] + '結束';
-        // 		if (allWorkData[allDataIndex].linebotpush && allWorkData[allDataIndex].work_hint) {
-        // 			userId = allWorkData[allDataIndex].user_id;
-        // 			bot.push(userId, [pushWorkText]);
-        // 		}
-        // 	}
-        // }
-
     }
 }, 1000);
 //----------------------------------------
