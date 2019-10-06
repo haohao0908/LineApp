@@ -124,7 +124,10 @@ bot.on('unfollow', function (event) {
 //         })
 //     }
 // }, 36000000)
+PushMsg();
+var timer;
 function PushMsg() {
+    clearTimeout(timer);
     var allUsers = [];
     Admin.SelectSaveUser().then(data => {
         if (data == -1) {
@@ -156,8 +159,9 @@ function PushMsg() {
             }
         }
     });
+    timer=setInterval(PushMsg,1800000);
 }
-setInterval(PushMsg, 60000);
+
 //----------------------------------------
 // 建立一個網站應用程式app
 // 如果連接根目錄, 交給機器人處理
