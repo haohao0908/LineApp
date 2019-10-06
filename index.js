@@ -164,7 +164,7 @@ function UpdateAllWorkData() {
 			}
 
 		}
-		console.log(allWorkData)
+		// console.log(allWorkData)
 	})
 }
 
@@ -177,7 +177,7 @@ let push = setInterval(function () {
 	nowDateArray[3] += 8;
 	for (let allDataIndex = 0; allDataIndex < allWorkData.length; allDataIndex++) {
 		let adminpush_enddate = allWorkData[allDataIndex].adminpush_enddate;
-		let pushProjectText = '';
+		// let pushProjectText = '';
 		let pushWorkText = '';
 
 		// =================================專案提醒判斷================================
@@ -215,7 +215,9 @@ let push = setInterval(function () {
 				project_enddate[3] + ':' + project_enddate[4] + ':' + project_enddate[5] + '結束';
 			if (allWorkData[allDataIndex].linebotpush && allWorkData[allDataIndex].project_hint) {
 				userId = allWorkData[allDataIndex].user_id;
-				bot.push(userId, [pushWorkText]);
+                bot.push(userId, [pushWorkText]);
+                console.log(userId);
+                console.log([pushWorkText]);
 			}
 		}
 
