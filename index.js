@@ -104,26 +104,26 @@ let letselectUser = setInterval(function () {
 //--------------------------------
 //推送訊息
 //--------------------------------
-let push = setInterval(function PushMsg(id) {
-    let allUsers = id;
-    for (var i = 0; i < allUsers.length; i++) {
-        Admin.AdminMessengePushJdge(allUsers[i]).then(data => {
-            if (data == -1) {
-                console.log('觸發-1');
-            }
-            else if (data == -9) {
-                console.log('處發-9');
-            }
-            else {
-                console.log('foreach');
-                data.forEach(item => {
-                    console.log(item.adminpush_enddate);
-                    bot.push(item.user_id, '組長說：' + item.adminpush_content + '\n' + '到期時間' + item.adminpush_enddate);
-                })
-            }
-        })
-    }
-}, 36000000)
+// let push = setInterval(function PushMsg(id) {
+//     let allUsers = id;
+//     for (var i = 0; i < allUsers.length; i++) {
+//         Admin.AdminMessengePushJdge(allUsers[i]).then(data => {
+//             if (data == -1) {
+//                 console.log('觸發-1');
+//             }
+//             else if (data == -9) {
+//                 console.log('處發-9');
+//             }
+//             else {
+//                 console.log('foreach');
+//                 data.forEach(item => {
+//                     console.log(item.adminpush_enddate);
+//                     bot.push(item.user_id, '組長說：' + item.adminpush_content + '\n' + '到期時間' + item.adminpush_enddate);
+//                 })
+//             }
+//         })
+//     }
+// }, 36000000)
 function PushMsg(id) {
     myVar = setInterval(test(id), 3600000);
 }
