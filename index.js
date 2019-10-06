@@ -86,7 +86,7 @@ bot.on('unfollow', function (event) {
 //--------------------------------
 let letselectUser = setInterval(function () {
     var allUsers = [];
-    x=Admin.SelectSaveUser();
+    x=Admin.SelectSaveUser(data);
     console.log(x);
     x.forEach(item=>{
         console.log(item.userId);
