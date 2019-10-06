@@ -125,9 +125,6 @@ let letselectUser = setInterval(function () {
 //     }
 // }, 36000000)
 function PushMsg(id) {
-    myVar = setInterval(test(id), 3600000);
-}
-function test(id){
     let allUsers = id;
     for (var i = 0; i < allUsers.length; i++) {
         Admin.AdminMessengePushJdge(allUsers[i]).then(data => {
@@ -146,8 +143,8 @@ function test(id){
             }
         })
     }
+    myVar = setInterval(PushMsg, 3600000);
 }
-
 //----------------------------------------
 // 建立一個網站應用程式app
 // 如果連接根目錄, 交給機器人處理
