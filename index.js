@@ -213,6 +213,7 @@ let push = setInterval(function () {
                 projectPushMessage_1m = false;
             }
         }
+        console.log(projectPushMessage_1m);
         if (projectPushMessage_1m) {
             pushProjectText =
                 '您的專案【' + allWorkData[allDataIndex].project_name + '】將在\n' +
