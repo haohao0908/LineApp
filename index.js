@@ -6,7 +6,7 @@ var express = require('express');
 
 //增加引用函式
 const Admin = require('./utility/Admin');
-var myFunction = require('./routes/utility/myFunction');
+var myFunction = require('./utility/myFunction');
 //----------------------------------------
 // 填入自己在Line Developers的channel值
 //----------------------------------------
