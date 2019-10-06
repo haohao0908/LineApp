@@ -86,20 +86,22 @@ bot.on('unfollow', function (event) {
 //--------------------------------
 let letselectUser = setInterval(function () {
     var allUsers = [];
-    Admin.SelectSaveUser().then(data => {
-        if (data == -1) {
-            event.reply('找不到資料');
-        } else if (data == -9) {
-            event.reply('執行錯誤');
-        } else {
-            data.forEach(item => {
-                allUsers.push(item.userid);
-            });
-        }
-        if (allUsers != []) {
-            PushMsg(allUsers);
-        }
-    });
+    x=Admin.SelectSaveUser();
+    console.log(x);
+    // Admin.SelectSaveUser().then(data => {
+    //     if (data == -1) {
+    //         event.reply('找不到資料');
+    //     } else if (data == -9) {
+    //         event.reply('執行錯誤');
+    //     } else {
+    //         data.forEach(item => {
+    //             allUsers.push(item.userid);
+    //         });
+    //     }
+    //     if (allUsers != []) {
+    //         PushMsg(allUsers);
+    //     }
+    // });
 }, 60000)
 //--------------------------------
 //推送訊息
@@ -124,27 +126,27 @@ let letselectUser = setInterval(function () {
 //         })
 //     }
 // }, 36000000)
-function PushMsg(id) {
-    let allUsers = id;
-    for (var i = 0; i < allUsers.length; i++) {
-        Admin.AdminMessengePushJdge(allUsers[i]).then(data => {
-            if (data == -1) {
-                console.log('觸發-1');
-            }
-            else if (data == -9) {
-                console.log('處發-9');
-            }
-            else {
-                console.log('foreach');
-                data.forEach(item => {
-                    console.log(item.adminpush_enddate);
-                    bot.push(item.user_id, '組長說：' + item.adminpush_content + '\n' + '到期時間' + item.adminpush_enddate);
-                })
-            }
-        })
-    }
-    myVar = setInterval(PushMsg, 3600000);
-}
+// function PushMsg(id) {
+//     let allUsers = id;
+//     for (var i = 0; i < allUsers.length; i++) {
+//         Admin.AdminMessengePushJdge(allUsers[i]).then(data => {
+//             if (data == -1) {
+//                 console.log('觸發-1');
+//             }
+//             else if (data == -9) {
+//                 console.log('處發-9');
+//             }
+//             else {
+//                 console.log('foreach');
+//                 data.forEach(item => {
+//                     console.log(item.adminpush_enddate);
+//                     bot.push(item.user_id, '組長說：' + item.adminpush_content + '\n' + '到期時間' + item.adminpush_enddate);
+//                 })
+//             }
+//         })
+//     }
+//     myVar = setInterval(PushMsg, 3600000);
+// }
 //----------------------------------------
 // 建立一個網站應用程式app
 // 如果連接根目錄, 交給機器人處理
