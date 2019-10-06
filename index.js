@@ -207,6 +207,7 @@ let push = setInterval(function () {
         // 在1小時以前提醒工作到期
         let workPushTime_12h = myFunction.BeforeDate(adminpush_enddate, [0, 0, 0, 1, 0, 0]);
         let projectPushMessage_1m = true;
+        console.log(nowDateArray);
         for (let a = 0; a < 6; a++) {
             if (nowDateArray[a] != workPushTime_12h[a]) {
                 projectPushMessage_1m = false;
