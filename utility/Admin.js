@@ -72,7 +72,7 @@ var AdminMessengePushJdge = async function(){
     //存放結果
     let result;
     //讀取資料庫
-    await query('SELECT mem.user_id,admin.adminpush_content,admin.adminpush_enddate FROM teammember as mem INNER JOIN adminpush as admin ON (admin.project_id=mem.project_id)')
+    await query('SELECT mem.user_id,admin.adminpush_content,admin.adminpush_enddate FROM teammember as mem INNER JOIN adminpush as admin ON (admin.project_id=mem.project_id) where mem.user_id=U32851128a5210964818860dd9204b886')
         .then((data) => {
             if(data.rows.length > 0){
                 result = data.rows;  //學生資料(物件)
@@ -82,6 +82,7 @@ var AdminMessengePushJdge = async function(){
         }, (error) => {
             result = -9;  //執行錯誤
         });
+    console.log(result)
     return result;  
 }
 //------------------------------------------
