@@ -205,7 +205,7 @@ let push = setInterval(function () {
         //     }
         // }
         // 在1小時以前提醒工作到期
-        let workPushTime_12h = myFunction.BeforeDate(adminpush_enddate, [0, 0, 0, 1, 0, 0]);
+        let workPushTime_12h = myFunction.BeforeDate(adminpush_enddate, [0, 0, 0, 0, 10, 0]);
         let projectPushMessage_1m = true;
         for (let a = 0; a < 6; a++) {
             if (nowDateArray[a] != workPushTime_12h[a]) {
@@ -214,7 +214,7 @@ let push = setInterval(function () {
         }
         if (projectPushMessage_1m) {
             pushProjectText =
-                '您的專案【' + allWorkData[allDataIndex].project_name + '】將在\n' +
+                '組長提醒【' + allWorkData[allDataIndex].project_name + '】將在\n' +
                 project_enddate[0] + '/' + project_enddate[1] + '/' + project_enddate[2] + ' ' +
                 project_enddate[3] + ':' + project_enddate[4] + ':' + project_enddate[5] + '結束';
             if (allWorkData[allDataIndex].linebotpush && allWorkData[allDataIndex].project_hint) {
