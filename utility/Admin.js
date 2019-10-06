@@ -107,8 +107,6 @@ var AdminMessengePushJdge = async function(id){
         }, (error) => {
             result2 = -9;  //執行錯誤
         });
-        console.log('api回傳')
-        console.log(result2);
         return result2;  
 }
 //------------------------------------------
