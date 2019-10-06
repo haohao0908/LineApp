@@ -88,6 +88,10 @@ let letselectUser = setInterval(function () {
     var allUsers = [];
     x=Admin.SelectSaveUser();
     console.log(x);
+    x.forEach(item=>{
+        console.log(item.userId);
+        allUsers.push(item.userId)
+    })
     // Admin.SelectSaveUser().then(data => {
     //     if (data == -1) {
     //         event.reply('找不到資料');
