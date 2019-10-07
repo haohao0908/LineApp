@@ -38,15 +38,13 @@ bot.on('follow', function (event) {
         }
     );
 });
-
-
-bot.on('message', function(event) {
-    event.source.profile().then(
-        function (profile) {		
-            return event.reply('你好, ' + profile.displayName + '. 你的編號是:' + profile.userId + ', 你的回應是:' +  event.message.text);
-        }
-    );
-});
+//--------------------------------
+// 讓她不睡覺
+//--------------------------------
+var https = require('https');
+setInterval(function () {
+ https.get(" https://hao-planyourself-app.herokuapp.com/");
+}, 1500000);
 //--------------------------------
 // 使用者封鎖群組
 //--------------------------------
@@ -84,9 +82,8 @@ function UpdateAllWorkData() {
                 allWorkData.push(workData)
             }
         }
-        // console.log(allWorkData);
     })
-    let updataData = setInterval(UpdateAllWorkData, 100000);
+    let updataData = setInterval(UpdateAllWorkData, 600000);
 }
 
 UpdateAllWorkData();
@@ -133,9 +130,9 @@ let push = setInterval(function () {
         if (AdminPushMessage_1h || AdminPushMessage_3h || AdminPushMessage_5h) {
             console.log('可以推波囉 正確進入了');
             pushWorkText =
-                '組長提醒事項【' + allWorkData[allDataIndex].adminpush_content + '】將在\n' +
+                '組長提醒事項'+'\n' + '【' + allWorkData[allDataIndex].adminpush_content + '】'+'\n' +'結束時間:'
                 adminpush_enddate[0] + '/' + adminpush_enddate[1] + '/' + adminpush_enddate[2] + ' ' +
-                adminpush_enddate[3] + ':' + adminpush_enddate[4] + ':' + adminpush_enddate[5] + '結束';
+                adminpush_enddate[3] + ':' + adminpush_enddate[4] + ':' + adminpush_enddate[5];
             if (allWorkData[allDataIndex].linebotpush) {
                 userId = allWorkData[allDataIndex].user_id;
                 bot.push(userId, [pushWorkText]);
