@@ -68,6 +68,7 @@ bot.on('unfollow', function (event) {
 //--------------------------------
 function UpdateAllWorkData() {
     Admin.AdminMessengePushJdge().then(data => {
+    clearTimeout(updataData);
         allWorkData = [];
         stringAllWorkData = [];
         for (let a = 0; a < data.length; a++) {
@@ -82,13 +83,13 @@ function UpdateAllWorkData() {
                 allWorkData.push(workData)
             }
         }
-        console.log(allWorkData);
+        // console.log(allWorkData);
     })
+    let updataData = setInterval(UpdateAllWorkData, 600000);
 }
 
 UpdateAllWorkData();
 
-let updataData = setInterval(UpdateAllWorkData, 600000);
 
 let push = setInterval(function () {
     let nowDateArray = myFunction.SeparateDate(Date());
@@ -129,14 +130,15 @@ let push = setInterval(function () {
         }
 
         if (AdminPushMessage_1h || AdminPushMessage_3h || AdminPushMessage_5h) {
-            pushWorkText =
-                '組長提醒【' + allWorkData[allDataIndex].project_name + '】將在\n' +
-                project_enddate[0] + '/' + project_enddate[1] + '/' + project_enddate[2] + ' ' +
-                project_enddate[3] + ':' + project_enddate[4] + ':' + project_enddate[5] + '結束';
-            if (allWorkData[allDataIndex].linebotpush && allWorkData[allDataIndex].project_hint) {
-                userId = allWorkData[allDataIndex].user_id;
-                bot.push(userId, [pushWorkText]);
-            }
+            console.log('可以推波囉 正確進入了');
+            // pushWorkText =
+            //     '組長提醒【' + allWorkData[allDataIndex].project_name + '】將在\n' +
+            //     project_enddate[0] + '/' + project_enddate[1] + '/' + project_enddate[2] + ' ' +
+            //     project_enddate[3] + ':' + project_enddate[4] + ':' + project_enddate[5] + '結束';
+            // if (allWorkData[allDataIndex].linebotpush && allWorkData[allDataIndex].project_hint) {
+            //     userId = allWorkData[allDataIndex].user_id;
+            //     bot.push(userId, [pushWorkText]);
+            // }
         }
     }
 }, 1000);
