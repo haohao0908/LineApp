@@ -83,7 +83,6 @@ function UpdateAllWorkData() {
             }
         }
     })
-    console.log(allWorkData);
 }
 
 UpdateAllWorkData();
