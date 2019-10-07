@@ -75,6 +75,7 @@ function UpdateAllWorkData() {
             let adminpush_enddate = myFunction.SeparateDate(data[a].adminpush_enddate + '')
             let workData = {
                 user_id: data[a].user_id,
+                linebotpush: data[a].linebotpush,
                 adminpush_content: data[a].adminpush_content,
                 adminpush_enddate: adminpush_enddate,
             }
@@ -85,7 +86,7 @@ function UpdateAllWorkData() {
         }
         // console.log(allWorkData);
     })
-    let updataData = setInterval(UpdateAllWorkData, 10000);
+    let updataData = setInterval(UpdateAllWorkData, 100000);
 }
 
 UpdateAllWorkData();
@@ -117,7 +118,7 @@ let push = setInterval(function () {
         }
 
         // 在1個小時前
-        let AdminPushTime_1h = myFunction.BeforeDate(adminpush_enddate, [0, 0, 0, 0, 10, 0]);
+        let AdminPushTime_1h = myFunction.BeforeDate(adminpush_enddate, [0, 0, 0, 1, 0, 0]);
         // console.log('推播時間')
         // console.log(AdminPushTime_1h);
         // console.log('目前時間')
@@ -131,14 +132,14 @@ let push = setInterval(function () {
 
         if (AdminPushMessage_1h || AdminPushMessage_3h || AdminPushMessage_5h) {
             console.log('可以推波囉 正確進入了');
-            // pushWorkText =
-            //     '組長提醒【' + allWorkData[allDataIndex].project_name + '】將在\n' +
-            //     project_enddate[0] + '/' + project_enddate[1] + '/' + project_enddate[2] + ' ' +
-            //     project_enddate[3] + ':' + project_enddate[4] + ':' + project_enddate[5] + '結束';
-            // if (allWorkData[allDataIndex].linebotpush && allWorkData[allDataIndex].project_hint) {
-            //     userId = allWorkData[allDataIndex].user_id;
-            //     bot.push(userId, [pushWorkText]);
-            // }
+            pushWorkText =
+                '組長提醒事項【' + allWorkData[allDataIndex].adminpush_content + '】將在\n' +
+                adminpush_enddate[0] + '/' + adminpush_enddate[1] + '/' + adminpush_enddate[2] + ' ' +
+                adminpush_enddate[3] + ':' + adminpush_enddate[4] + ':' + adminpush_enddate[5] + '結束';
+            if (allWorkData[allDataIndex].linebotpush) {
+                userId = allWorkData[allDataIndex].user_id;
+                bot.push(userId, [pushWorkText]);
+            }
         }
     }
 }, 1000);
