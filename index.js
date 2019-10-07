@@ -130,7 +130,7 @@ let push = setInterval(function () {
         if (AdminPushMessage_1h || AdminPushMessage_3h || AdminPushMessage_5h) {
             console.log('可以推波囉 正確進入了');
             pushWorkText =
-                '組長提醒事項'+'\n' + '【' + allWorkData[allDataIndex].adminpush_content + '】'+'\n' +'結束時間:'
+                '組長提醒事項'+'\n' + '【' + allWorkData[allDataIndex].adminpush_content + '】'+'\n' +'結束時間:'+
                 adminpush_enddate[0] + '/' + adminpush_enddate[1] + '/' + adminpush_enddate[2] + ' ' +
                 adminpush_enddate[3] + ':' + adminpush_enddate[4] + ':' + adminpush_enddate[5];
             if (allWorkData[allDataIndex].linebotpush) {
