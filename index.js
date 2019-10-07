@@ -103,7 +103,7 @@ let push = setInterval(function () {
         }
 
         // 在1個小時前
-        let AdminPushTime_1h = myFunction.BeforeDate(adminpush_enddate, [0, 0, 0, 1, 0, 0]);
+        let AdminPushTime_1h = myFunction.BeforeDate(adminpush_enddate, [0, 0, 0, 0, 10, 0]);
         let AdminPushMessage_1h = true;
         for (let a = 0; a < 6; a++) {
             if (nowDateArray[a] != AdminPushTime_1h[a]) {
