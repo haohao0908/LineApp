@@ -11,12 +11,12 @@ var myFunction = require('./utility/myFunction');
 // 填入自己在Line Developers的channel值
 //----------------------------------------
 var bot = linebot({
-    // channelId: '1623913058',
-    // channelSecret: 'd391ffcbe15aa40a60143a360688215d',
-    // channelAccessToken: 'Ve75F0ujyEhnbXiiXeFPbUODz1HtYSd5gokKP4npeWt3C2LMV8a6tbUTZAqzDUB84/oFOBAxJkoUfazGlWuiFdjk8CcfQFUTrvbin37xwAuGMedo8sTwip+1KwAe/nNIuhEGvsPs+S0ykkuwynuGTAdB04t89/1O/w1cDnyilFU='
-    channelId: '1619171290',
-    channelSecret: 'eb906d05aa2d55ad9fd3d44562bbc1eb',
-    channelAccessToken: 'fyncnllqd/2OQtfBse6gMzVA9X1Et+bxEIBrvkijPOyVlTZcBbvfpDMwqFV3C3CwwJ5y2eo/FMu0ZvwZHULlu/wU5YTUT2ZQLrviHO8oZ12zzBpXw59kO15VY+tZCgJEaTwQksw9V9jfZs/oPZ1QgwdB04t89/1O/w1cDnyilFU='
+    channelId: '1623913058',
+    channelSecret: 'd391ffcbe15aa40a60143a360688215d',
+    channelAccessToken: 'Ve75F0ujyEhnbXiiXeFPbUODz1HtYSd5gokKP4npeWt3C2LMV8a6tbUTZAqzDUB84/oFOBAxJkoUfazGlWuiFdjk8CcfQFUTrvbin37xwAuGMedo8sTwip+1KwAe/nNIuhEGvsPs+S0ykkuwynuGTAdB04t89/1O/w1cDnyilFU='
+    // channelId: '1619171290',
+    // channelSecret: 'eb906d05aa2d55ad9fd3d44562bbc1eb',
+    // channelAccessToken: 'fyncnllqd/2OQtfBse6gMzVA9X1Et+bxEIBrvkijPOyVlTZcBbvfpDMwqFV3C3CwwJ5y2eo/FMu0ZvwZHULlu/wU5YTUT2ZQLrviHO8oZ12zzBpXw59kO15VY+tZCgJEaTwQksw9V9jfZs/oPZ1QgwdB04t89/1O/w1cDnyilFU='
 });
 //--------------------------------
 // 使用者加入群組
