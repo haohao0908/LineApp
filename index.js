@@ -11,9 +11,12 @@ var myFunction = require('./utility/myFunction');
 // 填入自己在Line Developers的channel值
 //----------------------------------------
 var bot = linebot({
-    channelId: '1623913058',
-    channelSecret: 'd391ffcbe15aa40a60143a360688215d',
-    channelAccessToken: 'Ve75F0ujyEhnbXiiXeFPbUODz1HtYSd5gokKP4npeWt3C2LMV8a6tbUTZAqzDUB84/oFOBAxJkoUfazGlWuiFdjk8CcfQFUTrvbin37xwAuGMedo8sTwip+1KwAe/nNIuhEGvsPs+S0ykkuwynuGTAdB04t89/1O/w1cDnyilFU='
+    // channelId: '1623913058',
+    // channelSecret: 'd391ffcbe15aa40a60143a360688215d',
+    // channelAccessToken: 'Ve75F0ujyEhnbXiiXeFPbUODz1HtYSd5gokKP4npeWt3C2LMV8a6tbUTZAqzDUB84/oFOBAxJkoUfazGlWuiFdjk8CcfQFUTrvbin37xwAuGMedo8sTwip+1KwAe/nNIuhEGvsPs+S0ykkuwynuGTAdB04t89/1O/w1cDnyilFU='
+    channelId: '1619171290',
+    channelSecret: 'eb906d05aa2d55ad9fd3d44562bbc1eb',
+    channelAccessToken: 'fyncnllqd/2OQtfBse6gMzVA9X1Et+bxEIBrvkijPOyVlTZcBbvfpDMwqFV3C3CwwJ5y2eo/FMu0ZvwZHULlu/wU5YTUT2ZQLrviHO8oZ12zzBpXw59kO15VY+tZCgJEaTwQksw9V9jfZs/oPZ1QgwdB04t89/1O/w1cDnyilFU='
 });
 //--------------------------------
 // 使用者加入群組
@@ -32,6 +35,15 @@ bot.on('follow', function (event) {
                     event.reply('歡迎加入PlanYourself');
                 }
             })
+        }
+    );
+});
+
+
+bot.on('message', function(event) {
+    event.source.profile().then(
+        function (profile) {		
+            return event.reply('你好, ' + profile.displayName + '. 你的編號是:' + profile.userId + ', 你的回應是:' +  event.message.text);
         }
     );
 });
@@ -71,6 +83,7 @@ function UpdateAllWorkData() {
             }
         }
     })
+    console.log(allWorkData);
 }
 
 UpdateAllWorkData();
@@ -104,6 +117,10 @@ let push = setInterval(function () {
 
         // 在1個小時前
         let AdminPushTime_1h = myFunction.BeforeDate(adminpush_enddate, [0, 0, 0, 0, 10, 0]);
+        console.log('推播時間')
+        console.log(AdminPushTime_1h);
+        console.log('目前時間')
+        console.log(nowDateArray);
         let AdminPushMessage_1h = true;
         for (let a = 0; a < 6; a++) {
             if (nowDateArray[a] != AdminPushTime_1h[a]) {
