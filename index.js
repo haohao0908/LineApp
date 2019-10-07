@@ -82,6 +82,7 @@ function UpdateAllWorkData() {
                 allWorkData.push(workData)
             }
         }
+        console.log(allWorkData);
     })
 }
 
@@ -116,10 +117,10 @@ let push = setInterval(function () {
 
         // 在1個小時前
         let AdminPushTime_1h = myFunction.BeforeDate(adminpush_enddate, [0, 0, 0, 0, 10, 0]);
-        console.log('推播時間')
-        console.log(AdminPushTime_1h);
-        console.log('目前時間')
-        console.log(nowDateArray);
+        // console.log('推播時間')
+        // console.log(AdminPushTime_1h);
+        // console.log('目前時間')
+        // console.log(nowDateArray);
         let AdminPushMessage_1h = true;
         for (let a = 0; a < 6; a++) {
             if (nowDateArray[a] != AdminPushTime_1h[a]) {
