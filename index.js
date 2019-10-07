@@ -85,7 +85,7 @@ function UpdateAllWorkData() {
         }
         // console.log(allWorkData);
     })
-    let updataData = setInterval(UpdateAllWorkData, 600000);
+    let updataData = setInterval(UpdateAllWorkData, 10000);
 }
 
 UpdateAllWorkData();
