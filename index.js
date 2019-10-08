@@ -68,6 +68,8 @@ bot.on('message', function(event) {
             if(event.message.text=="#查詢計畫"){
                 event.reply('以下是你擁有的計畫名稱')
                 Messenge.MessengeSelectSearch(profile.userId).then(data =>{
+                    console.log('data')
+                    console.log(data);
                     for(let i=0; i<data.length; i++){
                         event.reply(data.project_id);
                     }
