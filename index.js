@@ -70,7 +70,7 @@ bot.on('message', function(event) {
                 Messenge.MessengeSelectSearch(profile.userId).then(data =>{
                     console.log('data')
                     console.log(data);
-                    for(let i=0; i<data.length; i++){
+                    for(let i=0; i<=data.length; i++){
                         event.reply(data.project_id);
                     }
                 })
