@@ -70,9 +70,10 @@ bot.on('message', function(event) {
                 Messenge.MessengeSelectSearch(profile.userId).then(data =>{
                     console.log('data')
                     console.log(data);
-                    for(let i=0; i<=data.length; i++){
-                        console.log('data.project_id')
-                        event.reply(data[i].project_id);
+                    for(let i=0; i<data.length; i++){
+                        console.log('data.project_id');
+                        console.log(data.project_id);
+                        event.reply(data.project_id);
                     }
                 })
                 // return event.reply('你好, ' + profile.displayName + '. 你的編號是:' + profile.userId + ', 你的回應是:' +  event.message.text);
