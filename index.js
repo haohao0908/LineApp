@@ -72,7 +72,7 @@ bot.on('message', function(event) {
                     console.log(data);
                     for(let i=0; i<data.length; i++){
                         console.log('data.project_id');
-                        console.log(data.project_id);
+                        console.log(data[i].project_id);
                         event.reply(data.project_id);
                     }
                 })
