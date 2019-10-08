@@ -63,8 +63,10 @@ bot.on('unfollow', function (event) {
 //========================================
 bot.on('message', function(event) {
     event.source.profile().then(
-        function (profile) {		
-            return event.reply('你好, ' + profile.displayName + '. 你的編號是:' + profile.userId + ', 你的回應是:' +  event.message.text);
+        function (profile) {
+            if(event.message.text=="#查詢計畫"){
+                return event.reply('你好, ' + profile.displayName + '. 你的編號是:' + profile.userId + ', 你的回應是:' +  event.message.text);
+            }		
         }
     );
 });
