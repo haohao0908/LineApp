@@ -6,6 +6,7 @@ var express = require('express');
 
 //增加引用函式
 const Admin = require('./utility/Admin');
+const Messenge = require('./utility/Messenge');
 var myFunction = require('./utility/myFunction');
 //----------------------------------------
 // 填入自己在Line Developers的channel值
@@ -65,7 +66,13 @@ bot.on('message', function(event) {
     event.source.profile().then(
         function (profile) {
             if(event.message.text=="#查詢計畫"){
-                return event.reply('你好, ' + profile.displayName + '. 你的編號是:' + profile.userId + ', 你的回應是:' +  event.message.text);
+                event.reply('以下是你擁有的計畫名稱')
+                Messenge.MessengeSelectSearch().then(data =>{
+                    for(let i=0; i<data.length; i++){
+                        event.reply(data.project_id);
+                    }
+                })
+                // return event.reply('你好, ' + profile.displayName + '. 你的編號是:' + profile.userId + ', 你的回應是:' +  event.message.text);
             }		
         }
     );
