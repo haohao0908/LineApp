@@ -139,7 +139,7 @@ bot.on('message', function(event) {
 // 更新資料
 //--------------------------------
 function UpdateAllWorkData() {
-    Admin.MessengeSearchTimeOut().then(data => {
+    Admin.AdminMessengePushJdge().then(data => {
     clearTimeout(updataData);
         allWorkData = [];
         stringAllWorkData = [];
@@ -159,29 +159,29 @@ function UpdateAllWorkData() {
     })
     let updataData = setInterval(UpdateAllWorkData, 600000);
 }
-function UpdateAllProjectData() {
-    Admin.AdminMessengePushJdge().then(data => {
-    clearTimeout(updataData);
-        allProjectData = [];
-        stringAllProjectData = [];
-        for (let a = 0; a < data.length; a++) {
-            let project_enddate = myFunction.SeparateDate(data[a].project_enddate + '')
-            let ProjectData = {
-                user_id: data[a].user_id,
-                linebotpush: data[a].linebotpush,
-                project_name: data[a].project_name,
-                project_enddate: project_enddate,
-            }
-            if (!stringAllWorkData.includes(JSON.stringify(ProjectData))) {
-                stringAllWorkData.push(JSON.stringify(ProjectData))
-                allWorkData.push(ProjectData)
-            }
-        }
-    })
-    let updataData = setInterval(UpdateAllProjectData, 1000);
-}
+// function UpdateAllProjectData() {
+//     Admin.AdminMessengePushJdge().then(data => {
+//     clearTimeout(updataData);
+//         allProjectData = [];
+//         stringAllProjectData = [];
+//         for (let a = 0; a < data.length; a++) {
+//             let project_enddate = myFunction.SeparateDate(data[a].project_enddate + '')
+//             let ProjectData = {
+//                 user_id: data[a].user_id,
+//                 linebotpush: data[a].linebotpush,
+//                 project_name: data[a].project_name,
+//                 project_enddate: project_enddate,
+//             }
+//             if (!stringAllWorkData.includes(JSON.stringify(ProjectData))) {
+//                 stringAllWorkData.push(JSON.stringify(ProjectData))
+//                 allWorkData.push(ProjectData)
+//             }
+//         }
+//     })
+//     let updataData = setInterval(UpdateAllProjectData, 1000);
+// }
 UpdateAllWorkData();
-UpdateAllProjectData();
+// UpdateAllProjectData();
 //--------------------------------
 // 推播資料
 //--------------------------------
