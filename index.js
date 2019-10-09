@@ -70,7 +70,7 @@ bot.on('message', function(event) {
                 Messenge.MessengeSelectSearch(profile.userId).then(data =>{
                     for(let i=0; i<data.length; i++){
                         let pushWorkText = '';
-                        if(true){
+                        if(data[i].linebotpush){
                             pushWorkText =data[i].project_name;
                             bot.push(profile.userId, [pushWorkText]);
                         }
