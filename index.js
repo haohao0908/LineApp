@@ -65,7 +65,7 @@ bot.on('unfollow', function (event) {
 bot.on('message', function(event) {
     event.source.profile().then(
         function (profile) {
-            if(event.message.text=="#查詢計畫" || event.message.text=="#查詢計劃" ){
+            if(event.message.text=="#查詢計畫" || event.message.text=="#查詢計劃" || event.message.text=="#查詢專案"){
                 Messenge.MessengeSelectSearch(profile.userId).then(data =>{
                     if(data==-1){
                         event.reply('您可能還沒加入任何計畫哦！')
@@ -82,7 +82,7 @@ bot.on('message', function(event) {
                     }
                 })
             }
-            if(event.message.text=="#我的工作" || event.message.text=="#我得工作" ){
+            if(event.message.text=="#我的工作"){
                 Messenge.WorkSelectSearch(profile.userId).then(data =>{
                     console.log('index');
                     console.log(data);
@@ -102,7 +102,7 @@ bot.on('message', function(event) {
                     }
                 })
             }
-            if(event.message.text=="#快到期的計畫" || event.message.text=="#快到期計畫" ){
+            if(event.message.text=="#快到期的計畫" || event.message.text=="#快到期計畫" || event.message.text=="#快到期的計劃" || event.message.text=="##快到期計劃" ){
                 Messenge.MessengeSelectSearch(profile.userId).then(data =>{
                     console.log('index');
                     console.log(data);
@@ -110,7 +110,6 @@ bot.on('message', function(event) {
                         event.reply('您可能還沒任何計畫快到期哦！');
                     }
                     else{
-                        event.reply('【以下是您快到期的計畫】')
                         for(let i=0; i<data.length; i++){
                             let pushWorkText = '';
                             if(data[i].linebotpush){
