@@ -110,7 +110,9 @@ bot.on('message', function(event) {
                         let pushWorkText = '';
                         if(data[i].work_hint){
                             var dateBegin = new Date(data[i].project_enddate.replace(/-/g, "/"));//将-转化为/，使用new Date
+                            console.log(dateBegin);
                             var dateEnd = new Date(Date.now() + (8 * 60 * 60 * 1000));//获取当前时间
+                            console.log(dateEnd);
                             var dateDiff = dateEnd.getTime() - dateBegin.getTime();//时间差的毫秒数
                             var dayDiff = Math.floor(dateDiff / (24 * 3600 * 1000));//计算出相差天数
                             var leave1=dateDiff%(24*3600*1000)    //计算天数后剩余的毫秒数
