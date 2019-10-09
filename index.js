@@ -69,7 +69,7 @@ bot.on('message', function(event) {
                 event.reply('以下是你擁有的計畫名稱')
                 Messenge.MessengeSelectSearch(profile.userId).then(data =>{
                     if(data==-1){
-                        event.reply('以下是你擁有的計畫名稱')
+                        event.reply('您可能還沒加入任何計畫哦！')
                     }
                     for(let i=0; i<data.length; i++){
                         let pushWorkText = '';
@@ -80,8 +80,23 @@ bot.on('message', function(event) {
 
                     }
                 })
-                // return event.reply('你好, ' + profile.displayName + '. 你的編號是:' + profile.userId + ', 你的回應是:' +  event.message.text);
-            }		
+            }
+            if(event.message.text=="#我的工作" || event.message.text=="#我得工作" ){
+                event.reply('以下是屬於您的工作')
+                Messenge.WorkSelectSearch(profile.userId).then(data =>{
+                    if(data==-1){
+                        event.reply('您可能還沒任何工作哦！')
+                    }
+                    for(let i=0; i<data.length; i++){
+                        let pushWorkText = '';
+                        if(data[i].work_hint){
+                            pushWorkText =data[i].work_title;
+                            bot.push(profile.userId, [pushWorkText]);
+                        }
+
+                    }
+                })
+            }	
         }
     );
 });
