@@ -123,6 +123,8 @@ bot.on('message', function(event) {
                             //计算相差秒数
                             var leave3=leave2%(60*1000)      //计算分钟数后剩余的毫秒数
                             var seconds=Math.round(leave3/1000)
+                            console.log(dateDiff+"时间差的毫秒数",dayDiff+"计算出相差天数",leave1+"计算天数后剩余的毫秒数"
+                            ,hours+"计算出小时数",minutes+"计算相差分钟数",seconds+"计算相差秒数");
                             if(hours<3 && hours>0){
                                 pushWorkText =data[i].work_title+data[i].project_enddate;
                                 bot.push(profile.userId, [pushWorkText]);
