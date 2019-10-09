@@ -70,13 +70,15 @@ bot.on('message', function(event) {
                     if(data==-1){
                         event.reply('您可能還沒加入任何計畫哦！')
                     }
-                    for(let i=0; i<data.length; i++){
-                        let pushWorkText = '';
-                        if(data[i].linebotpush){
-                            pushWorkText =data[i].project_name;
-                            bot.push(profile.userId, [pushWorkText]);
+                    else{
+                        event.reply('【以下是您的計畫】');
+                        for(let i=0; i<data.length; i++){
+                            let pushWorkText = '';
+                            if(data[i].linebotpush){
+                                pushWorkText =data[i].project_name;
+                                bot.push(profile.userId, [pushWorkText]);
+                            }
                         }
-
                     }
                 })
             }
@@ -86,15 +88,17 @@ bot.on('message', function(event) {
                     console.log(data);
                     if(data==-1){
                         console.log('come')
-                        event.reply('您可能還沒任何工作哦！')
+                        event.reply('您可能還沒任何工作哦！');
                     }
-                    for(let i=0; i<data.length; i++){
-                        let pushWorkText = '';
-                        if(data[i].work_hint){
-                            pushWorkText =data[i].work_title;
-                            bot.push(profile.userId, [pushWorkText]);
+                    else{
+                        event.reply('【以下是您的工作】');
+                        for(let i=0; i<data.length; i++){
+                            let pushWorkText = '';
+                            if(data[i].work_hint){
+                                pushWorkText ='〖'+data[i].work_title+'】';
+                                bot.push(profile.userId, [pushWorkText]);
+                            }
                         }
-
                     }
                 })
             }
@@ -103,34 +107,38 @@ bot.on('message', function(event) {
                     console.log('index');
                     console.log(data);
                     if(data==-1){
-                        console.log('come')
-                        event.reply('您可能還沒任何工作哦！')
+                        event.reply('您可能還沒任何計畫快到期哦！');
                     }
-                    for(let i=0; i<data.length; i++){
-                        let pushWorkText = '';
-                        if(data[i].linebotpush){
-                            var dateBegin = new Date(data[i].project_enddate);//将-转化为/，使用new Date
-                            console.log(dateBegin);
-                            var dateEnd = new Date(Date.now() + (8 * 60 * 60 * 1000));//获取当前时间
-                            console.log(dateEnd);
-                            var dateDiff = dateBegin.getTime() - dateEnd.getTime();//时间差的毫秒数
-                            var dayDiff = Math.floor(dateDiff / (24 * 3600 * 1000));//计算出相差天数
-                            var leave1=dateDiff%(24*3600*1000)    //计算天数后剩余的毫秒数
-                            var hours=Math.floor(leave1/(3600*1000))//计算出小时数
-                            //计算相差分钟数
-                            var leave2=leave1%(3600*1000)    //计算小时数后剩余的毫秒数
-                            var minutes=Math.floor(leave2/(60*1000))//计算相差分钟数
-                            //计算相差秒数
-                            var leave3=leave2%(60*1000)      //计算分钟数后剩余的毫秒数
-                            var seconds=Math.round(leave3/1000)
-                            console.log(" 相差 "+dayDiff+"天 "+hours+"小时 "+minutes+" 分钟"+seconds+" 秒")
-                            if(hours<3 && hours>=0){
-                                x=myFunction.SeparateDate(data[i].project_enddate)
-                                pushWorkText =data[i].project_name+x[0];
-                                bot.push(profile.userId, [pushWorkText]);
+                    else{
+                        event.reply('【以下是您快到期的計畫】')
+                        for(let i=0; i<data.length; i++){
+                            let pushWorkText = '';
+                            if(data[i].linebotpush){
+                                var dateBegin = new Date(data[i].project_enddate);//将-转化为/，使用new Date
+                                console.log(dateBegin);
+                                var dateEnd = new Date(Date.now() + (8 * 60 * 60 * 1000));//获取当前时间
+                                console.log(dateEnd);
+                                var dateDiff = dateBegin.getTime() - dateEnd.getTime();//时间差的毫秒数
+                                var dayDiff = Math.floor(dateDiff / (24 * 3600 * 1000));//计算出相差天数
+                                var leave1=dateDiff%(24*3600*1000)    //计算天数后剩余的毫秒数
+                                var hours=Math.floor(leave1/(3600*1000))//计算出小时数
+                                //计算相差分钟数
+                                var leave2=leave1%(3600*1000)    //计算小时数后剩余的毫秒数
+                                var minutes=Math.floor(leave2/(60*1000))//计算相差分钟数
+                                //计算相差秒数
+                                var leave3=leave2%(60*1000)      //计算分钟数后剩余的毫秒数
+                                var seconds=Math.round(leave3/1000)
+                                console.log(" 相差 "+dayDiff+"天 "+hours+"小时 "+minutes+" 分钟"+seconds+" 秒")
+                                if(hours<5 && hours>=0){
+                                    date=myFunction.SeparateDate(data[i].project_enddate)
+                                    pushWorkText ='專案名稱'+'\n'+
+                                                    +'〖'+ data[i].project_name +'】'+'\n'+
+                                                    '結束時間:'+date[0] + '/' + date[1] + '/' + date[2] + ' ' +
+                                                    date[3] + ':' + date[4] + ':' + date[5];
+                                    bot.push(profile.userId, [pushWorkText]);
+                                }
                             }
                         }
-
                     }
                 })
             }	
