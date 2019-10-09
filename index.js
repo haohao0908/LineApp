@@ -65,7 +65,7 @@ bot.on('unfollow', function (event) {
 bot.on('message', function(event) {
     event.source.profile().then(
         function (profile) {
-            if(event.message.text=="#查詢計畫" || event.message.text=="#查詢計劃" || event.message.text=="#查詢專案"){
+            if(event.message.text=="#我的計畫" || event.message.text=="#我的計劃" || event.message.text=="#我的專案"){
                 Messenge.MessengeSelectSearch(profile.userId).then(data =>{
                     if(data==-1){
                         event.reply('您可能還沒加入任何計畫哦！')
@@ -102,7 +102,7 @@ bot.on('message', function(event) {
                     }
                 })
             }
-            if(event.message.text=="#快到期的計畫" || event.message.text=="#快到期計畫" || event.message.text=="#快到期的計劃" || event.message.text=="##快到期計劃" ){
+            if(event.message.text=="#快到期計畫" || event.message.text=="#快到期計劃" || event.message.text=="##快到期專案" ){
                 Messenge.MessengeSelectSearch(profile.userId).then(data =>{
                     console.log('index');
                     console.log(data);
