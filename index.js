@@ -65,9 +65,12 @@ bot.on('unfollow', function (event) {
 bot.on('message', function(event) {
     event.source.profile().then(
         function (profile) {
-            if(event.message.text=="#查詢計畫"){
+            if(event.message.text=="#查詢計畫" || event.message.text=="#查詢計劃" ){
                 event.reply('以下是你擁有的計畫名稱')
                 Messenge.MessengeSelectSearch(profile.userId).then(data =>{
+                    if(data==-1){
+                        event.reply('以下是你擁有的計畫名稱')
+                    }
                     for(let i=0; i<data.length; i++){
                         let pushWorkText = '';
                         if(data[i].linebotpush){
