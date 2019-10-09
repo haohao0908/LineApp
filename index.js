@@ -125,7 +125,8 @@ bot.on('message', function(event) {
                             var seconds=Math.round(leave3/1000)
                             console.log(" 相差 "+dayDiff+"天 "+hours+"小时 "+minutes+" 分钟"+seconds+" 秒")
                             if(hours<3 && hours>=0){
-                                pushWorkText =data[i].work_title+data[i].project_enddate;
+                                x=myFunction.SeparateDate(data[i].project_enddate)
+                                pushWorkText =data[i].project_name+x;
                                 bot.push(profile.userId, [pushWorkText]);
                             }
                         }
