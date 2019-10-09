@@ -68,14 +68,13 @@ bot.on('message', function(event) {
             if(event.message.text=="#查詢計畫"){
                 event.reply('以下是你擁有的計畫名稱')
                 Messenge.MessengeSelectSearch(profile.userId).then(data =>{
-                    console.log('data')
-                    console.log(data);
                     for(let i=0; i<data.length; i++){
-                        console.log('data.project_id');
-                        console.log(data[i].project_id);
-                        event.reply([
-                            {'type':'text', 'text':data[i].project_id}
-                        ]);
+                        let pushWorkText = '';
+                        if(true){
+                            pushWorkText =data[i].project_name;
+                            bot.push(profile.userId, [pushWorkText]);
+                        }
+
                     }
                 })
                 // return event.reply('你好, ' + profile.displayName + '. 你的編號是:' + profile.userId + ', 你的回應是:' +  event.message.text);

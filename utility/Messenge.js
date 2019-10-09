@@ -9,7 +9,7 @@ var MessengeSelectSearch = async function(id){
     //存放結果
     let result;  
     //讀取資料庫
-    await query('SELECT team.user_id,team.project_id FROM teammember as team WHERE user_id=$1', [id])
+    await query('SELECT team.user_id,project_name FROM teammember as team INNER JOIN project ON(team.project_id=project.project_id) WHERE user_id=$1', [id])
         .then((data) => {
             if(data.rows.length > 0){
                 result = data.rows;  //學生資料(物件)
