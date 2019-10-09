@@ -97,6 +97,38 @@ bot.on('message', function(event) {
 
                     }
                 })
+            }
+            if(event.message.text=="#快到期的計畫" || event.message.text=="#快到期計畫" ){
+                Messenge.MessengeSelectSearch(profile.userId).then(data =>{
+                    console.log('index');
+                    console.log(data);
+                    if(data==-1){
+                        console.log('come')
+                        event.reply('您可能還沒任何工作哦！')
+                    }
+                    for(let i=0; i<data.length; i++){
+                        let pushWorkText = '';
+                        if(data[i].work_hint){
+                            var dateBegin = new Date(data[i].project_enddate.replace(/-/g, "/"));//将-转化为/，使用new Date
+                            var dateEnd = new Date(Date.now() + (8 * 60 * 60 * 1000));//获取当前时间
+                            var dateDiff = dateEnd.getTime() - dateBegin.getTime();//时间差的毫秒数
+                            var dayDiff = Math.floor(dateDiff / (24 * 3600 * 1000));//计算出相差天数
+                            var leave1=dateDiff%(24*3600*1000)    //计算天数后剩余的毫秒数
+                            var hours=Math.floor(leave1/(3600*1000))//计算出小时数
+                            //计算相差分钟数
+                            var leave2=leave1%(3600*1000)    //计算小时数后剩余的毫秒数
+                            var minutes=Math.floor(leave2/(60*1000))//计算相差分钟数
+                            //计算相差秒数
+                            var leave3=leave2%(60*1000)      //计算分钟数后剩余的毫秒数
+                            var seconds=Math.round(leave3/1000)
+                            if(hours<3 && hours>0){
+                                pushWorkText =data[i].work_title+data[i].project_enddate;
+                                bot.push(profile.userId, [pushWorkText]);
+                            }
+                        }
+
+                    }
+                })
             }	
         }
     );
@@ -105,7 +137,7 @@ bot.on('message', function(event) {
 // 更新資料
 //--------------------------------
 function UpdateAllWorkData() {
-    Admin.AdminMessengePushJdge().then(data => {
+    Admin.MessengeSearchTimeOut().then(data => {
     clearTimeout(updataData);
         allWorkData = [];
         stringAllWorkData = [];
@@ -125,9 +157,29 @@ function UpdateAllWorkData() {
     })
     let updataData = setInterval(UpdateAllWorkData, 600000);
 }
-
+function UpdateAllProjectData() {
+    Admin.AdminMessengePushJdge().then(data => {
+    clearTimeout(updataData);
+        allProjectData = [];
+        stringAllProjectData = [];
+        for (let a = 0; a < data.length; a++) {
+            let project_enddate = myFunction.SeparateDate(data[a].project_enddate + '')
+            let ProjectData = {
+                user_id: data[a].user_id,
+                linebotpush: data[a].linebotpush,
+                project_name: data[a].project_name,
+                project_enddate: project_enddate,
+            }
+            if (!stringAllWorkData.includes(JSON.stringify(ProjectData))) {
+                stringAllWorkData.push(JSON.stringify(ProjectData))
+                allWorkData.push(ProjectData)
+            }
+        }
+    })
+    let updataData = setInterval(UpdateAllProjectData, 1000);
+}
 UpdateAllWorkData();
-
+UpdateAllProjectData();
 //--------------------------------
 // 推播資料
 //--------------------------------
