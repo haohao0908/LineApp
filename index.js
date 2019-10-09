@@ -66,7 +66,6 @@ bot.on('message', function(event) {
     event.source.profile().then(
         function (profile) {
             if(event.message.text=="#查詢計畫" || event.message.text=="#查詢計劃" ){
-                event.reply('以下是你擁有的計畫名稱')
                 Messenge.MessengeSelectSearch(profile.userId).then(data =>{
                     if(data==-1){
                         event.reply('您可能還沒加入任何計畫哦！')
@@ -82,9 +81,11 @@ bot.on('message', function(event) {
                 })
             }
             if(event.message.text=="#我的工作" || event.message.text=="#我得工作" ){
-                event.reply('以下是屬於您的工作')
                 Messenge.WorkSelectSearch(profile.userId).then(data =>{
+                    console.log('index');
+                    console.log(data);
                     if(data==-1){
+                        console.log('come')
                         event.reply('您可能還沒任何工作哦！')
                     }
                     for(let i=0; i<data.length; i++){
