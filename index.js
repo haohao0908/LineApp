@@ -75,7 +75,7 @@ bot.on('message', function(event) {
                         for(let i=0; i<data.length; i++){
                             let pushWorkText = '';
                             if(data[i].linebotpush){
-                                pushWorkText =data[i].project_name;
+                                pushWorkText ='【'+data[i].project_name+'】';
                                 bot.push(profile.userId, [pushWorkText]);
                             }
                         }
