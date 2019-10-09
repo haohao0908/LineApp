@@ -108,7 +108,7 @@ bot.on('message', function(event) {
                     }
                     for(let i=0; i<data.length; i++){
                         let pushWorkText = '';
-                        if(data[i].work_hint){
+                        if(data[i].linebotpush){
                             var dateBegin = new Date(data[i].project_enddate.replace(/-/g, "/"));//将-转化为/，使用new Date
                             console.log(dateBegin);
                             var dateEnd = new Date(Date.now() + (8 * 60 * 60 * 1000));//获取当前时间
