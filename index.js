@@ -71,7 +71,7 @@ bot.on('message', function(event) {
                         event.reply('您可能還沒加入任何計畫哦！')
                     }
                     else{
-                        event.reply('【以下是您的計畫】');
+                        event.reply('『以下是您的計畫』');
                         for(let i=0; i<data.length; i++){
                             let pushWorkText = '';
                             if(data[i].linebotpush){
@@ -91,11 +91,11 @@ bot.on('message', function(event) {
                         event.reply('您可能還沒任何工作哦！');
                     }
                     else{
-                        event.reply('【以下是您的工作】');
+                        event.reply('『以下是您的工作』');
                         for(let i=0; i<data.length; i++){
                             let pushWorkText = '';
                             if(data[i].work_hint){
-                                pushWorkText ='〖'+data[i].work_title+'】';
+                                pushWorkText ='【'+data[i].work_title+'】';
                                 bot.push(profile.userId, [pushWorkText]);
                             }
                         }
