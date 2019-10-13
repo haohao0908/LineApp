@@ -105,13 +105,13 @@ bot.on('message', function(event) {
                                 pushWorkText.push({
                                     "title": "【您的計畫】",
                                     "text": data[i].project_name,
-                                    // "actions": [
-                                    //     {
-                                    //         "type": "uri",
-                                    //         "label": "查看網站",
-                                    //         "uri": "https://zh.wikipedia.org/wiki/星夜"
-                                    //     }
-                                    // ]
+                                    "actions": [
+                                        {
+                                            "type": "uri",
+                                            "label": "查看網站",
+                                            "uri": "https://zh.wikipedia.org/wiki/星夜"
+                                        }
+                                    ]
                                 });    
                             }
                         }
