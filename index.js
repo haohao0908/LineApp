@@ -61,198 +61,135 @@ bot.on('unfollow', function (event) {
         }
     });
 });
-bot.on('message', function (event) {
-    event.reply(
-        {
-            "type": "template",
-            "altText": "這是一個輪播樣板",
-            "template": {
-                "type": "carousel",
-                "columns": [
-                    {
-                      "title": "星夜",
-                      "text": "荷蘭後印象派畫家文森特·梵谷於1890年在法國聖雷米的一家精神病院裏創作的一幅著名油畫",
-                      "actions": [
-                          {
-                              "type": "uri",
-                              "label": "查看網站",
-                              "uri": "https://zh.wikipedia.org/wiki/星夜"
-                          }
-                      ]
-                    }
-                ],
-                "imageAspectRatio": "rectangle",
-                "imageSize": "cover"
-            }
-        }
-        //{
-    //     "type": "flex",
-    //     "altText": "予約票", //Reservation
-    //     "contents": {
-    //       "type": "bubble",
-    //       "body": {
-    //         "type": "box",
-    //         "layout": "vertical",
-    //         "spacing": "xl",
-    //         "contents": [
-    //           {
-    //             "type": "text",
-    //             "text": "予約票", //Reservation
-    //             "align": "center",
-    //             "size": "xl",
-    //             "color": "#1DB446"
-    //           },
-    //           {
-    //             "type": "separator"
-    //           },
-    //           {
-    //             "type": "box",
-    //             "layout": "horizontal",
-    //             "contents": [
-    //               {
-    //                 "type": "box",
-    //                 "layout": "vertical",
-    //                 "flex": 8,
-    //                 "spacing": "sm",
-    //                 "contents": [
-    //                   {
-    //                     "type": "text",
-    //                     "text": "10年後の仕事図鑑",  // Book title (The map of professions for 10 years later)
-    //                     "weight": "bold"
-    //                   },
-    //                   {
-    //                     "type": "text",
-    //                     "text": "順番：191/233", // Order
-    //                     "size": "xs",
-    //                     "color": "#aaaaaa"
-    //                   }
-    //                 ]
-    //               }
-    //             ]
-    //           }
-    //         ]
-    //       }
-    //     }
-    //   }
-    )
-})
+// bot.on('message', function (event) {
+//     event.reply(
+//         {
+//             "type": "template",
+//             "altText": "這是一個輪播樣板",
+//             "template": {
+//                 "type": "carousel",
+//                 "columns": [
+//                     {
+//                       "title": "星夜",
+//                       "text": "荷蘭後印象派畫家文森特·梵谷於1890年在法國聖雷米的一家精神病院裏創作的一幅著名油畫",
+//                       "actions": [
+//                           {
+//                               "type": "uri",
+//                               "label": "查看網站",
+//                               "uri": "https://zh.wikipedia.org/wiki/星夜"
+//                           }
+//                       ]
+//                     }
+//                 ],
+//                 "imageAspectRatio": "rectangle",
+//                 "imageSize": "cover"
+//             }
+//         }
+//     )
+// })
 //========================================
 // 機器人接受訊息的處理
 //========================================
-// bot.on('message', function(event) {
-//     event.source.profile().then(
-//         function (profile) {
-//             if(event.message.text=="#我的計畫" || event.message.text=="#我的計劃" || event.message.text=="#我的專案"){
-//                 Messenge.MessengeSelectSearch(profile.userId).then(data =>{
-//                     if(data==-1){
-//                         event.reply('您可能還沒加入任何計畫哦！')
-//                     }
-//                     else{
-//                         // event.reply('『以下是您的計畫』');
-//                         // for(let i=0; i<data.length; i++){
-//                             let pushWorkText = '';
-//                             // if(data[i].linebotpush){
-//                                 console.log('here')
-//                                 event.reply(
-//                                     {
-//                                         "type": "bubble",
-//                                         "body": {
-//                                           "type": "box",
-//                                           "layout": "horizontal",
-//                                           "contents": [
-//                                             {
-//                                               "type": "image",
-//                                               "url": "https://example.com/flex/images/image.jpg"
-//                                             },
-//                                             {
-//                                               "type": "text",
-//                                               "text": "top",
-//                                               "gravity": "top"
-//                                             },
-//                                             {
-//                                               "type": "text",
-//                                               "text": "center",
-//                                               "gravity": "center"
-//                                             },
-//                                             {
-//                                               "type": "text",
-//                                               "text": "bottom",
-//                                               "gravity": "bottom"
-//                                             }
-//                                           ]
-//                                         }
-//                                       }
-//                                 );
-//                                 // pushWorkText ='【'+data[i].project_name+'】';
-//                                 // pushWorkText =
-//                                 // bot.push(profile.userId, [pushWorkText]);
-//                             // }
-//                         // }
-//                     }
-//                 })
-//             }
-//             if(event.message.text=="#我的工作"){
-//                 Messenge.WorkSelectSearch(profile.userId).then(data =>{
-//                     console.log('index');
-//                     console.log(data);
-//                     if(data==-1){
-//                         console.log('come')
-//                         event.reply('您可能還沒任何工作哦！');
-//                     }
-//                     else{
-//                         event.reply('『以下是您的工作』');
-//                         for(let i=0; i<data.length; i++){
-//                             let pushWorkText = '';
-//                             if(data[i].work_hint){
-//                                 pushWorkText ='【'+data[i].work_title+'】';
-//                                 bot.push(profile.userId, [pushWorkText]);
-//                             }
-//                         }
-//                     }
-//                 })
-//             }
-//             if(event.message.text=="#快到期計畫" || event.message.text=="#快到期計劃" || event.message.text=="##快到期專案" ){
-//                 Messenge.MessengeSelectSearch(profile.userId).then(data =>{
-//                     console.log('index');
-//                     console.log(data);
-//                     if(data==-1){
-//                         event.reply('您可能還沒任何計畫快到期哦！');
-//                     }
-//                     else{
-//                         for(let i=0; i<data.length; i++){
-//                             let pushWorkText = '';
-//                             if(data[i].linebotpush){
-//                                 var dateBegin = new Date(data[i].project_enddate);//将-转化为/，使用new Date
-//                                 console.log(dateBegin);
-//                                 var dateEnd = new Date(Date.now() + (8 * 60 * 60 * 1000));//获取当前时间
-//                                 console.log(dateEnd);
-//                                 var dateDiff = dateBegin.getTime() - dateEnd.getTime();//时间差的毫秒数
-//                                 var dayDiff = Math.floor(dateDiff / (24 * 3600 * 1000));//计算出相差天数
-//                                 var leave1=dateDiff%(24*3600*1000)    //计算天数后剩余的毫秒数
-//                                 var hours=Math.floor(leave1/(3600*1000))//计算出小时数
-//                                 //计算相差分钟数
-//                                 var leave2=leave1%(3600*1000)    //计算小时数后剩余的毫秒数
-//                                 var minutes=Math.floor(leave2/(60*1000))//计算相差分钟数
-//                                 //计算相差秒数
-//                                 var leave3=leave2%(60*1000)      //计算分钟数后剩余的毫秒数
-//                                 var seconds=Math.round(leave3/1000)
-//                                 console.log(" 相差 "+dayDiff+"天 "+hours+"小时 "+minutes+" 分钟"+seconds+" 秒")
-//                                 if(hours<5 && hours>=0){
-//                                     date=myFunction.SeparateDate(data[i].project_enddate)
-//                                     pushWorkText ='專案名稱'+'\n'+
-//                                                     +'〖'+ data[i].project_name +'】'+'\n'+
-//                                                     '結束時間:'+date[0] + '/' + date[1] + '/' + date[2] + ' ' +
-//                                                     date[3] + ':' + date[4] + ':' + date[5];
-//                                     bot.push(profile.userId, [pushWorkText]);
-//                                 }
-//                             }
-//                         }
-//                     }
-//                 })
-//             }	
-//         }
-//     );
-// });
+bot.on('message', function(event) {
+    event.source.profile().then(
+        function (profile) {
+            if(event.message.text=="#我的計畫" || event.message.text=="#我的計劃" || event.message.text=="#我的專案"){
+                Messenge.MessengeSelectSearch(profile.userId).then(data =>{
+                    if(data==-1){
+                        event.reply('您可能還沒加入任何計畫哦！')
+                    }
+                    else{
+                        for(let i=0; i<data.length; i++){
+                            let pushWorkText = [];
+                            if(data[i].linebotpush){
+                                pushWorkText.push({
+                                    "title": data[i].project_name,
+                                    "text": data[i].project_name,
+                                    "actions": [
+                                        {
+                                            "type": "uri",
+                                            "label": "查看網站",
+                                            "uri": "https://zh.wikipedia.org/wiki/星夜"
+                                        }
+                                    ]
+                                });    
+                            }
+                        }
+                        event.reply({
+                            "type": "template",
+                            "altText": "這是一個輪播樣板",
+                            "template": {
+                                "type": "carousel",
+                                "columns":pushWorkText
+                            },
+                            "imageAspectRatio": "rectangle",
+                            "imageSize": "cover"    
+                        });  
+                    }
+                })
+            }
+            if(event.message.text=="#我的工作"){
+                Messenge.WorkSelectSearch(profile.userId).then(data =>{
+                    console.log('index');
+                    console.log(data);
+                    if(data==-1){
+                        console.log('come')
+                        event.reply('您可能還沒任何工作哦！');
+                    }
+                    else{
+                        event.reply('『以下是您的工作』');
+                        for(let i=0; i<data.length; i++){
+                            let pushWorkText = '';
+                            if(data[i].work_hint){
+                                pushWorkText ='【'+data[i].work_title+'】';
+                                bot.push(profile.userId, [pushWorkText]);
+                            }
+                        }
+                    }
+                })
+            }
+            if(event.message.text=="#快到期計畫" || event.message.text=="#快到期計劃" || event.message.text=="##快到期專案" ){
+                Messenge.MessengeSelectSearch(profile.userId).then(data =>{
+                    console.log('index');
+                    console.log(data);
+                    if(data==-1){
+                        event.reply('您可能還沒任何計畫快到期哦！');
+                    }
+                    else{
+                        for(let i=0; i<data.length; i++){
+                            let pushWorkText = '';
+                            if(data[i].linebotpush){
+                                var dateBegin = new Date(data[i].project_enddate);//将-转化为/，使用new Date
+                                console.log(dateBegin);
+                                var dateEnd = new Date(Date.now() + (8 * 60 * 60 * 1000));//获取当前时间
+                                console.log(dateEnd);
+                                var dateDiff = dateBegin.getTime() - dateEnd.getTime();//时间差的毫秒数
+                                var dayDiff = Math.floor(dateDiff / (24 * 3600 * 1000));//计算出相差天数
+                                var leave1=dateDiff%(24*3600*1000)    //计算天数后剩余的毫秒数
+                                var hours=Math.floor(leave1/(3600*1000))//计算出小时数
+                                //计算相差分钟数
+                                var leave2=leave1%(3600*1000)    //计算小时数后剩余的毫秒数
+                                var minutes=Math.floor(leave2/(60*1000))//计算相差分钟数
+                                //计算相差秒数
+                                var leave3=leave2%(60*1000)      //计算分钟数后剩余的毫秒数
+                                var seconds=Math.round(leave3/1000)
+                                console.log(" 相差 "+dayDiff+"天 "+hours+"小时 "+minutes+" 分钟"+seconds+" 秒")
+                                if(hours<5 && hours>=0){
+                                    date=myFunction.SeparateDate(data[i].project_enddate)
+                                    pushWorkText ='專案名稱'+'\n'+
+                                                    +'〖'+ data[i].project_name +'】'+'\n'+
+                                                    '結束時間:'+date[0] + '/' + date[1] + '/' + date[2] + ' ' +
+                                                    date[3] + ':' + date[4] + ':' + date[5];
+                                    bot.push(profile.userId, [pushWorkText]);
+                                }
+                            }
+                        }
+                    }
+                })
+            }	
+        }
+    );
+});
 //--------------------------------
 // 更新資料
 //--------------------------------
