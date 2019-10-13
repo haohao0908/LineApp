@@ -103,7 +103,7 @@ bot.on('message', function(event) {
                         for(let i=0; i<data.length; i++){
                             if(data[i].linebotpush){
                                 pushWorkText.push({
-                                    "title": data[i].project_name,
+                                    "title": "【您的計畫】",
                                     "text": data[i].project_name,
                                     "actions": [
                                         {
@@ -114,8 +114,6 @@ bot.on('message', function(event) {
                                     ]
                                 });    
                             }
-                            console.log('here')
-                            console.log(pushWorkText);
                         }
                         event.reply({
                             "type": "template",
