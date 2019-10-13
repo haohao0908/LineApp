@@ -64,67 +64,72 @@ bot.on('unfollow', function (event) {
 bot.on('message', function (event) {
     event.reply(
         {
-            "type": "flex",
-            "altText": "予約票",
-            "contents": {
-                "type": "bubble",
-                "body": {
-                  "type": "box",
-                  "layout": "vertical",
-                  "spacing": "xl",
-                  "contents": [
+            "type": "template",
+            "altText": "這是一個輪播樣板",
+            "template": {
+                "type": "carousel",
+                "columns": [
                     {
-                      "type": "text",
-                      "text": "予約票", //Reservation
-                      "align": "center",
-                      "size": "xl",
-                      "color": "#1DB446"
+                      "thumbnailImageUrl": "https://tomlin-app-1.herokuapp.com/imgs/p01.jpg",
+                      "imageBackgroundColor": "#FFFFFF",
+                      "title": "星夜",
+                      "text": "荷蘭後印象派畫家文森特·梵谷於1890年在法國聖雷米的一家精神病院裏創作的一幅著名油畫",
+                      "defaultAction": {
+                          "type": "uri",
+                          "label": "詳細資料",
+                          "uri": "https://zh.wikipedia.org/wiki/星夜"
+                      },
+                      "actions": [
+                          {
+                              "type": "postback",
+                              "label": "買了",
+                              "data": "action=buy&itemid=111"
+                          },
+                          {
+                              "type": "postback",
+                              "label": "加入購物車",
+                              "data": "action=add&itemid=111"
+                          },
+                          {
+                              "type": "uri",
+                              "label": "詳細資料",
+                              "uri": "https://zh.wikipedia.org/wiki/星夜"
+                          }
+                      ]
                     },
                     {
-                      "type": "separator"
-                    },
-                    {
-                      "type": "box",
-                      "layout": "horizontal",
-                      "contents": [
+                      "thumbnailImageUrl": "https://tomlin-app-1.herokuapp.com/imgs/p02.jpg",
+                      "imageBackgroundColor": "#000000",
+                      "title": "向日葵",
+                      "text": "荷蘭畫家梵谷繪畫的一系列靜物油畫。當中有2幅繪有15朵向日葵，與1幅繪有十四朵向日葵，另有兩幅繪有12朵向日葵。",
+                      "defaultAction": {
+                          "type": "uri",
+                          "label": "詳細資料",
+                          "uri": "https://zh.wikipedia.org/wiki/向日葵_(梵高)"
+                      },
+                      "actions": [
                         {
-                          "type": "box",
-                          "layout": "vertical",
-                          "flex": 8,
-                          "spacing": "sm",
-                          "contents": [
-                            {
-                              "type": "text",
-                              "text": "10年後の仕事図鑑",  // Book title (The map of professions for 10 years later)
-                              "weight": "bold"
-                            },
-                            {
-                              "type": "text",
-                              "text": "順番：191/233", // Order
-                              "size": "xs",
-                              "color": "#aaaaaa"
-                            }
-                          ]
+                            "type": "postback",
+                            "label": "買了",
+                            "data": "action=buy&itemid=222"
                         },
                         {
-                          "type": "button",
-                          "style": "primary",
-                          "color": "#ff0000",
-                          "flex": 2,
-                          "height": "sm",
-                          "action": {
                             "type": "postback",
-                            "label": "X",
-                            "displayText": "10年後の仕事図鑑をキャンセル",   // Cancel the book (The map of professions for 10 years later)
-                            "data": "{\"_type\":\"intent\",\"intent\":{\"name\":\"cancel-reservation\",\"parameters\":{\"reservation_number\":\"1 \"}}}"
+                            "label": "加入購物車",
+                            "data": "action=add&itemid=222"
+                        },
+                          {
+                              "type": "uri",
+                              "label": "詳細資料",
+                              "uri": "https://zh.wikipedia.org/wiki/向日葵_(梵高)"
                           }
-                        }
                       ]
                     }
-                  ]
-                }
-              }
-          }
+                ],
+                "imageAspectRatio": "rectangle",
+                "imageSize": "cover"
+            }
+        }
         //{
     //     "type": "flex",
     //     "altText": "予約票", //Reservation
