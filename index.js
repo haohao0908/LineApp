@@ -66,46 +66,7 @@ bot.on('message', function (event) {
         {
             "type": "flex",
             "altText": "組長提醒：",
-            "contents": {
-              "type": "bubble",
-              "body": {
-                "type": "box",
-                "layout": "vertical",
-                "spacing": "md",
-                "contents": [
-                  {
-                    "type": "box",
-                    "layout": "vertical",
-                    "contents": [
-                      {
-                        "type": "text",
-                        "text": "組長提醒",
-                        "align": "center",
-                        "size": "xxl",
-                        "weight": "bold"
-                      },
-                      {
-                        "type": "text",
-                        "text": "我說者是測試ㄉㄜ資料哦哦哦哦哦哦",
-                        "wrap": true,
-                        "weight": "bold",
-                        "margin": "lg"
-                      }
-                    ]
-                  },
-                  {
-                    "type": "separator"
-                  },
-                  {
-                    "type": "text",
-                    "text": "結束時間：2019/08/15 12:05:04",
-                    "wrap": true,
-                    "weight": "bold",
-                    "margin": "lg"
-                  }
-                ]
-              }
-            }
+            "contents": 
           }
     )
 })
@@ -288,7 +249,7 @@ let push = setInterval(function () {
     nowDateArray[3] += 8;
     for (let allDataIndex = 0; allDataIndex < allWorkData.length; allDataIndex++) {
         let adminpush_enddate = allWorkData[allDataIndex].adminpush_enddate;
-        let pushWorkText = '';
+        let pushWorkText = [];
         // =================================專案提醒判斷================================
         // 在5個小時前
         let AdminPushTime_5h = myFunction.BeforeDate(adminpush_enddate, [0, 0, 0, 5, 0, 0]);
@@ -319,13 +280,61 @@ let push = setInterval(function () {
 
         if (AdminPushMessage_1h || AdminPushMessage_3h || AdminPushMessage_5h) {
             console.log('可以推波囉 正確進入了');
-            pushWorkText =
-                '組長提醒事項' + '\n' + '【' + allWorkData[allDataIndex].adminpush_content + '】' + '\n' + '結束時間:' +
-                adminpush_enddate[0] + '/' + adminpush_enddate[1] + '/' + adminpush_enddate[2] + ' ' +
-                adminpush_enddate[3] + ':' + adminpush_enddate[4] + ':' + adminpush_enddate[5];
+            pushWorkText.push(
+                {
+                "type": "bubble",
+                "body": {
+                  "type": "box",
+                  "layout": "vertical",
+                  "spacing": "md",
+                  "contents": [
+                    {
+                      "type": "box",
+                      "layout": "vertical",
+                      "contents": [
+                        {
+                          "type": "text",
+                          "text": "組長提醒",
+                          "align": "center",
+                          "size": "xxl",
+                          "weight": "bold"
+                        },
+                        {
+                          "type": "text",
+                          "text": allWorkData[allDataIndex].adminpush_content,
+                          "wrap": true,
+                          "weight": "bold",
+                          "margin": "lg"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "separator"
+                    },
+                    {
+                      "type": "text",
+                      "text": '結束時間:' +
+                      adminpush_enddate[0] + '/' + adminpush_enddate[1] + '/' + adminpush_enddate[2] + ' ' +
+                      adminpush_enddate[3] + ':' + adminpush_enddate[4] + ':' + adminpush_enddate[5],
+                      "wrap": true,
+                      "weight": "bold",
+                      "margin": "lg"
+                    }
+                  ]
+                }
+              }
+              )
+            // pushWorkText =
+            //     '組長提醒事項' + '\n' + '【' + allWorkData[allDataIndex].adminpush_content + '】' + '\n' + '結束時間:' +
+            //     adminpush_enddate[0] + '/' + adminpush_enddate[1] + '/' + adminpush_enddate[2] + ' ' +
+            //     adminpush_enddate[3] + ':' + adminpush_enddate[4] + ':' + adminpush_enddate[5];
             if (allWorkData[allDataIndex].linebotpush) {
                 userId = allWorkData[allDataIndex].user_id;
-                bot.push(userId, [pushWorkText]);
+                bot.push(userId,{
+                    "type": "flex",
+                    "altText": "組長提醒：",
+                    "contents":pushWorkText 
+                  });
             }
         }
     }
