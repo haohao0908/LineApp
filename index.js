@@ -65,34 +65,64 @@ bot.on('message', function (event) {
     event.reply(
         {
             "type": "carousel",
-            "contents": [
-              {
+            "contents": {
                 "type": "bubble",
                 "body": {
                   "type": "box",
                   "layout": "vertical",
+                  "spacing": "xl",
                   "contents": [
                     {
                       "type": "text",
-                      "text": "First bubble"
-                    }
-                  ]
-                }
-              },
-              {
-                "type": "bubble",
-                "body": {
-                  "type": "box",
-                  "layout": "vertical",
-                  "contents": [
+                      "text": "予約票", //Reservation
+                      "align": "center",
+                      "size": "xl",
+                      "color": "#1DB446"
+                    },
                     {
-                      "type": "text",
-                      "text": "Second bubble"
+                      "type": "separator"
+                    },
+                    {
+                      "type": "box",
+                      "layout": "horizontal",
+                      "contents": [
+                        {
+                          "type": "box",
+                          "layout": "vertical",
+                          "flex": 8,
+                          "spacing": "sm",
+                          "contents": [
+                            {
+                              "type": "text",
+                              "text": "10年後の仕事図鑑",  // Book title (The map of professions for 10 years later)
+                              "weight": "bold"
+                            },
+                            {
+                              "type": "text",
+                              "text": "順番：191/233", // Order
+                              "size": "xs",
+                              "color": "#aaaaaa"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "button",
+                          "style": "primary",
+                          "color": "#ff0000",
+                          "flex": 2,
+                          "height": "sm",
+                          "action": {
+                            "type": "postback",
+                            "label": "X",
+                            "displayText": "10年後の仕事図鑑をキャンセル",   // Cancel the book (The map of professions for 10 years later)
+                            "data": "{\"_type\":\"intent\",\"intent\":{\"name\":\"cancel-reservation\",\"parameters\":{\"reservation_number\":\"1 \"}}}"
+                          }
+                        }
+                      ]
                     }
                   ]
                 }
               }
-            ]
           }
         //{
     //     "type": "flex",
