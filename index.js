@@ -63,7 +63,7 @@ bot.on('unfollow', function (event) {
 });
 bot.on('message', function (event) {
     event.reply({
-        "type": "flex",
+        "type": "carousel",
         "altText": "予約票", //Reservation
         "contents": {
           "type": "bubble",
