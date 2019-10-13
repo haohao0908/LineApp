@@ -64,7 +64,7 @@ bot.on('unfollow', function (event) {
 bot.on('message', function (event) {
     event.reply(
         {
-            "type": "carousel",
+            "type": "flex",
             "contents": {
                 "type": "bubble",
                 "body": {
