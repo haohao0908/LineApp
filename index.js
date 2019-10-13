@@ -114,6 +114,7 @@ bot.on('message', function(event) {
                                     ]
                                 });    
                             }
+                            console.log('here')
                             console.log(pushWorkText);
                         }
                         event.reply({
