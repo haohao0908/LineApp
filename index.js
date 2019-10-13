@@ -80,37 +80,72 @@ bot.on('message', function(event) {
                                 console.log('here')
                                 event.reply({
                                     "type": "template",
-                                    "altText": "this is a image carousel template",
+                                    "altText": "this is a carousel template",
                                     "template": {
-                                        "type": "image_carousel",
+                                        "type": "carousel",
                                         "columns": [
                                             {
-                                                "imageUrl": "https://tomlin-app-1.herokuapp.com/imgs/p01.jpg",
-                                                "action": {
-                                                    "type": "postback",
-                                                    "label": "星夜",
-                                                    "data": "1"
-                                                }
+                                              "thumbnailImageUrl": "https://example.com/bot/images/item1.jpg",
+                                              "imageBackgroundColor": "#FFFFFF",
+                                              "title": "this is menu",
+                                              "text": "description",
+                                              "defaultAction": {
+                                                  "type": "uri",
+                                                  "label": "View detail",
+                                                  "uri": "http://example.com/page/123"
+                                              },
+                                              "actions": [
+                                                  {
+                                                      "type": "postback",
+                                                      "label": "Buy",
+                                                      "data": "action=buy&itemid=111"
+                                                  },
+                                                  {
+                                                      "type": "postback",
+                                                      "label": "Add to cart",
+                                                      "data": "action=add&itemid=111"
+                                                  },
+                                                  {
+                                                      "type": "uri",
+                                                      "label": "View detail",
+                                                      "uri": "http://example.com/page/111"
+                                                  }
+                                              ]
                                             },
                                             {
-                                                "imageUrl": "https://tomlin-app-1.herokuapp.com/imgs/p02.jpg",
-                                                "action": {
-                                                    "type": "postback",
-                                                    "label": "向日葵",
-                                                    "data": "2"
-                                                }
-                                            },
-                                            {
-                                                "imageUrl": "https://tomlin-app-1.herokuapp.com/imgs/p03.jpg",
-                                                "action": {
-                                                    "type": "postback",
-                                                    "label": "夜晚的露天咖啡座",
-                                                    "data": "3"
-                                                }
+                                              "thumbnailImageUrl": "https://example.com/bot/images/item2.jpg",
+                                              "imageBackgroundColor": "#000000",
+                                              "title": "this is menu",
+                                              "text": "description",
+                                              "defaultAction": {
+                                                  "type": "uri",
+                                                  "label": "View detail",
+                                                  "uri": "http://example.com/page/222"
+                                              },
+                                              "actions": [
+                                                  {
+                                                      "type": "postback",
+                                                      "label": "Buy",
+                                                      "data": "action=buy&itemid=222"
+                                                  },
+                                                  {
+                                                      "type": "postback",
+                                                      "label": "Add to cart",
+                                                      "data": "action=add&itemid=222"
+                                                  },
+                                                  {
+                                                      "type": "uri",
+                                                      "label": "View detail",
+                                                      "uri": "http://example.com/page/222"
+                                                  }
+                                              ]
                                             }
-                                        ]
+                                        ],
+                                        "imageAspectRatio": "rectangle",
+                                        "imageSize": "cover"
                                     }
-                                });
+                                  }
+                                  );
                                 // pushWorkText ='【'+data[i].project_name+'】';
                                 // pushWorkText =
                                 // bot.push(profile.userId, [pushWorkText]);
