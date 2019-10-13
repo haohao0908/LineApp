@@ -70,15 +70,15 @@ bot.on('message', function (event) {
                 "type": "carousel",
                 "columns": [
                     {
-                      "thumbnailImageUrl": "https://tomlin-app-1.herokuapp.com/imgs/p01.jpg",
-                      "imageBackgroundColor": "#FFFFFF",
+                    //   "thumbnailImageUrl": "https://tomlin-app-1.herokuapp.com/imgs/p01.jpg",
+                    //   "imageBackgroundColor": "#FFFFFF",
                       "title": "星夜",
                       "text": "荷蘭後印象派畫家文森特·梵谷於1890年在法國聖雷米的一家精神病院裏創作的一幅著名油畫",
-                      "defaultAction": {
-                          "type": "uri",
-                          "label": "詳細資料",
-                          "uri": "https://zh.wikipedia.org/wiki/星夜"
-                      },
+                    //   "defaultAction": {
+                    //       "type": "uri",
+                    //       "label": "詳細資料",
+                    //       "uri": "https://zh.wikipedia.org/wiki/星夜"
+                    //   },
                       "actions": [
                           {
                               "type": "postback",
@@ -98,15 +98,15 @@ bot.on('message', function (event) {
                       ]
                     },
                     {
-                      "thumbnailImageUrl": "https://tomlin-app-1.herokuapp.com/imgs/p02.jpg",
-                      "imageBackgroundColor": "#000000",
+                    //   "thumbnailImageUrl": "https://tomlin-app-1.herokuapp.com/imgs/p02.jpg",
+                    //   "imageBackgroundColor": "#000000",
                       "title": "向日葵",
                       "text": "荷蘭畫家梵谷繪畫的一系列靜物油畫。當中有2幅繪有15朵向日葵，與1幅繪有十四朵向日葵，另有兩幅繪有12朵向日葵。",
-                      "defaultAction": {
-                          "type": "uri",
-                          "label": "詳細資料",
-                          "uri": "https://zh.wikipedia.org/wiki/向日葵_(梵高)"
-                      },
+                    //   "defaultAction": {
+                    //       "type": "uri",
+                    //       "label": "詳細資料",
+                    //       "uri": "https://zh.wikipedia.org/wiki/向日葵_(梵高)"
+                    //   },
                       "actions": [
                         {
                             "type": "postback",
