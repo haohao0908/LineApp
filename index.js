@@ -61,15 +61,15 @@ bot.on('unfollow', function (event) {
         }
     });
 });
-bot.on('message', function (event) {
-    event.reply(
-        {
-            "type": "flex",
-            "altText": "組長提醒：",
-            "contents": 
-          }
-    )
-})
+// bot.on('message', function (event) {
+//     event.reply(
+//         {
+//             "type": "flex",
+//             "altText": "組長提醒：",
+//             "contents": 
+//           }
+//     )
+// })
 //========================================
 // 機器人接受訊息的處理
 //========================================
