@@ -61,15 +61,56 @@ bot.on('unfollow', function (event) {
         }
     });
 });
-// bot.on('message', function (event) {
-//     event.reply(
-//         {
-//             "type": "flex",
-//             "altText": "組長提醒：",
-//             "contents": 
-//           }
-//     )
-// })
+bot.on('message', function (event) {
+    event.reply(
+        {
+            "type": "flex",
+            "altText": "組長提醒：",
+            "contents":                {
+                "type": "bubble",
+                "body": {
+                  "type": "box",
+                  "layout": "vertical",
+                  "spacing": "md",
+                  "contents": [
+                    {
+                      "type": "box",
+                      "layout": "vertical",
+                      "contents": [
+                        {
+                          "type": "text",
+                          "text": "組長提醒",
+                          "align": "center",
+                          "size": "xxl",
+                          "weight": "bold"
+                        },
+                        {
+                          "type": "text",
+                          "text": allWorkData[allDataIndex].adminpush_content,
+                          "wrap": true,
+                          "weight": "bold",
+                          "margin": "lg"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "separator"
+                    },
+                    {
+                      "type": "text",
+                      "text": '結束時間:' +
+                      adminpush_enddate[0] + '/' + adminpush_enddate[1] + '/' + adminpush_enddate[2] + ' ' +
+                      adminpush_enddate[3] + ':' + adminpush_enddate[4] + ':' + adminpush_enddate[5],
+                      "wrap": true,
+                      "weight": "bold",
+                      "margin": "lg"
+                    }
+                  ]
+                }
+              } 
+          }
+    )
+})
 //========================================
 // 機器人接受訊息的處理
 //========================================
@@ -281,48 +322,7 @@ let push = setInterval(function () {
         if (AdminPushMessage_1h || AdminPushMessage_3h || AdminPushMessage_5h) {
             console.log('可以推波囉 正確進入了');
             pushWorkText.push(
-                {
-                "type": "bubble",
-                "body": {
-                  "type": "box",
-                  "layout": "vertical",
-                  "spacing": "md",
-                  "contents": [
-                    {
-                      "type": "box",
-                      "layout": "vertical",
-                      "contents": [
-                        {
-                          "type": "text",
-                          "text": "組長提醒",
-                          "align": "center",
-                          "size": "xxl",
-                          "weight": "bold"
-                        },
-                        {
-                          "type": "text",
-                          "text": allWorkData[allDataIndex].adminpush_content,
-                          "wrap": true,
-                          "weight": "bold",
-                          "margin": "lg"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "separator"
-                    },
-                    {
-                      "type": "text",
-                      "text": '結束時間:' +
-                      adminpush_enddate[0] + '/' + adminpush_enddate[1] + '/' + adminpush_enddate[2] + ' ' +
-                      adminpush_enddate[3] + ':' + adminpush_enddate[4] + ':' + adminpush_enddate[5],
-                      "wrap": true,
-                      "weight": "bold",
-                      "margin": "lg"
-                    }
-                  ]
-                }
-              }
+
               )
             // pushWorkText =
             //     '組長提醒事項' + '\n' + '【' + allWorkData[allDataIndex].adminpush_content + '】' + '\n' + '結束時間:' +
