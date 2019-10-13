@@ -78,37 +78,38 @@ bot.on('message', function(event) {
                             let pushWorkText = '';
                             if(data[i].linebotpush){
                                 console.log('here')
-                                event.reply({
-                                    "type": "carousel",
-                                    "contents": [
-                                      {
-                                        "type": "bubble",
-                                        "body": {
-                                          "type": "box",
-                                          "layout": "vertical",
-                                          "contents": [
-                                            {
-                                              "type": "text",
-                                              "text": "First bubble"
+                                event.reply(
+                                    {
+                                        "type": "carousel",
+                                        "contents": [
+                                          {
+                                            "type": "bubble",
+                                            "body": {
+                                              "type": "box",
+                                              "layout": "vertical",
+                                              "contents": [
+                                                {
+                                                  "type": "text",
+                                                  "text": "First bubble"
+                                                }
+                                              ]
                                             }
-                                          ]
-                                        }
-                                      },
-                                      {
-                                        "type": "bubble",
-                                        "body": {
-                                          "type": "box",
-                                          "layout": "vertical",
-                                          "contents": [
-                                            {
-                                              "type": "text",
-                                              "text": "Second bubble"
+                                          },
+                                          {
+                                            "type": "bubble",
+                                            "body": {
+                                              "type": "box",
+                                              "layout": "vertical",
+                                              "contents": [
+                                                {
+                                                  "type": "text",
+                                                  "text": "Second bubble"
+                                                }
+                                              ]
                                             }
-                                          ]
-                                        }
+                                          }
+                                        ]
                                       }
-                                    ]
-                                  }
                                 );
                                 // pushWorkText ='【'+data[i].project_name+'】';
                                 // pushWorkText =
