@@ -65,7 +65,7 @@ bot.on('message', function (event) {
     event.reply(
         {
             "type": "flex",
-            "altText": "Q1. Which is the API to create chatbot?",
+            "altText": "組長提醒：",
             "contents": {
               "type": "bubble",
               "body": {
@@ -79,14 +79,14 @@ bot.on('message', function (event) {
                     "contents": [
                       {
                         "type": "text",
-                        "text": "Q1",
+                        "text": "組長提醒",
                         "align": "center",
                         "size": "xxl",
                         "weight": "bold"
                       },
                       {
                         "type": "text",
-                        "text": "Which is the API to create chatbot?",
+                        "text": "我說者是測試ㄉㄜ資料哦哦哦哦哦哦",
                         "wrap": true,
                         "weight": "bold",
                         "margin": "lg"
@@ -97,138 +97,11 @@ bot.on('message', function (event) {
                     "type": "separator"
                   },
                   {
-                    "type": "box",
-                    "layout": "vertical",
-                    "margin": "lg",
-                    "contents": [
-                      {
-                        "type": "box",
-                        "layout": "baseline",
-                        "contents": [
-                          {
-                            "type": "text",
-                            "text": "1.",
-                            "flex": 1,
-                            "size": "lg",
-                            "weight": "bold",
-                            "color": "#666666"
-                          },
-                          {
-                            "type": "text",
-                            "text": "Login API",
-                            "wrap": true,
-                            "flex": 9
-                          }
-                        ]
-                      },
-                      {
-                        "type": "box",
-                        "layout": "baseline",
-                        "contents": [
-                          {
-                            "type": "text",
-                            "text": "2.",
-                            "flex": 1,
-                            "size": "lg",
-                            "weight": "bold",
-                            "color": "#666666"
-                          },
-                          {
-                            "type": "text",
-                            "text": "Messaging API",
-                            "wrap": true,
-                            "flex": 9
-                          }
-                        ]
-                      },
-                      {
-                        "type": "box",
-                        "layout": "baseline",
-                        "contents": [
-                          {
-                            "type": "text",
-                            "text": "3.",
-                            "flex": 1,
-                            "size": "lg",
-                            "weight": "bold",
-                            "color": "#666666"
-                          },
-                          {
-                            "type": "text",
-                            "text": "Graph API",
-                            "wrap": true,
-                            "flex": 9
-                          }
-                        ]
-                      },
-                      {
-                        "type": "box",
-                        "layout": "baseline",
-                        "contents": [
-                          {
-                            "type": "text",
-                            "text": "4.",
-                            "flex": 1,
-                            "size": "lg",
-                            "weight": "bold",
-                            "color": "#666666"
-                          },
-                          {
-                            "type": "text",
-                            "text": "Cartoon API",
-                            "wrap": true,
-                            "flex": 9
-                          }
-                        ]
-                      }
-                    ]
-                  }
-                ]
-              },
-              "footer": {
-                "type": "box",
-                "layout": "horizontal",
-                "spacing": "sm",
-                "contents": [
-                  {
-                    "type": "button",
-                    "style": "primary",
-                    "height": "sm",
-                    "action": {
-                      "type": "message",
-                      "label": "1",
-                      "text": "Login API"
-                    }
-                  },
-                  {
-                    "type": "button",
-                    "style": "primary",
-                    "height": "sm",
-                    "action": {
-                      "type": "message",
-                      "label": "2",
-                      "text": "Messaging API"
-                    }
-                  },
-                  {
-                    "type": "button",
-                    "style": "primary",
-                    "height": "sm",
-                    "action": {
-                      "type": "message",
-                      "label": "3",
-                      "text": "Graph API"
-                    }
-                  },
-                  {
-                    "type": "button",
-                    "style": "primary",
-                    "height": "sm",
-                    "action": {
-                      "type": "message",
-                      "label": "4",
-                      "text": "Cartoon API"
-                    }
+                    "type": "text",
+                    "text": "結束時間：2019/08/15 12:05:04",
+                    "wrap": true,
+                    "weight": "bold",
+                    "margin": "lg"
                   }
                 ]
               }
