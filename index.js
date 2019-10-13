@@ -115,6 +115,7 @@ bot.on('message', function(event) {
                                 });    
                             }
                         }
+                        console.log(pushWorkText);
                         event.reply({
                             "type": "template",
                             "altText": "這是一個輪播樣板",
