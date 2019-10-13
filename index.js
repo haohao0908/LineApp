@@ -98,7 +98,7 @@ bot.on('message', function (event) {
                         },
                         {
                             "type": "text",
-                            "text": '結束時間:',
+                            "text": '結束時間:2019/06/03 18:10:04',
                             "wrap": true,
                             "weight": "bold",
                             "margin": "lg"
