@@ -77,29 +77,40 @@ bot.on('message', function(event) {
                         for(let i=0; i<data.length; i++){
                             let pushWorkText = '';
                             if(data[i].linebotpush){
+                                console.log('here')
                                 event.reply({
                                     "type": "template",
-                                    "altText": "this is a carousel template",
+                                    "altText": "this is a image carousel template",
                                     "template": {
-                                        "type": "carousel",
+                                        "type": "image_carousel",
                                         "columns": [
                                             {
-                                              "thumbnailImageUrl": "https://example.com/bot/images/item1.jpg",
-                                              "imageBackgroundColor": "#FFFFFF",
-                                              "title": data[i].project_name,
-                                              "text": "description",
-                                              "defaultAction": {
-                                                  "type": "uri",
-                                                  "label": "View detail",
-                                                  "uri": "http://example.com/page/123"
-                                              }
+                                                "imageUrl": "https://tomlin-app-1.herokuapp.com/imgs/p01.jpg",
+                                                "action": {
+                                                    "type": "postback",
+                                                    "label": "星夜",
+                                                    "data": "1"
+                                                }
+                                            },
+                                            {
+                                                "imageUrl": "https://tomlin-app-1.herokuapp.com/imgs/p02.jpg",
+                                                "action": {
+                                                    "type": "postback",
+                                                    "label": "向日葵",
+                                                    "data": "2"
+                                                }
+                                            },
+                                            {
+                                                "imageUrl": "https://tomlin-app-1.herokuapp.com/imgs/p03.jpg",
+                                                "action": {
+                                                    "type": "postback",
+                                                    "label": "夜晚的露天咖啡座",
+                                                    "data": "3"
+                                                }
                                             }
-                                        ],
-                                        "imageAspectRatio": "rectangle",
-                                        "imageSize": "cover"
+                                        ]
                                     }
-                                  }
-                                );
+                                });
                                 // pushWorkText ='【'+data[i].project_name+'】';
                                 // pushWorkText =
                                 // bot.push(profile.userId, [pushWorkText]);
