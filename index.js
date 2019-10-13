@@ -86,7 +86,7 @@ bot.on('message', function (event) {
                         },
                         {
                           "type": "text",
-                          "text": allWorkData[allDataIndex].adminpush_content,
+                          "text": "test",
                           "wrap": true,
                           "weight": "bold",
                           "margin": "lg"
@@ -98,9 +98,7 @@ bot.on('message', function (event) {
                     },
                     {
                       "type": "text",
-                      "text": '結束時間:' +
-                      adminpush_enddate[0] + '/' + adminpush_enddate[1] + '/' + adminpush_enddate[2] + ' ' +
-                      adminpush_enddate[3] + ':' + adminpush_enddate[4] + ':' + adminpush_enddate[5],
+                      "text": '結束時間:',
                       "wrap": true,
                       "weight": "bold",
                       "margin": "lg"
