@@ -99,8 +99,8 @@ bot.on('message', function(event) {
                         event.reply('您可能還沒加入任何計畫哦！')
                     }
                     else{
+                        let pushWorkText = [];
                         for(let i=0; i<data.length; i++){
-                            let pushWorkText = [];
                             if(data[i].linebotpush){
                                 pushWorkText.push({
                                     "title": data[i].project_name,
