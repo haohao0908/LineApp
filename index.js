@@ -62,49 +62,36 @@ bot.on('unfollow', function (event) {
     });
 });
 bot.on('message',function(event){
-    event.reply({  
-        "type": "flex",
-        "altText": "this is a flex message",
-        "contents": {
+    event.reply({
+        "type": "carousel",
+        "contents": [
+          {
             "type": "bubble",
-            "header": {
-              "type": "box",
-              "layout": "vertical",
-              "contents": [
-                {
-                  "type": "text",
-                  "text": "Header text"
-                }
-              ]
-            },
-            "hero": {
-              "type": "image",
-              "url": "https://example.com/flex/images/image.jpg"
-            },
             "body": {
               "type": "box",
               "layout": "vertical",
               "contents": [
                 {
                   "type": "text",
-                  "text": "Body text"
+                  "text": "First bubble"
                 }
               ]
-            },
-            "footer": {
+            }
+          },
+          {
+            "type": "bubble",
+            "body": {
               "type": "box",
               "layout": "vertical",
               "contents": [
                 {
                   "type": "text",
-                  "text": "Footer text"
+                  "text": "Second bubble"
                 }
               ]
-            },
-            "styles": {
-              "comment": "See the example of a bubble style object"
             }
           }
+        ]
       })
 })
 //========================================
