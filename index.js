@@ -80,21 +80,32 @@ bot.on('message', function(event) {
                                 console.log('here')
                                 event.reply(
                                     {
-                                        "type": "box",
-                                        "layout": "vertical",
-                                        "contents": [
-                                          {
-                                            "type": "image",
-                                            "url": "https://example.com/flex/images/image.jpg"
-                                          },
-                                          {
-                                            "type": "separator"
-                                          },
-                                          {
-                                            "type": "text",
-                                            "text": "Text in the box"
-                                          }
-                                        ]
+                                        "type": "bubble",
+                                        "body": {
+                                          "type": "box",
+                                          "layout": "horizontal",
+                                          "contents": [
+                                            {
+                                              "type": "image",
+                                              "url": "https://example.com/flex/images/image.jpg"
+                                            },
+                                            {
+                                              "type": "text",
+                                              "text": "top",
+                                              "gravity": "top"
+                                            },
+                                            {
+                                              "type": "text",
+                                              "text": "center",
+                                              "gravity": "center"
+                                            },
+                                            {
+                                              "type": "text",
+                                              "text": "bottom",
+                                              "gravity": "bottom"
+                                            }
+                                          ]
+                                        }
                                       }
                                 );
                                 // pushWorkText ='【'+data[i].project_name+'】';
