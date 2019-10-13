@@ -100,6 +100,7 @@ bot.on('message', function (event) {
                             "type": "text",
                             "text": '結束時間:2019/06/03 18:10:04',
                             "wrap": true,
+                            "size":"xs",
                             "weight": "bold",
                             "margin": "lg"
                         }
