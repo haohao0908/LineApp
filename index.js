@@ -77,8 +77,7 @@ bot.on('message', function(event) {
                         for(let i=0; i<data.length; i++){
                             let pushWorkText = '';
                             if(data[i].linebotpush){
-                                // pushWorkText ='【'+data[i].project_name+'】';
-                                pushWorkText ={
+                                event.reply({
                                     "type": "template",
                                     "altText": "this is a carousel template",
                                     "template": {
@@ -99,8 +98,11 @@ bot.on('message', function(event) {
                                         "imageAspectRatio": "rectangle",
                                         "imageSize": "cover"
                                     }
-                                  };
-                                bot.push(profile.userId, [pushWorkText]);
+                                  }
+                                );
+                                // pushWorkText ='【'+data[i].project_name+'】';
+                                // pushWorkText =
+                                // bot.push(profile.userId, [pushWorkText]);
                             }
                         }
                     }
