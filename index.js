@@ -104,19 +104,6 @@ bot.on('message', function (event) {
                         "color": "#aaaaaa"
                       }
                     ]
-                  },
-                  {
-                    "type": "button",
-                    "style": "primary",
-                    "color": "#ff0000",
-                    "flex": 2,
-                    "height": "sm",
-                    "action": {
-                      "type": "postback",
-                      "label": "X",
-                      "displayText": "10年後の仕事図鑑をキャンセル",   // Cancel the book (The map of professions for 10 years later)
-                      "data": "{\"_type\":\"intent\",\"intent\":{\"name\":\"cancel-reservation\",\"parameters\":{\"reservation_number\":\"1 \"}}}"
-                    }
                   }
                 ]
               }
