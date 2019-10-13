@@ -61,245 +61,146 @@ bot.on('unfollow', function (event) {
         }
     });
 });
+bot.on('message',function(event){
+    event.reply({  
+        "type": "flex",
+        "altText": "this is a flex message",
+        "contents": {
+          "type": "bubble",
+          "body": {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "text",
+                "text": "hello"
+              },
+              {
+                "type": "text",
+                "text": "world"
+              }
+            ]
+          }
+        }
+      })
+})
 //========================================
 // 機器人接受訊息的處理
 //========================================
-bot.on('message', function(event) {
-    event.source.profile().then(
-        function (profile) {
-            if(event.message.text=="#我的計畫" || event.message.text=="#我的計劃" || event.message.text=="#我的專案"){
-                Messenge.MessengeSelectSearch(profile.userId).then(data =>{
-                    if(data==-1){
-                        event.reply('您可能還沒加入任何計畫哦！')
-                    }
-                    else{
-                        // event.reply('『以下是您的計畫』');
-                        // for(let i=0; i<data.length; i++){
-                            let pushWorkText = '';
-                            // if(data[i].linebotpush){
-                                console.log('here')
-                                event.reply(
-                                    {
-                                        "type": "bubble",
-                                        "hero": {
-                                          "type": "image",
-                                          "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/01_1_cafe.png",
-                                          "size": "full",
-                                          "aspectRatio": "20:13",
-                                          "aspectMode": "cover",
-                                          "action": {
-                                            "type": "uri",
-                                            "uri": "http://linecorp.com/"
-                                          }
-                                        },
-                                        "body": {
-                                          "type": "box",
-                                          "layout": "vertical",
-                                          "contents": [
-                                            {
-                                              "type": "text",
-                                              "text": "Brown Cafe",
-                                              "weight": "bold",
-                                              "size": "xl"
-                                            },
-                                            {
-                                              "type": "box",
-                                              "layout": "baseline",
-                                              "margin": "md",
-                                              "contents": [
-                                                {
-                                                  "type": "icon",
-                                                  "size": "sm",
-                                                  "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png"
-                                                },
-                                                {
-                                                  "type": "icon",
-                                                  "size": "sm",
-                                                  "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png"
-                                                },
-                                                {
-                                                  "type": "icon",
-                                                  "size": "sm",
-                                                  "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png"
-                                                },
-                                                {
-                                                  "type": "icon",
-                                                  "size": "sm",
-                                                  "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png"
-                                                },
-                                                {
-                                                  "type": "icon",
-                                                  "size": "sm",
-                                                  "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gray_star_28.png"
-                                                },
-                                                {
-                                                  "type": "text",
-                                                  "text": "4.0",
-                                                  "size": "sm",
-                                                  "color": "#999999",
-                                                  "margin": "md",
-                                                  "flex": 0
-                                                }
-                                              ]
-                                            },
-                                            {
-                                              "type": "box",
-                                              "layout": "vertical",
-                                              "margin": "lg",
-                                              "spacing": "sm",
-                                              "contents": [
-                                                {
-                                                  "type": "box",
-                                                  "layout": "baseline",
-                                                  "spacing": "sm",
-                                                  "contents": [
-                                                    {
-                                                      "type": "text",
-                                                      "text": "Place",
-                                                      "color": "#aaaaaa",
-                                                      "size": "sm",
-                                                      "flex": 1
-                                                    },
-                                                    {
-                                                      "type": "text",
-                                                      "text": "Miraina Tower, 4-1-6 Shinjuku, Tokyo",
-                                                      "wrap": true,
-                                                      "color": "#666666",
-                                                      "size": "sm",
-                                                      "flex": 5
-                                                    }
-                                                  ]
-                                                },
-                                                {
-                                                  "type": "box",
-                                                  "layout": "baseline",
-                                                  "spacing": "sm",
-                                                  "contents": [
-                                                    {
-                                                      "type": "text",
-                                                      "text": "Time",
-                                                      "color": "#aaaaaa",
-                                                      "size": "sm",
-                                                      "flex": 1
-                                                    },
-                                                    {
-                                                      "type": "text",
-                                                      "text": "10:00 - 23:00",
-                                                      "wrap": true,
-                                                      "color": "#666666",
-                                                      "size": "sm",
-                                                      "flex": 5
-                                                    }
-                                                  ]
-                                                }
-                                              ]
-                                            }
-                                          ]
-                                        },
-                                        "footer": {
-                                          "type": "box",
-                                          "layout": "vertical",
-                                          "spacing": "sm",
-                                          "contents": [
-                                            {
-                                              "type": "button",
-                                              "style": "link",
-                                              "height": "sm",
-                                              "action": {
-                                                "type": "uri",
-                                                "label": "CALL",
-                                                "uri": "https://linecorp.com"
-                                              }
-                                            },
-                                            {
-                                              "type": "button",
-                                              "style": "link",
-                                              "height": "sm",
-                                              "action": {
-                                                "type": "uri",
-                                                "label": "WEBSITE",
-                                                "uri": "https://linecorp.com"
-                                              }
-                                            },
-                                            {
-                                              "type": "spacer",
-                                              "size": "sm"
-                                            }
-                                          ],
-                                          "flex": 0
-                                        }
-                                      }
-                                );
-                                // pushWorkText ='【'+data[i].project_name+'】';
-                                // pushWorkText =
-                                // bot.push(profile.userId, [pushWorkText]);
-                            // }
-                        // }
-                    }
-                })
-            }
-            if(event.message.text=="#我的工作"){
-                Messenge.WorkSelectSearch(profile.userId).then(data =>{
-                    console.log('index');
-                    console.log(data);
-                    if(data==-1){
-                        console.log('come')
-                        event.reply('您可能還沒任何工作哦！');
-                    }
-                    else{
-                        event.reply('『以下是您的工作』');
-                        for(let i=0; i<data.length; i++){
-                            let pushWorkText = '';
-                            if(data[i].work_hint){
-                                pushWorkText ='【'+data[i].work_title+'】';
-                                bot.push(profile.userId, [pushWorkText]);
-                            }
-                        }
-                    }
-                })
-            }
-            if(event.message.text=="#快到期計畫" || event.message.text=="#快到期計劃" || event.message.text=="##快到期專案" ){
-                Messenge.MessengeSelectSearch(profile.userId).then(data =>{
-                    console.log('index');
-                    console.log(data);
-                    if(data==-1){
-                        event.reply('您可能還沒任何計畫快到期哦！');
-                    }
-                    else{
-                        for(let i=0; i<data.length; i++){
-                            let pushWorkText = '';
-                            if(data[i].linebotpush){
-                                var dateBegin = new Date(data[i].project_enddate);//将-转化为/，使用new Date
-                                console.log(dateBegin);
-                                var dateEnd = new Date(Date.now() + (8 * 60 * 60 * 1000));//获取当前时间
-                                console.log(dateEnd);
-                                var dateDiff = dateBegin.getTime() - dateEnd.getTime();//时间差的毫秒数
-                                var dayDiff = Math.floor(dateDiff / (24 * 3600 * 1000));//计算出相差天数
-                                var leave1=dateDiff%(24*3600*1000)    //计算天数后剩余的毫秒数
-                                var hours=Math.floor(leave1/(3600*1000))//计算出小时数
-                                //计算相差分钟数
-                                var leave2=leave1%(3600*1000)    //计算小时数后剩余的毫秒数
-                                var minutes=Math.floor(leave2/(60*1000))//计算相差分钟数
-                                //计算相差秒数
-                                var leave3=leave2%(60*1000)      //计算分钟数后剩余的毫秒数
-                                var seconds=Math.round(leave3/1000)
-                                console.log(" 相差 "+dayDiff+"天 "+hours+"小时 "+minutes+" 分钟"+seconds+" 秒")
-                                if(hours<5 && hours>=0){
-                                    date=myFunction.SeparateDate(data[i].project_enddate)
-                                    pushWorkText ='專案名稱'+'\n'+
-                                                    +'〖'+ data[i].project_name +'】'+'\n'+
-                                                    '結束時間:'+date[0] + '/' + date[1] + '/' + date[2] + ' ' +
-                                                    date[3] + ':' + date[4] + ':' + date[5];
-                                    bot.push(profile.userId, [pushWorkText]);
-                                }
-                            }
-                        }
-                    }
-                })
-            }	
-        }
-    );
-});
+// bot.on('message', function(event) {
+//     event.source.profile().then(
+//         function (profile) {
+//             if(event.message.text=="#我的計畫" || event.message.text=="#我的計劃" || event.message.text=="#我的專案"){
+//                 Messenge.MessengeSelectSearch(profile.userId).then(data =>{
+//                     if(data==-1){
+//                         event.reply('您可能還沒加入任何計畫哦！')
+//                     }
+//                     else{
+//                         // event.reply('『以下是您的計畫』');
+//                         // for(let i=0; i<data.length; i++){
+//                             let pushWorkText = '';
+//                             // if(data[i].linebotpush){
+//                                 console.log('here')
+//                                 event.reply(
+//                                     {
+//                                         "type": "bubble",
+//                                         "body": {
+//                                           "type": "box",
+//                                           "layout": "horizontal",
+//                                           "contents": [
+//                                             {
+//                                               "type": "image",
+//                                               "url": "https://example.com/flex/images/image.jpg"
+//                                             },
+//                                             {
+//                                               "type": "text",
+//                                               "text": "top",
+//                                               "gravity": "top"
+//                                             },
+//                                             {
+//                                               "type": "text",
+//                                               "text": "center",
+//                                               "gravity": "center"
+//                                             },
+//                                             {
+//                                               "type": "text",
+//                                               "text": "bottom",
+//                                               "gravity": "bottom"
+//                                             }
+//                                           ]
+//                                         }
+//                                       }
+//                                 );
+//                                 // pushWorkText ='【'+data[i].project_name+'】';
+//                                 // pushWorkText =
+//                                 // bot.push(profile.userId, [pushWorkText]);
+//                             // }
+//                         // }
+//                     }
+//                 })
+//             }
+//             if(event.message.text=="#我的工作"){
+//                 Messenge.WorkSelectSearch(profile.userId).then(data =>{
+//                     console.log('index');
+//                     console.log(data);
+//                     if(data==-1){
+//                         console.log('come')
+//                         event.reply('您可能還沒任何工作哦！');
+//                     }
+//                     else{
+//                         event.reply('『以下是您的工作』');
+//                         for(let i=0; i<data.length; i++){
+//                             let pushWorkText = '';
+//                             if(data[i].work_hint){
+//                                 pushWorkText ='【'+data[i].work_title+'】';
+//                                 bot.push(profile.userId, [pushWorkText]);
+//                             }
+//                         }
+//                     }
+//                 })
+//             }
+//             if(event.message.text=="#快到期計畫" || event.message.text=="#快到期計劃" || event.message.text=="##快到期專案" ){
+//                 Messenge.MessengeSelectSearch(profile.userId).then(data =>{
+//                     console.log('index');
+//                     console.log(data);
+//                     if(data==-1){
+//                         event.reply('您可能還沒任何計畫快到期哦！');
+//                     }
+//                     else{
+//                         for(let i=0; i<data.length; i++){
+//                             let pushWorkText = '';
+//                             if(data[i].linebotpush){
+//                                 var dateBegin = new Date(data[i].project_enddate);//将-转化为/，使用new Date
+//                                 console.log(dateBegin);
+//                                 var dateEnd = new Date(Date.now() + (8 * 60 * 60 * 1000));//获取当前时间
+//                                 console.log(dateEnd);
+//                                 var dateDiff = dateBegin.getTime() - dateEnd.getTime();//时间差的毫秒数
+//                                 var dayDiff = Math.floor(dateDiff / (24 * 3600 * 1000));//计算出相差天数
+//                                 var leave1=dateDiff%(24*3600*1000)    //计算天数后剩余的毫秒数
+//                                 var hours=Math.floor(leave1/(3600*1000))//计算出小时数
+//                                 //计算相差分钟数
+//                                 var leave2=leave1%(3600*1000)    //计算小时数后剩余的毫秒数
+//                                 var minutes=Math.floor(leave2/(60*1000))//计算相差分钟数
+//                                 //计算相差秒数
+//                                 var leave3=leave2%(60*1000)      //计算分钟数后剩余的毫秒数
+//                                 var seconds=Math.round(leave3/1000)
+//                                 console.log(" 相差 "+dayDiff+"天 "+hours+"小时 "+minutes+" 分钟"+seconds+" 秒")
+//                                 if(hours<5 && hours>=0){
+//                                     date=myFunction.SeparateDate(data[i].project_enddate)
+//                                     pushWorkText ='專案名稱'+'\n'+
+//                                                     +'〖'+ data[i].project_name +'】'+'\n'+
+//                                                     '結束時間:'+date[0] + '/' + date[1] + '/' + date[2] + ' ' +
+//                                                     date[3] + ':' + date[4] + ':' + date[5];
+//                                     bot.push(profile.userId, [pushWorkText]);
+//                                 }
+//                             }
+//                         }
+//                     }
+//                 })
+//             }	
+//         }
+//     );
+// });
 //--------------------------------
 // 更新資料
 //--------------------------------
