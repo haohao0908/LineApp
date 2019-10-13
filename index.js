@@ -80,33 +80,19 @@ bot.on('message', function(event) {
                                 console.log('here')
                                 event.reply(
                                     {
-                                        "type": "carousel",
+                                        "type": "box",
+                                        "layout": "vertical",
                                         "contents": [
                                           {
-                                            "type": "bubble",
-                                            "body": {
-                                              "type": "box",
-                                              "layout": "vertical",
-                                              "contents": [
-                                                {
-                                                  "type": "text",
-                                                  "text": "First bubble"
-                                                }
-                                              ]
-                                            }
+                                            "type": "image",
+                                            "url": "https://example.com/flex/images/image.jpg"
                                           },
                                           {
-                                            "type": "bubble",
-                                            "body": {
-                                              "type": "box",
-                                              "layout": "vertical",
-                                              "contents": [
-                                                {
-                                                  "type": "text",
-                                                  "text": "Second bubble"
-                                                }
-                                              ]
-                                            }
+                                            "type": "separator"
+                                          },
+                                          {
+                                            "type": "text",
+                                            "text": "Text in the box"
                                           }
                                         ]
                                       }
