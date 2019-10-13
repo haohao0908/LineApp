@@ -106,11 +106,11 @@ bot.on('message', function(event) {
                                     "title": "【您的計畫】",
                                     "text": data[i].project_name,
                                     "actions": [
-                                        // {
-                                        //     "type": "uri",
-                                        //     "label": "查看網站",
-                                        //     "uri": "https://zh.wikipedia.org/wiki/星夜"
-                                        // }
+                                        {
+                                            "type": "uri",
+                                            "label": "查看網站",
+                                            "uri": "https://zh.wikipedia.org/wiki/星夜"
+                                        }
                                     ]
                                 });    
                             }
@@ -181,13 +181,13 @@ bot.on('message', function(event) {
                                         "title": data[i].project_name,
                                         "text": '結束時間:'+date[0] + '/' + date[1] + '/' + date[2] + ' ' +
                                         date[3] + ':' + date[4] + ':' + date[5],
-                                        "actions": [
-                                            {
-                                                "type": "uri",
-                                                "label": "查看網站",
-                                                "uri": "https://zh.wikipedia.org/wiki/星夜"
-                                            }
-                                        ]
+                                        // "actions": [
+                                        //     {
+                                        //         "type": "uri",
+                                        //         "label": "查看網站",
+                                        //         "uri": "https://zh.wikipedia.org/wiki/星夜"
+                                        //     }
+                                        // ]
                                     });    
                                     // pushWorkText ='專案名稱'+'\n'+
                                     //                 +'〖'+ data[i].project_name +'】'+'\n'+
@@ -204,8 +204,8 @@ bot.on('message', function(event) {
                                 "type": "carousel",
                                 "columns":pushWorkText
                             },
-                            "imageAspectRatio": "rectangle",
-                            "imageSize": "cover"    
+                            // "imageAspectRatio": "rectangle",
+                            // "imageSize": "cover"    
                         });  
                     }
                 })
