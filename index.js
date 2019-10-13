@@ -85,8 +85,6 @@ bot.on('message', function(event) {
                                         "type": "carousel",
                                         "columns": [
                                             {
-                                              "thumbnailImageUrl": "https://example.com/bot/images/item1.jpg",
-                                              "imageBackgroundColor": "#FFFFFF",
                                               "title": "this is menu",
                                               "text": "description",
                                               "defaultAction": {
