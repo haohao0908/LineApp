@@ -62,55 +62,88 @@ bot.on('unfollow', function (event) {
     });
 });
 bot.on('message', function (event) {
-    event.reply({
-        "type": "carousel",
-        "altText": "予約票", //Reservation
-        "contents": {
-          "type": "bubble",
-          "body": {
-            "type": "box",
-            "layout": "vertical",
-            "spacing": "xl",
+    event.reply(
+        {
+            "type": "carousel",
             "contents": [
               {
-                "type": "text",
-                "text": "予約票", //Reservation
-                "align": "center",
-                "size": "xl",
-                "color": "#1DB446"
+                "type": "bubble",
+                "body": {
+                  "type": "box",
+                  "layout": "vertical",
+                  "contents": [
+                    {
+                      "type": "text",
+                      "text": "First bubble"
+                    }
+                  ]
+                }
               },
               {
-                "type": "separator"
-              },
-              {
-                "type": "box",
-                "layout": "horizontal",
-                "contents": [
-                  {
-                    "type": "box",
-                    "layout": "vertical",
-                    "flex": 8,
-                    "spacing": "sm",
-                    "contents": [
-                      {
-                        "type": "text",
-                        "text": "10年後の仕事図鑑",  // Book title (The map of professions for 10 years later)
-                        "weight": "bold"
-                      },
-                      {
-                        "type": "text",
-                        "text": "順番：191/233", // Order
-                        "size": "xs",
-                        "color": "#aaaaaa"
-                      }
-                    ]
-                  }
-                ]
+                "type": "bubble",
+                "body": {
+                  "type": "box",
+                  "layout": "vertical",
+                  "contents": [
+                    {
+                      "type": "text",
+                      "text": "Second bubble"
+                    }
+                  ]
+                }
               }
             ]
           }
-        }
-      })
+        //{
+    //     "type": "flex",
+    //     "altText": "予約票", //Reservation
+    //     "contents": {
+    //       "type": "bubble",
+    //       "body": {
+    //         "type": "box",
+    //         "layout": "vertical",
+    //         "spacing": "xl",
+    //         "contents": [
+    //           {
+    //             "type": "text",
+    //             "text": "予約票", //Reservation
+    //             "align": "center",
+    //             "size": "xl",
+    //             "color": "#1DB446"
+    //           },
+    //           {
+    //             "type": "separator"
+    //           },
+    //           {
+    //             "type": "box",
+    //             "layout": "horizontal",
+    //             "contents": [
+    //               {
+    //                 "type": "box",
+    //                 "layout": "vertical",
+    //                 "flex": 8,
+    //                 "spacing": "sm",
+    //                 "contents": [
+    //                   {
+    //                     "type": "text",
+    //                     "text": "10年後の仕事図鑑",  // Book title (The map of professions for 10 years later)
+    //                     "weight": "bold"
+    //                   },
+    //                   {
+    //                     "type": "text",
+    //                     "text": "順番：191/233", // Order
+    //                     "size": "xs",
+    //                     "color": "#aaaaaa"
+    //                   }
+    //                 ]
+    //               }
+    //             ]
+    //           }
+    //         ]
+    //       }
+    //     }
+    //   }
+    )
 })
 //========================================
 // 機器人接受訊息的處理
