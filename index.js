@@ -329,6 +329,8 @@ let push = setInterval(function () {
             //     adminpush_enddate[0] + '/' + adminpush_enddate[1] + '/' + adminpush_enddate[2] + ' ' +
             //     adminpush_enddate[3] + ':' + adminpush_enddate[4] + ':' + adminpush_enddate[5];
             if (allWorkData[allDataIndex].linebotpush) {
+                console.log('here');
+                console.log(pushWorkText);
                 userId = allWorkData[allDataIndex].user_id;
                 bot.push(userId,{
                     "type": "flex",
