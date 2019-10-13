@@ -61,32 +61,181 @@ bot.on('unfollow', function (event) {
         }
     });
 });
-// bot.on('message', function (event) {
-//     event.reply(
-//         {
-//             "type": "template",
-//             "altText": "這是一個輪播樣板",
-//             "template": {
-//                 "type": "carousel",
-//                 "columns": [
-//                     {
-//                       "title": "星夜",
-//                       "text": "荷蘭後印象派畫家文森特·梵谷於1890年在法國聖雷米的一家精神病院裏創作的一幅著名油畫",
-//                       "actions": [
-//                           {
-//                               "type": "uri",
-//                               "label": "查看網站",
-//                               "uri": "https://zh.wikipedia.org/wiki/星夜"
-//                           }
-//                       ]
-//                     }
-//                 ],
-//                 "imageAspectRatio": "rectangle",
-//                 "imageSize": "cover"
-//             }
-//         }
-//     )
-// })
+bot.on('message', function (event) {
+    event.reply(
+        {
+            "type": "flex",
+            "altText": "Q1. Which is the API to create chatbot?",
+            "contents": {
+              "type": "bubble",
+              "body": {
+                "type": "box",
+                "layout": "vertical",
+                "spacing": "md",
+                "contents": [
+                  {
+                    "type": "box",
+                    "layout": "vertical",
+                    "contents": [
+                      {
+                        "type": "text",
+                        "text": "Q1",
+                        "align": "center",
+                        "size": "xxl",
+                        "weight": "bold"
+                      },
+                      {
+                        "type": "text",
+                        "text": "Which is the API to create chatbot?",
+                        "wrap": true,
+                        "weight": "bold",
+                        "margin": "lg"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "separator"
+                  },
+                  {
+                    "type": "box",
+                    "layout": "vertical",
+                    "margin": "lg",
+                    "contents": [
+                      {
+                        "type": "box",
+                        "layout": "baseline",
+                        "contents": [
+                          {
+                            "type": "text",
+                            "text": "1.",
+                            "flex": 1,
+                            "size": "lg",
+                            "weight": "bold",
+                            "color": "#666666"
+                          },
+                          {
+                            "type": "text",
+                            "text": "Login API",
+                            "wrap": true,
+                            "flex": 9
+                          }
+                        ]
+                      },
+                      {
+                        "type": "box",
+                        "layout": "baseline",
+                        "contents": [
+                          {
+                            "type": "text",
+                            "text": "2.",
+                            "flex": 1,
+                            "size": "lg",
+                            "weight": "bold",
+                            "color": "#666666"
+                          },
+                          {
+                            "type": "text",
+                            "text": "Messaging API",
+                            "wrap": true,
+                            "flex": 9
+                          }
+                        ]
+                      },
+                      {
+                        "type": "box",
+                        "layout": "baseline",
+                        "contents": [
+                          {
+                            "type": "text",
+                            "text": "3.",
+                            "flex": 1,
+                            "size": "lg",
+                            "weight": "bold",
+                            "color": "#666666"
+                          },
+                          {
+                            "type": "text",
+                            "text": "Graph API",
+                            "wrap": true,
+                            "flex": 9
+                          }
+                        ]
+                      },
+                      {
+                        "type": "box",
+                        "layout": "baseline",
+                        "contents": [
+                          {
+                            "type": "text",
+                            "text": "4.",
+                            "flex": 1,
+                            "size": "lg",
+                            "weight": "bold",
+                            "color": "#666666"
+                          },
+                          {
+                            "type": "text",
+                            "text": "Cartoon API",
+                            "wrap": true,
+                            "flex": 9
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              "footer": {
+                "type": "box",
+                "layout": "horizontal",
+                "spacing": "sm",
+                "contents": [
+                  {
+                    "type": "button",
+                    "style": "primary",
+                    "height": "sm",
+                    "action": {
+                      "type": "message",
+                      "label": "1",
+                      "text": "Login API"
+                    }
+                  },
+                  {
+                    "type": "button",
+                    "style": "primary",
+                    "height": "sm",
+                    "action": {
+                      "type": "message",
+                      "label": "2",
+                      "text": "Messaging API"
+                    }
+                  },
+                  {
+                    "type": "button",
+                    "style": "primary",
+                    "height": "sm",
+                    "action": {
+                      "type": "message",
+                      "label": "3",
+                      "text": "Graph API"
+                    }
+                  },
+                  {
+                    "type": "button",
+                    "style": "primary",
+                    "height": "sm",
+                    "action": {
+                      "type": "message",
+                      "label": "4",
+                      "text": "Cartoon API"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+    )
+})
 //========================================
 // 機器人接受訊息的處理
 //========================================
@@ -121,9 +270,7 @@ bot.on('message', function(event) {
                             "template": {
                                 "type": "carousel",
                                 "columns":pushWorkText
-                            },
-                            // "imageAspectRatio": "rectangle",
-                            // "imageSize": "cover"    
+                            }, 
                         });  
                     }
                 })
