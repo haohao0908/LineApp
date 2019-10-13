@@ -64,170 +64,61 @@ bot.on('unfollow', function (event) {
 bot.on('message', function (event) {
     event.reply({
         "type": "flex",
-        "altText": "Q1. Which is the API to create chatbot?",
+        "altText": "予約票", //Reservation
         "contents": {
           "type": "bubble",
           "body": {
             "type": "box",
             "layout": "vertical",
-            "spacing": "md",
+            "spacing": "xl",
             "contents": [
               {
-                "type": "box",
-                "layout": "vertical",
-                "contents": [
-                  {
-                    "type": "text",
-                    "text": "Q1",
-                    "align": "center",
-                    "size": "xxl",
-                    "weight": "bold"
-                  },
-                  {
-                    "type": "text",
-                    "text": "Which is the API to create chatbot?",
-                    "wrap": true,
-                    "weight": "bold",
-                    "margin": "lg"
-                  }
-                ]
+                "type": "text",
+                "text": "予約票", //Reservation
+                "align": "center",
+                "size": "xl",
+                "color": "#1DB446"
               },
               {
                 "type": "separator"
               },
               {
                 "type": "box",
-                "layout": "vertical",
-                "margin": "lg",
+                "layout": "horizontal",
                 "contents": [
                   {
                     "type": "box",
-                    "layout": "baseline",
+                    "layout": "vertical",
+                    "flex": 8,
+                    "spacing": "sm",
                     "contents": [
                       {
                         "type": "text",
-                        "text": "1.",
-                        "flex": 1,
-                        "size": "lg",
-                        "weight": "bold",
-                        "color": "#666666"
+                        "text": "10年後の仕事図鑑",  // Book title (The map of professions for 10 years later)
+                        "weight": "bold"
                       },
                       {
                         "type": "text",
-                        "text": "Login API",
-                        "wrap": true,
-                        "flex": 9
+                        "text": "順番：191/233", // Order
+                        "size": "xs",
+                        "color": "#aaaaaa"
                       }
                     ]
                   },
                   {
-                    "type": "box",
-                    "layout": "baseline",
-                    "contents": [
-                      {
-                        "type": "text",
-                        "text": "2.",
-                        "flex": 1,
-                        "size": "lg",
-                        "weight": "bold",
-                        "color": "#666666"
-                      },
-                      {
-                        "type": "text",
-                        "text": "Messaging API",
-                        "wrap": true,
-                        "flex": 9
-                      }
-                    ]
-                  },
-                  {
-                    "type": "box",
-                    "layout": "baseline",
-                    "contents": [
-                      {
-                        "type": "text",
-                        "text": "3.",
-                        "flex": 1,
-                        "size": "lg",
-                        "weight": "bold",
-                        "color": "#666666"
-                      },
-                      {
-                        "type": "text",
-                        "text": "Graph API",
-                        "wrap": true,
-                        "flex": 9
-                      }
-                    ]
-                  },
-                  {
-                    "type": "box",
-                    "layout": "baseline",
-                    "contents": [
-                      {
-                        "type": "text",
-                        "text": "4.",
-                        "flex": 1,
-                        "size": "lg",
-                        "weight": "bold",
-                        "color": "#666666"
-                      },
-                      {
-                        "type": "text",
-                        "text": "Cartoon API",
-                        "wrap": true,
-                        "flex": 9
-                      }
-                    ]
+                    "type": "button",
+                    "style": "primary",
+                    "color": "#ff0000",
+                    "flex": 2,
+                    "height": "sm",
+                    "action": {
+                      "type": "postback",
+                      "label": "X",
+                      "displayText": "10年後の仕事図鑑をキャンセル",   // Cancel the book (The map of professions for 10 years later)
+                      "data": "{\"_type\":\"intent\",\"intent\":{\"name\":\"cancel-reservation\",\"parameters\":{\"reservation_number\":\"1 \"}}}"
+                    }
                   }
                 ]
-              }
-            ]
-          },
-          "footer": {
-            "type": "box",
-            "layout": "horizontal",
-            "spacing": "sm",
-            "contents": [
-              {
-                "type": "button",
-                "style": "primary",
-                "height": "sm",
-                "action": {
-                  "type": "message",
-                  "label": "1",
-                  "text": "Login API"
-                }
-              },
-              {
-                "type": "button",
-                "style": "primary",
-                "height": "sm",
-                "action": {
-                  "type": "message",
-                  "label": "2",
-                  "text": "Messaging API"
-                }
-              },
-              {
-                "type": "button",
-                "style": "primary",
-                "height": "sm",
-                "action": {
-                  "type": "message",
-                  "label": "3",
-                  "text": "Graph API"
-                }
-              },
-              {
-                "type": "button",
-                "style": "primary",
-                "height": "sm",
-                "action": {
-                  "type": "message",
-                  "label": "4",
-                  "text": "Cartoon API"
-                }
               }
             ]
           }
