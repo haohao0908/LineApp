@@ -62,7 +62,7 @@ bot.on('unfollow', function (event) {
     });
 });
 bot.on('message', function (event) {
-    pushWorkText=[];
+    pushWorkText = [];
     pushWorkText.push(
         {
             "type": "flex",
@@ -100,7 +100,7 @@ bot.on('message', function (event) {
                             "type": "text",
                             "text": '結束時間:2019/06/03 18:10:04',
                             "wrap": true,
-                            "size":"xs",
+                            "size": "xs",
                             "align": "center",
                             "weight": "bold",
                             "margin": "lg"
@@ -110,7 +110,7 @@ bot.on('message', function (event) {
             }
         }
     )
-    bot.push('U32851128a5210964818860dd9204b886',pushWorkText);
+    bot.push('U32851128a5210964818860dd9204b886', pushWorkText);
 })
 //========================================
 // 機器人接受訊息的處理
@@ -130,6 +130,7 @@ bot.on('message', function (event) {
                                 pushWorkText.push({
                                     "title": "【您的計畫】",
                                     "text": data[i].project_name,
+                                    "align":"center",
                                     "actions": [
                                         {
                                             "type": "uri",
@@ -260,29 +261,9 @@ function UpdateAllWorkData() {
     })
     let updataData = setInterval(UpdateAllWorkData, 600000);
 }
-// function UpdateAllProjectData() {
-//     Admin.AdminMessengePushJdge().then(data => {
-//     clearTimeout(updataData);
-//         allProjectData = [];
-//         stringAllProjectData = [];
-//         for (let a = 0; a < data.length; a++) {
-//             let project_enddate = myFunction.SeparateDate(data[a].project_enddate + '')
-//             let ProjectData = {
-//                 user_id: data[a].user_id,
-//                 linebotpush: data[a].linebotpush,
-//                 project_name: data[a].project_name,
-//                 project_enddate: project_enddate,
-//             }
-//             if (!stringAllWorkData.includes(JSON.stringify(ProjectData))) {
-//                 stringAllWorkData.push(JSON.stringify(ProjectData))
-//                 allWorkData.push(ProjectData)
-//             }
-//         }
-//     })
-//     let updataData = setInterval(UpdateAllProjectData, 1000);
-// }
+
 UpdateAllWorkData();
-// UpdateAllProjectData();
+
 //--------------------------------
 // 推播資料
 //--------------------------------
@@ -361,6 +342,8 @@ let push = setInterval(function () {
                                         adminpush_enddate[0] + '/' + adminpush_enddate[1] + '/' + adminpush_enddate[2] + ' ' +
                                         adminpush_enddate[3] + ':' + adminpush_enddate[4] + ':' + adminpush_enddate[5],
                                     "wrap": true,
+                                    "size": "xs",
+                                    "align": "center",
                                     "weight": "bold",
                                     "margin": "lg"
                                 }
@@ -369,15 +352,11 @@ let push = setInterval(function () {
                     }
                 }
             )
-            // pushWorkText =
-            //     '組長提醒事項' + '\n' + '【' + allWorkData[allDataIndex].adminpush_content + '】' + '\n' + '結束時間:' +
-            //     adminpush_enddate[0] + '/' + adminpush_enddate[1] + '/' + adminpush_enddate[2] + ' ' +
-            //     adminpush_enddate[3] + ':' + adminpush_enddate[4] + ':' + adminpush_enddate[5];
             if (allWorkData[allDataIndex].linebotpush) {
                 console.log('here');
                 console.log(pushWorkText);
                 userId = allWorkData[allDataIndex].user_id;
-                bot.push(userId,pushWorkText);
+                bot.push(userId, pushWorkText);
             }
         }
     }
