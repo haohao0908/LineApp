@@ -65,6 +65,7 @@ bot.on('message', function (event) {
     event.reply(
         {
             "type": "flex",
+            "altText": "予約票",
             "contents": {
                 "type": "bubble",
                 "body": {
