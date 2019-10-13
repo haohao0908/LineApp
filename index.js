@@ -23,6 +23,8 @@ var https = require('https');
 setInterval(function () {
  https.get(" https://hao-planyourself-app.herokuapp.com/");
 }, 1500000);
+//模板
+
 //--------------------------------
 // 使用者加入群組
 //--------------------------------
@@ -75,7 +77,29 @@ bot.on('message', function(event) {
                         for(let i=0; i<data.length; i++){
                             let pushWorkText = '';
                             if(data[i].linebotpush){
-                                pushWorkText ='【'+data[i].project_name+'】';
+                                // pushWorkText ='【'+data[i].project_name+'】';
+                                pushWorkText ={
+                                    "type": "template",
+                                    "altText": "this is a carousel template",
+                                    "template": {
+                                        "type": "carousel",
+                                        "columns": [
+                                            {
+                                              "thumbnailImageUrl": "https://example.com/bot/images/item1.jpg",
+                                              "imageBackgroundColor": "#FFFFFF",
+                                              "title": data[i].project_name,
+                                              "text": "description",
+                                              "defaultAction": {
+                                                  "type": "uri",
+                                                  "label": "View detail",
+                                                  "uri": "http://example.com/page/123"
+                                              }
+                                            }
+                                        ],
+                                        "imageAspectRatio": "rectangle",
+                                        "imageSize": "cover"
+                                    }
+                                  };
                                 bot.push(profile.userId, [pushWorkText]);
                             }
                         }
