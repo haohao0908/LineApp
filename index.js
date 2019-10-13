@@ -130,7 +130,6 @@ bot.on('message', function (event) {
                                 pushWorkText.push({
                                     "title": "【您的計畫】",
                                     "text": data[i].project_name,
-                                    "align":"center",
                                     "actions": [
                                         {
                                             "type": "uri",
@@ -141,6 +140,7 @@ bot.on('message', function (event) {
                                 });
                             }
                         }
+                        console.log(pushWorkText);
                         event.reply({
                             "type": "template",
                             "altText": "這是一個輪播樣板",
