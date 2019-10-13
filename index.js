@@ -105,13 +105,13 @@ bot.on('message', function(event) {
                                 pushWorkText.push({
                                     "title": "【您的計畫】",
                                     "text": data[i].project_name,
-                                    "actions": [
-                                        {
-                                            "type": "uri",
-                                            "label": "查看網站",
-                                            "uri": "https://zh.wikipedia.org/wiki/星夜"
-                                        }
-                                    ]
+                                    // "actions": [
+                                    //     {
+                                    //         "type": "uri",
+                                    //         "label": "查看網站",
+                                    //         "uri": "https://zh.wikipedia.org/wiki/星夜"
+                                    //     }
+                                    // ]
                                 });    
                             }
                         }
@@ -156,8 +156,9 @@ bot.on('message', function(event) {
                         event.reply('您可能還沒任何計畫快到期哦！');
                     }
                     else{
+                        let pushWorkText = [];
                         for(let i=0; i<data.length; i++){
-                            let pushWorkText = '';
+                            // let pushWorkText = '';
                             if(data[i].linebotpush){
                                 var dateBegin = new Date(data[i].project_enddate);//将-转化为/，使用new Date
                                 console.log(dateBegin);
@@ -176,14 +177,36 @@ bot.on('message', function(event) {
                                 console.log(" 相差 "+dayDiff+"天 "+hours+"小时 "+minutes+" 分钟"+seconds+" 秒")
                                 if(hours<5 && hours>=0){
                                     date=myFunction.SeparateDate(data[i].project_enddate)
-                                    pushWorkText ='專案名稱'+'\n'+
-                                                    +'〖'+ data[i].project_name +'】'+'\n'+
-                                                    '結束時間:'+date[0] + '/' + date[1] + '/' + date[2] + ' ' +
-                                                    date[3] + ':' + date[4] + ':' + date[5];
-                                    bot.push(profile.userId, [pushWorkText]);
+                                    pushWorkText.push({
+                                        "title": data[i].project_name,
+                                        "text": '結束時間:'+date[0] + '/' + date[1] + '/' + date[2] + ' ' +
+                                        date[3] + ':' + date[4] + ':' + date[5],
+                                        "actions": [
+                                            {
+                                                "type": "uri",
+                                                "label": "查看網站",
+                                                "uri": "https://zh.wikipedia.org/wiki/星夜"
+                                            }
+                                        ]
+                                    });    
+                                    // pushWorkText ='專案名稱'+'\n'+
+                                    //                 +'〖'+ data[i].project_name +'】'+'\n'+
+                                    //                 '結束時間:'+date[0] + '/' + date[1] + '/' + date[2] + ' ' +
+                                    //                 date[3] + ':' + date[4] + ':' + date[5];
+                                    // bot.push(profile.userId, [pushWorkText]);
                                 }
                             }
                         }
+                        event.reply({
+                            "type": "template",
+                            "altText": "這是一個輪播樣板",
+                            "template": {
+                                "type": "carousel",
+                                "columns":pushWorkText
+                            },
+                            "imageAspectRatio": "rectangle",
+                            "imageSize": "cover"    
+                        });  
                     }
                 })
             }	
