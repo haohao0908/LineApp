@@ -21,7 +21,7 @@ var bot = linebot({
 //--------------------------------
 var https = require('https');
 setInterval(function () {
- https.get(" https://hao-planyourself-app.herokuapp.com/");
+    https.get(" https://hao-planyourself-app.herokuapp.com/");
 }, 1500000);
 //模板
 
@@ -61,38 +61,28 @@ bot.on('unfollow', function (event) {
         }
     });
 });
-bot.on('message',function(event){
+bot.on('message', function (event) {
     event.reply({
-        "type": "carousel",
-        "contents": [
-          {
+        "type": "flex",
+        "altText": "this is a flex message",
+        "contents": {
             "type": "bubble",
             "body": {
-              "type": "box",
-              "layout": "vertical",
-              "contents": [
-                {
-                  "type": "text",
-                  "text": "First bubble"
-                }
-              ]
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                    {
+                        "type": "text",
+                        "text": "hello"
+                    },
+                    {
+                        "type": "text",
+                        "text": "world"
+                    }
+                ]
             }
-          },
-          {
-            "type": "bubble",
-            "body": {
-              "type": "box",
-              "layout": "vertical",
-              "contents": [
-                {
-                  "type": "text",
-                  "text": "Second bubble"
-                }
-              ]
-            }
-          }
-        ]
-      })
+        }
+    })
 })
 //========================================
 // 機器人接受訊息的處理
@@ -216,7 +206,7 @@ bot.on('message',function(event){
 //--------------------------------
 function UpdateAllWorkData() {
     Admin.AdminMessengePushJdge().then(data => {
-    clearTimeout(updataData);
+        clearTimeout(updataData);
         allWorkData = [];
         stringAllWorkData = [];
         for (let a = 0; a < data.length; a++) {
@@ -298,7 +288,7 @@ let push = setInterval(function () {
         if (AdminPushMessage_1h || AdminPushMessage_3h || AdminPushMessage_5h) {
             console.log('可以推波囉 正確進入了');
             pushWorkText =
-                '組長提醒事項'+'\n' + '【' + allWorkData[allDataIndex].adminpush_content + '】'+'\n' +'結束時間:'+
+                '組長提醒事項' + '\n' + '【' + allWorkData[allDataIndex].adminpush_content + '】' + '\n' + '結束時間:' +
                 adminpush_enddate[0] + '/' + adminpush_enddate[1] + '/' + adminpush_enddate[2] + ' ' +
                 adminpush_enddate[3] + ':' + adminpush_enddate[4] + ':' + adminpush_enddate[5];
             if (allWorkData[allDataIndex].linebotpush) {
