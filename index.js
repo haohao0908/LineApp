@@ -73,7 +73,7 @@ bot.on('message', function(event) {
                         event.reply('您可能還沒加入任何計畫哦！')
                     }
                     else{
-                        event.reply('『以下是您的計畫』');
+                        // event.reply('『以下是您的計畫』');
                         // for(let i=0; i<data.length; i++){
                             let pushWorkText = '';
                             // if(data[i].linebotpush){
