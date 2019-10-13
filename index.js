@@ -89,7 +89,6 @@ bot.on('message', function (event) {
                                     "type": "text",
                                     "text": 'test',
                                     "wrap": true,
-                                    "weight": "bold",
                                     "margin": "lg"
                                 }
                             ]
@@ -340,14 +339,13 @@ let push = setInterval(function () {
                                             "type": "text",
                                             "text": "組長提醒",
                                             "align": "center",
-                                            "size": "xxl",
+                                            "size": "lg",
                                             "weight": "bold"
                                         },
                                         {
                                             "type": "text",
                                             "text": allWorkData[allDataIndex].adminpush_content,
                                             "wrap": true,
-                                            "weight": "bold",
                                             "margin": "lg"
                                         }
                                     ]
