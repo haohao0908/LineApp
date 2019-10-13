@@ -61,56 +61,56 @@ bot.on('unfollow', function (event) {
         }
     });
 });
-// bot.on('message', function (event) {
-//     pushWorkText=[];
-//     pushWorkText.push(
-//         {
-//             "type": "flex",
-//             "altText": "組長提醒：",
-//             "contents": {
-//                 "type": "bubble",
-//                 "body": {
-//                     "type": "box",
-//                     "layout": "vertical",
-//                     "spacing": "md",
-//                     "contents": [
-//                         {
-//                             "type": "box",
-//                             "layout": "vertical",
-//                             "contents": [
-//                                 {
-//                                     "type": "text",
-//                                     "text": "組長提醒",
-//                                     "align": "center",
-//                                     "size": "xxl",
-//                                     "weight": "bold"
-//                                 },
-//                                 {
-//                                     "type": "text",
-//                                     "text": 'test',
-//                                     "wrap": true,
-//                                     "weight": "bold",
-//                                     "margin": "lg"
-//                                 }
-//                             ]
-//                         },
-//                         {
-//                             "type": "separator"
-//                         },
-//                         {
-//                             "type": "text",
-//                             "text": '結束時間:',
-//                             "wrap": true,
-//                             "weight": "bold",
-//                             "margin": "lg"
-//                         }
-//                     ]
-//                 }
-//             }
-//         }
-//     )
-//     bot.push('U32851128a5210964818860dd9204b886',pushWorkText);
-// })
+bot.on('message', function (event) {
+    pushWorkText=[];
+    pushWorkText.push(
+        {
+            "type": "flex",
+            "altText": "組長提醒：",
+            "contents": {
+                "type": "bubble",
+                "body": {
+                    "type": "box",
+                    "layout": "vertical",
+                    "spacing": "md",
+                    "contents": [
+                        {
+                            "type": "box",
+                            "layout": "vertical",
+                            "contents": [
+                                {
+                                    "type": "text",
+                                    "text": "組長提醒",
+                                    "align": "center",
+                                    "size": "lg",
+                                    "weight": "bold"
+                                },
+                                {
+                                    "type": "text",
+                                    "text": 'test',
+                                    "wrap": true,
+                                    "weight": "bold",
+                                    "margin": "lg"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "separator"
+                        },
+                        {
+                            "type": "text",
+                            "text": '結束時間:',
+                            "wrap": true,
+                            "weight": "bold",
+                            "margin": "lg"
+                        }
+                    ]
+                }
+            }
+        }
+    )
+    bot.push('U32851128a5210964818860dd9204b886',pushWorkText);
+})
 //========================================
 // 機器人接受訊息的處理
 //========================================
