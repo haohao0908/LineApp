@@ -74,9 +74,9 @@ bot.on('message', function(event) {
                     }
                     else{
                         // event.reply('『以下是您的計畫』');
-                        // for(let i=0; i<data.length; i++){
+                        for(let i=0; i<data.length; i++){
                             let pushWorkText = '';
-                            // if(data[i].linebotpush){
+                            if(data[i].linebotpush){
                                 console.log('here')
                                 event.reply({
                                     "type": "template",
@@ -114,9 +114,9 @@ bot.on('message', function(event) {
                                 // pushWorkText ='【'+data[i].project_name+'】';
                                 // pushWorkText =
                                 // bot.push(profile.userId, [pushWorkText]);
-                            // }
+                            }
                         }
-                    // }
+                    }
                 })
             }
             if(event.message.text=="#我的工作"){
