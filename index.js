@@ -62,9 +62,9 @@ bot.on('unfollow', function (event) {
     });
 });
 bot.on('message', function (event) {
-    
+
     pushWorkText = [];
-    function abc(date){
+    function abc(date) {
         var dateBegin = new Date(date);//将-转化为/，使用new Date
         console.log(dateBegin);
         var dateEnd = new Date(Date.now() + (8 * 60 * 60 * 1000));//获取当前时间
@@ -73,7 +73,7 @@ bot.on('message', function (event) {
         console.log(dateDiff);
         return dateDiff
     }
-    if(abc('2019-09-17 01:30:00')<0){
+    if (abc('2019-09-17 01:30:00') < 0) {
         console.log('小於0可以這樣判斷ㄌ')
     }
     // pushWorkText.push(
@@ -132,6 +132,7 @@ bot.on('message', function (event) {
 bot.on('message', function (event) {
     event.source.profile().then(
         function (profile) {
+            //我的計畫
             if (event.message.text == "#我的計畫" || event.message.text == "#我的計劃" || event.message.text == "#我的專案") {
                 Messenge.MessengeSelectSearch(profile.userId).then(data => {
                     if (data == -1) {
@@ -166,6 +167,53 @@ bot.on('message', function (event) {
                     }
                 })
             }
+            //尚未開始計畫
+            if (event.message.text == "#我的尚未開始計畫" || event.message.text == "#我的尚未開始計劃" || event.message.text == "#我的尚未開始專案") {
+                Messenge.MessengeSelectSearch(profile.userId).then(data => {
+                    if (data == -1) {
+                        event.reply('您可能還沒加入任何計畫哦！')
+                    }
+                    else {
+                        let pushWorkText = [];
+                        function dateJudge(date) {
+                            var dateBegin = new Date(date);//将-转化为/，使用new Date
+                            console.log(dateBegin);
+                            var dateEnd = new Date(Date.now() + (8 * 60 * 60 * 1000));//获取当前时间
+                            console.log(dateEnd);
+                            var dateDiff = dateBegin.getTime() - dateEnd.getTime();//时间差的毫秒数
+                            console.log(dateDiff);
+                            return dateDiff
+                        }
+                        for (let i = 0; i < data.length; i++) {
+                            if (dateJudge(data[i].project_startdate) > 0) {
+                                if (data[i].linebotpush) {
+                                    pushWorkText.push({
+                                        "title": "【您的計畫】",
+                                        "text": data[i].project_name,
+                                        "actions": [
+                                            {
+                                                "type": "uri",
+                                                "label": "查看網站",
+                                                "uri": "https://zh.wikipedia.org/wiki/星夜"
+                                            }
+                                        ]
+                                    });
+                                }
+                            }
+                        }
+                        console.log(pushWorkText);
+                        event.reply({
+                            "type": "template",
+                            "altText": "這是一個輪播樣板",
+                            "template": {
+                                "type": "carousel",
+                                "columns": pushWorkText
+                            },
+                        });
+                    }
+                })
+            }
+            //我的工作
             if (event.message.text == "#我的工作") {
                 Messenge.WorkSelectSearch(profile.userId).then(data => {
                     console.log('index');
@@ -179,7 +227,7 @@ bot.on('message', function (event) {
                         for (let i = 0; i < data.length; i++) {
                             if (data[i].work_hint) {
                                 pushWorkText.push({
-                                    "title":data[i].list_name+'列表下',
+                                    "title": data[i].list_name + '列表下',
                                     "text": data[i].work_title,
                                     "actions": [
                                         {
@@ -203,6 +251,7 @@ bot.on('message', function (event) {
                     }
                 })
             }
+            //快到期計畫
             if (event.message.text == "#快到期計畫" || event.message.text == "#快到期計劃" || event.message.text == "##快到期專案") {
                 Messenge.MessengeSelectSearch(profile.userId).then(data => {
                     console.log('index');
