@@ -51,7 +51,7 @@ var WorkSelectSearch = async function(id){
     //存放結果
     let result;  
     //讀取資料庫
-    await query('SELECT first_principal,work.second_principal,work_title,workhint.work_hint,list_name FROM listwork INNER JOIN list ON(list.list_id=listwork.list_id) INNER JOIN work ON(work.work_id=listwork.work_id) INNER JOIN 	workhint ON(listwork.work_id=workhint.work_id) WHERE first_principal=$1 OR second_principal=$1, [id])
+    await query('SELECT first_principal,work.second_principal,work_title,workhint.work_hint,list_name FROM listwork INNER JOIN list ON(list.list_id=listwork.list_id) INNER JOIN work ON(work.work_id=listwork.work_id) INNER JOIN 	workhint ON(listwork.work_id=workhint.work_id) WHERE first_principal=$1 OR second_principal=$1', [id])
         .then((data) => {
             if(data.rows.length > 0){
                 result = data.rows;  //學生資料(物件)
