@@ -161,14 +161,32 @@ bot.on('message', function (event) {
                         event.reply('您可能還沒任何工作哦！');
                     }
                     else {
-                        event.reply('『以下是您的工作』');
+                        let pushWorkText = [];
                         for (let i = 0; i < data.length; i++) {
-                            let pushWorkText = '';
                             if (data[i].work_hint) {
-                                pushWorkText = '【' + data[i].work_title + '】';
-                                bot.push(profile.userId, [pushWorkText]);
+                                pushWorkText.push({
+                                    "title": "【您的計畫】",
+                                    "text": data[i].work_title,
+                                    "actions": [
+                                        {
+                                            "type": "uri",
+                                            "label": "查看網站",
+                                            "uri": "https://zh.wikipedia.org/wiki/星夜"
+                                        }
+                                    ]
+                                });
                             }
                         }
+                        console.log(pushWorkText);
+                        event.reply({
+                            "type": "template",
+                            "altText": "這是一個輪播樣板",
+                            "template": {
+                                "type": "carousel",
+                                "columns": pushWorkText
+                            },
+                        });
+
                     }
                 })
             }
