@@ -51,7 +51,8 @@ var WorkSelectSearch = async function(id){
     //存放結果
     let result;  
     //讀取資料庫
-    await query(```
+    await query(
+    ```
     SELECT first_principal,work.second_principal,work_title,workhint.work_hint,list_name 
     FROM listwork 
     INNER JOIN list 
