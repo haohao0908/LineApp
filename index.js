@@ -62,13 +62,20 @@ bot.on('unfollow', function (event) {
     });
 });
 bot.on('message', function (event) {
-    var dateBegin = new Date('2019-09-17 01:30:00');//将-转化为/，使用new Date
-    console.log(dateBegin);
-    var dateEnd = new Date(Date.now() + (8 * 60 * 60 * 1000));//获取当前时间
-    console.log(dateEnd);
-    var dateDiff = dateBegin.getTime() - dateEnd.getTime();//时间差的毫秒数
-    console.log(dateDiff);
+    
     pushWorkText = [];
+    function abc(date){
+        var dateBegin = new Date(date);//将-转化为/，使用new Date
+        console.log(dateBegin);
+        var dateEnd = new Date(Date.now() + (8 * 60 * 60 * 1000));//获取当前时间
+        console.log(dateEnd);
+        var dateDiff = dateBegin.getTime() - dateEnd.getTime();//时间差的毫秒数
+        console.log(dateDiff);
+        return dateDiff
+    }
+    if(abc('2019-09-17 01:30:00')<0){
+        console.log('小於0可以這樣判斷ㄌ')
+    }
     // pushWorkText.push(
     //     {
     //         "type": "flex",
