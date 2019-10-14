@@ -165,7 +165,7 @@ bot.on('message', function (event) {
                         for (let i = 0; i < data.length; i++) {
                             if (data[i].work_hint) {
                                 pushWorkText.push({
-                                    "title": "【您的計畫】",
+                                    "title":data[i].list_name+'列表下',
                                     "text": data[i].work_title,
                                     "actions": [
                                         {
