@@ -58,7 +58,7 @@ var WorkSelectSearch = async function(id){
     INNER JOIN list 
             ON(list.list_id=listwork.list_id) 
         INNER JOIN work
-            ON("work".work_id=listwork.work_id)
+            ON(work.work_id=listwork.work_id)
         INNER JOIN 	workhint
             ON(listwork.work_id=workhint.work_id)
     WHERE first_principal=$1 OR second_principal=$1
